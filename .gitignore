@@ -1,0 +1,9 @@
+*.log
+/gcloud/
+/hammerspoon/Spoons/
+/hammerspoon/pasteboard_history.json
+/k9s/config.yml
+/nvim/java/
+/nvim/plugin
+/nvim/elixir/
+/nvim/lua/.luarc.json
