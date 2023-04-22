@@ -49,9 +49,9 @@
         current-project (output:match "%S+%s*%S+%s*%S+%s*(%S+)[\r\n]")]
     current-project))
 
-(fn on-project-changed [_ {:title project}]
+(fn on-project-changed [{:title project} menu]
   (doto (hs.task.new :/opt/homebrew/share/google-cloud-sdk/bin/gcloud
-                     #(print "project sucessfully set " project)
+                     #(menu:setTitle (.. "☁ " project))
                      [:config :set :project project])
     (: :start)))
 
@@ -60,9 +60,9 @@
         current-project (current-project)]
     (->> (icollect [_ project (ipairs projects)]
            {:title project
-            :checked (= project current-project)
-            :fn on-project-changed})
-         (menu:setMenu))))
+            :fn #(on-project-changed $2 menu)})
+         (menu:setMenu))
+    (menu:setTitle (.. "☁ " current-project))))
 
 (fn async-set-menu-items [menu]
   "fetches gcloud asyncronously and sets menubar value"
@@ -74,5 +74,5 @@
   (doto menubar
     (: :setTitle "☁")
     (: :setTooltip :gcloud)
-    (: :setMenu [{:title "Loading ..." :checked false :disabled true}])
-    (async-set-menu-items)))
+    (: :setMenu [{:title "Loading ..." :checked false :disabled true}]))
+  (async-set-menu-items menubar))
