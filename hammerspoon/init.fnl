@@ -43,20 +43,27 @@
             projects)
           projects))))
 
-(fn set-menu-items [output-str menu]
-  (let [projects (extract-gcloud-projects output-str)]
+(fn current-project []
+  (let [(output _ _ _) (hs.execute "gcloud config configurations list | tail -n +2 | awk '{print $4}'" true)
+        current-project (output:match "%S+%s*%S+%s*%S+%s*(%S+)[\r\n]")]
+    current-project))
+
+(fn gcloud-projects-list [output-str menu]
+  (let [projects (extract-gcloud-projects output-str)
+        current-project (current-project)]
     (->> (icollect [_ project (ipairs projects)]
-           {:title project})
+           {:title project :checked (= project current-project)})
          (menu:setMenu))))
 
-(fn gcloud-projects [menu]
+(fn async-set-menu-items [menu]
   "fetches gcloud asyncronously and sets menubar value"
-  (let [task (hs.task.new :/opt/homebrew/share/google-cloud-sdk/bin/gcloud
-                          #(set-menu-items $2 menu) [:projects :list])]
-    (task:start)))
+  (doto (hs.task.new :/opt/homebrew/share/google-cloud-sdk/bin/gcloud
+                     #(gcloud-projects-list $2 menu) [:projects :list])
+    (: :start)))
 
 (let [menubar (hs.menubar.new)]
   (doto menubar
-    (: :setTitle :gcloud)
+    (: :setTitle "☁")
+    (: :setTooltip "gcloud")
     (: :setMenu [{:title "Loading ..." :checked false :disabled true}])
-    (gcloud-projects)))
+    (async-set-menu-items)))
