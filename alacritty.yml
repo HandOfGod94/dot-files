@@ -68,4 +68,4 @@ shell:
   args:
     - -l
     - -c
-    - zellij options --theme "tokyo-night-storm"
+    - tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" attach || tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"

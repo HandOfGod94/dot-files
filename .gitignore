@@ -7,3 +7,5 @@
 /nvim/plugin
 /nvim/elixir/
 /nvim/lua/.luarc.json
+/tmux/plugins
+.luarc.json
