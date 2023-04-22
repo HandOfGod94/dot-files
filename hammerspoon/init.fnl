@@ -44,15 +44,24 @@
           projects))))
 
 (fn current-project []
-  (let [(output _ _ _) (hs.execute "gcloud config configurations list | tail -n +2 | awk '{print $4}'" true)
+  (let [(output _ _ _) (hs.execute "gcloud config configurations list | tail -n +2"
+                                   true)
         current-project (output:match "%S+%s*%S+%s*%S+%s*(%S+)[\r\n]")]
     current-project))
+
+(fn on-project-changed [_ {:title project}]
+  (doto (hs.task.new :/opt/homebrew/share/google-cloud-sdk/bin/gcloud
+                     #(print "project sucessfully set " project)
+                     [:config :set :project project])
+    (: :start)))
 
 (fn gcloud-projects-list [output-str menu]
   (let [projects (extract-gcloud-projects output-str)
         current-project (current-project)]
     (->> (icollect [_ project (ipairs projects)]
-           {:title project :checked (= project current-project)})
+           {:title project
+            :checked (= project current-project)
+            :fn on-project-changed})
          (menu:setMenu))))
 
 (fn async-set-menu-items [menu]
@@ -64,6 +73,6 @@
 (let [menubar (hs.menubar.new)]
   (doto menubar
     (: :setTitle "☁")
-    (: :setTooltip "gcloud")
+    (: :setTooltip :gcloud)
     (: :setMenu [{:title "Loading ..." :checked false :disabled true}])
     (async-set-menu-items)))
