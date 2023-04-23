@@ -189,7 +189,7 @@ end
 
 seal.plugins.useractions.actions = {
   ["Kubernetes set namespace"] = {
-    keyword = "kubens",
+    keyword = "kns",
     fn = function(str)
       if (str == nil or str == "")
       then
@@ -200,7 +200,7 @@ seal.plugins.useractions.actions = {
     end,
   },
   ["Kubernetes set context"] = {
-    keyword = "kubectx",
+    keyword = "kctx",
     fn = function(str)
       if (str == nil or str == "")
       then
