@@ -1,4 +1,4 @@
-local log = hs.logger.new("gahan-init", "info")
+local log = hs.logger.new("gahan-init", "debug")
 local spoonInstall = hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.repos.ShiftIt = {
   url = "https://github.com/peterklijn/hammerspoon-shiftit",
@@ -81,3 +81,81 @@ gcloudMenubar:setMenu({
     fn = onGcloudItemClicked
   }
 })
+
+----------------------------- kubernetes ---------------------
+local kubeMenubar = hs.menubar.new()
+
+local function setKubeMenu()
+  local currentContext = hs.execute("kubectl config current-context", true)
+  currentContext = currentContext:match("(%S+)%s*")
+  local contextLabel = ""
+  if (currentContext == "nonprod")
+  then
+    contextLabel = "N"
+  else
+    contextLabel = "P"
+  end
+
+  local currentNamespace = hs.execute("kubectl config view --minify -o jsonpath='{..namespace}'", true)
+  kubeMenubar:setTitle("⎈ " .. currentNamespace .. "[" .. contextLabel .. "]")
+end
+
+setKubeMenu()
+hs.timer.doEvery(10, setKubeMenu)
+
+local function changeNamespace(namespace)
+  log.d("setting namespace", namespace)
+  local changer = hs.task.new("/opt/homebrew/bin/kubectl", function(exitCode, _, _)
+    if (exitCode == 0)
+    then
+      local notification = hs.notify.new(nil, {
+        title = "Kubernetes namespace changed",
+        subTitle = "Successfully changed kubernetes namespace to \"" .. namespace .. "\""
+      })
+      notification:send()
+      setKubeMenu()
+    end
+  end, { "config", "set-context", "--current", "--namespace=" .. namespace })
+  changer:start()
+end
+
+local function chooseNamespace()
+  local chooser = hs.chooser.new(function(chosen)
+    if (chosen) then
+      changeNamespace(chosen.text)
+    end
+  end)
+
+  hs.task.new("/bin/zsh", function(exitCode, output, stderr)
+    if (exitCode ~= 0) then
+      log.e("failed get namespaces ", stderr)
+      return
+    end
+
+    local namespaceChoices = {}
+    for line in output:gmatch("([^\r\n]+)")
+    do
+      local namespace = line:match("(%S+).*")
+      table.insert(namespaceChoices, { text = namespace, uuid = namespace })
+    end
+    table.remove(namespaceChoices, 1)
+
+    chooser:choices(namespaceChoices)
+    chooser:show()
+  end, { "-c", "kubectl get namespaces" })
+      :start()
+end
+
+
+seal.plugins.useractions.actions = {
+  ["Kubernetes Namespace"] = {
+    keyword = "kun",
+    fn = function(str)
+      if (str == nil or str == "") then
+        str = chooseNamespace()
+      else
+        changeNamespace(str)
+      end
+    end,
+  },
+}
