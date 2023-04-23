@@ -42,54 +42,42 @@ local gcloudEnv = {
   staging = "jiva-services",
   prod = "production-jiva-services"
 }
+
+local gcloudEnvLabel = {
+  ["jiva-services"] = "staging",
+  ["production-jiva-services"] = "prod"
+}
+
 local currentGcloudProject = hs.execute("gcloud config configurations list | tail -n +2", true)
 currentGcloudProject = currentGcloudProject:match("%S+%s*%S+%s*%S+%s*(%S+)[\r\n]")
 log.i("Current gcloud project", currentGcloudProject)
 
-local currentGcloudProjectLabel = ""
-if (currentGcloudProject == "jiva-services")
-then
-  currentGcloudProjectLabel = "staging"
-else
-  currentGcloudProjectLabel = "prod"
+local gcloudMenubar = hs.menubar.new()
+gcloudMenubar:setTitle("☁ " .. gcloudEnvLabel[currentGcloudProject])
+gcloudMenubar:setTooltip(currentGcloudProject)
+
+local function onGcloudItemClicked(_, menuItem)
+  local changeProjectTask = hs.task.new("/opt/homebrew/share/google-cloud-sdk/bin/gcloud",
+    function(_, _, _)
+      local notification = hs.notify.new(nil, {
+        title = "Gcloud project changed",
+        subTitle = "Successfully changed gcloud project to \"" .. gcloudEnv[menuItem.title] .. "\""
+      })
+      notification:send()
+      log.i("set gcloud to ", gcloudEnv[menuItem.title])
+      gcloudMenubar:setTitle("☁ " .. menuItem.title)
+      gcloudMenubar:setTooltip(gcloudEnv[menuItem.title])
+    end, { "config", "set", "project", gcloudEnv[menuItem.title] })
+  changeProjectTask:start()
 end
 
-local gcloudMenubar = hs.menubar.new()
-gcloudMenubar:setTitle("☁ " .. currentGcloudProjectLabel)
-gcloudMenubar:setTooltip(currentGcloudProject)
 gcloudMenubar:setMenu({
   {
     title = "staging",
-    fn = function(_, menuItem)
-      local changeProjectTask = hs.task.new("/opt/homebrew/share/google-cloud-sdk/bin/gcloud",
-        function(_, _, _)
-          local notification = hs.notify.new(nil, {
-            title = "Gcloud project changed",
-            subTitle = "Successfully changed gcloud project to \"" .. gcloudEnv[menuItem.title] .. "\""
-          })
-          notification:send()
-          log.i("set gcloud to ", gcloudEnv[menuItem.title])
-          gcloudMenubar:setTitle("☁ staging")
-          gcloudMenubar:setTooltip(gcloudEnv[menuItem.title])
-        end, { "config", "set", "project", gcloudEnv[menuItem.title] })
-      changeProjectTask:start()
-    end
+    fn = onGcloudItemClicked
   },
   {
     title = "prod",
-    fn = function(_, menuItem)
-      local changeProjectTask = hs.task.new("/opt/homebrew/share/google-cloud-sdk/bin/gcloud",
-        function(_, _, _)
-          local notification = hs.notify.new(nil, {
-            title = "Gcloud project changed",
-            subTitle = "Successfully changed gcloud project to \"" .. gcloudEnv[menuItem.title] .. "\""
-          })
-          notification:send()
-          log.i("set gcloud to ", gcloudEnv[menuItem.title])
-          gcloudMenubar:setTitle("☁ prod")
-          gcloudMenubar:setTooltip(gcloudEnv[menuItem.title])
-        end, { "config", "set", "project", gcloudEnv[menuItem.title] })
-      changeProjectTask:start()
-    end
+    fn = onGcloudItemClicked
   }
 })
