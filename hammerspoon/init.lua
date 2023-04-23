@@ -211,7 +211,31 @@ local function viewConfigmap(appName)
     chooser:choices(configEntries)
     chooser:show()
   end, { "-c", "kubectl get configmap -o jsonpath='{.data}' " .. appName }):start()
+end
 
+local function chooseConfigmapFromApp()
+  local chooser = hs.chooser.new(function(chosen)
+    if (chosen) then
+      log.i("searching configmap for " .. chosen.text)
+      viewConfigmap(chosen.text)
+    end
+  end)
+
+  hs.task.new("/bin/zsh", function(exitCode, stdout, stderr)
+    if (exitCode ~= 0) then
+      log.e("failed get apps ", stderr)
+      return
+    end
+
+    local appChoices = {}
+    for app in stdout:gmatch("%S+") do
+      table.insert(appChoices, { text = app, uuid = app })
+    end
+
+    log.d("apps ", hs.inspect(appChoices))
+    chooser:choices(appChoices)
+    chooser:show()
+  end, { "-c", "kubectl get configmaps -o jsonpath='{.items..name}'"}):start()
 end
 
 
@@ -240,8 +264,13 @@ seal.plugins.useractions.actions = {
   },
   ["Kubernetes search configmap"] = {
     keyword = "kconf",
-    fn = function(str)
-      viewConfigmap(str)
+    fn = function(appName)
+      if (appName == nil or appName == "")
+      then
+        chooseConfigmapFromApp()
+      else
+        viewConfigmap(appName)
+      end
     end
   }
 }
