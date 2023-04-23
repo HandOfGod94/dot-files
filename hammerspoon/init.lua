@@ -56,7 +56,7 @@ end
 
 local gcloudMenubar = hs.menubar.new()
 gcloudMenubar:setTitle("☁ " .. currentGcloudProjectLabel)
-gcloudMenubar:setTooltip "gcloud"
+gcloudMenubar:setTooltip(currentGcloudProject)
 gcloudMenubar:setMenu({
   {
     title = "staging",
@@ -70,6 +70,7 @@ gcloudMenubar:setMenu({
           notification:send()
           log.i("set gcloud to ", gcloudEnv[menuItem.title])
           gcloudMenubar:setTitle("☁ staging")
+          gcloudMenubar:setTooltip(gcloudEnv[menuItem.title])
         end, { "config", "set", "project", gcloudEnv[menuItem.title] })
       changeProjectTask:start()
     end
@@ -86,6 +87,7 @@ gcloudMenubar:setMenu({
           notification:send()
           log.i("set gcloud to ", gcloudEnv[menuItem.title])
           gcloudMenubar:setTitle("☁ prod")
+          gcloudMenubar:setTooltip(gcloudEnv[menuItem.title])
         end, { "config", "set", "project", gcloudEnv[menuItem.title] })
       changeProjectTask:start()
     end
