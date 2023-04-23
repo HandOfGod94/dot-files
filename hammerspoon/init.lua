@@ -1,4 +1,4 @@
-local log = hs.logger.new("gahan-init", "debug")
+local log = hs.logger.new("gahan-init", "info")
 local spoonInstall = hs.loadSpoon("SpoonInstall")
 spoon.SpoonInstall.repos.ShiftIt = {
   url = "https://github.com/peterklijn/hammerspoon-shiftit",
@@ -119,6 +119,19 @@ local function changeNamespace(namespace)
   changer:start()
 end
 
+local function changeContext(context)
+  log.d("setting context", context)
+  local changer = hs.task.new("/bin/zsh", function()
+    local notification = hs.notify.new(nil, {
+      title = "Kubernetes context changed",
+      subTitle = "Successfully changed kubernetes context to \"" .. context .. "\""
+    })
+    notification:send()
+    setKubeMenu()
+  end, { "-c", "kubectl config use-context " .. context })
+  changer:start()
+end
+
 local function chooseNamespace()
   local chooser = hs.chooser.new(function(chosen)
     if (chosen) then
@@ -146,16 +159,55 @@ local function chooseNamespace()
       :start()
 end
 
+local function chooseContext()
+  local chooser = hs.chooser.new(function(chosen)
+    if (chosen) then
+      changeContext(chosen.text)
+    end
+  end)
+
+  hs.task.new("/bin/zsh", function(exitCode, output, stderr)
+    if (exitCode ~= 0) then
+      log.e("failed get contexts ", stderr)
+      return
+    end
+
+    local contextChoices = {}
+    for line in output:gmatch("([^\r\n]+)")
+    do
+      local name, cluster = line:match("%S*%s+(%S+)%s+(%S+).*")
+      table.insert(contextChoices, { text = name, subText = cluster, uuid = name })
+    end
+    table.remove(contextChoices, 1)
+
+    log.d("contexts ", hs.inspect(contextChoices))
+    chooser:choices(contextChoices)
+    chooser:show()
+  end, { "-c", "kubectl config get-contexts" }):start()
+end
+
 
 seal.plugins.useractions.actions = {
-  ["Kubernetes Namespace"] = {
-    keyword = "kun",
+  ["Kubernetes set namespace"] = {
+    keyword = "kubens",
     fn = function(str)
-      if (str == nil or str == "") then
+      if (str == nil or str == "")
+      then
         str = chooseNamespace()
       else
         changeNamespace(str)
       end
     end,
   },
+  ["Kubernetes set context"] = {
+    keyword = "kubectx",
+    fn = function(str)
+      if (str == nil or str == "")
+      then
+        chooseContext()
+      else
+        changeContext(str)
+      end
+    end
+  }
 }
