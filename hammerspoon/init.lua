@@ -186,6 +186,34 @@ local function chooseContext()
   end, { "-c", "kubectl config get-contexts" }):start()
 end
 
+local function viewConfigmap(appName)
+  local chooser = hs.chooser.new(function(chosen)
+    if (chosen) then
+      hs.execute("echo " .. chosen.subText .. " | pbcopy", true)
+      hs.alert("copied " .. chosen.subText .. " to clipboard")
+    end
+  end)
+
+  hs.task.new("/bin/zsh", function(exitCode, output, stderr)
+    if (exitCode ~= 0) then
+      log.e("failed get apps ", stderr)
+      return
+    end
+
+    local configmap = hs.json.decode(output)
+    local configEntries = {}
+    for key, val in pairs(configmap)
+    do
+      table.insert(configEntries, { text = key, subText = val, uuid = key })
+    end
+
+    log.d("contexts ", hs.inspect(configEntries))
+    chooser:choices(configEntries)
+    chooser:show()
+  end, { "-c", "kubectl get configmap -o jsonpath='{.data}' " .. appName }):start()
+
+end
+
 
 seal.plugins.useractions.actions = {
   ["Kubernetes set namespace"] = {
@@ -208,6 +236,12 @@ seal.plugins.useractions.actions = {
       else
         changeContext(str)
       end
+    end
+  },
+  ["Kubernetes search configmap"] = {
+    keyword = "kconf",
+    fn = function(str)
+      viewConfigmap(str)
     end
   }
 }
