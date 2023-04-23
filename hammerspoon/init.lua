@@ -39,12 +39,12 @@ end)
 
 --------------- gcloud ------------------------
 local gcloudEnv = {
-  staging = "jiva-services",
+  nonprod = "jiva-services",
   prod = "production-jiva-services"
 }
 
 local gcloudEnvLabel = {
-  ["jiva-services"] = "staging",
+  ["jiva-services"] = "nonprod",
   ["production-jiva-services"] = "prod"
 }
 
@@ -73,7 +73,7 @@ end
 
 gcloudMenubar:setMenu({
   {
-    title = "staging",
+    title = "nonprod",
     fn = onGcloudItemClicked
   },
   {
