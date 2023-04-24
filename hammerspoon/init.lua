@@ -7,16 +7,21 @@ spoon.SpoonInstall.repos.ShiftIt = {
 }
 
 spoonInstall:andUse("Seal")
+spoonInstall:andUse("TextClipboardHistory")
 spoonInstall:andUse("ShiftIt", { repo = "ShiftIt" })
 
 local seal = spoon.Seal
-seal:loadPlugins({ "apps", "useractions", "calc", "pasteboard" })
+seal:loadPlugins({ "apps", "useractions", "calc" })
 seal:bindHotkeys({ toggle = { { "cmd" }, "space" } })
-seal.plugins.pasteboard.historySize = 1000
 seal:start()
-hs.hotkey.bind({ "cmd", "shift" }, "v", function()
-  seal:toggle("pb")
-end)
+
+local clipboardHistory = spoon.TextClipboardHistory
+clipboardHistory.show_in_menubar = false
+clipboardHistory.paste_on_select = true
+clipboardHistory:bindHotkeys({
+  toggle_clipboard = {{ "cmd", "shift" }, "v"}
+})
+clipboardHistory:start()
 
 local shiftit = spoon.ShiftIt
 shiftit:bindHotkeys({
@@ -29,6 +34,19 @@ shiftit:bindHotkeys({
   resizeOut = { { "ctrl", "alt", "cmd" }, "=" },
   resizeIn = { { "ctrl", "alt", "cmd" }, "-" }
 })
+
+------------ firefox shortcuts ----------------
+
+-- search tab shortcut
+hs.hotkey.bind({"ctrl"}, "t", function ()
+  local app = hs.application.get("firefox")
+  if (app:isFrontmost()) then
+    hs.eventtap.event.newKeyEvent({"cmd"}, "l", true):post()
+    hs.eventtap.event.newKeyEvent(hs.keycodes.map.delete, true):post()
+    hs.eventtap.event.newKeyEvent({"shift"}, "5", true):post()
+    hs.eventtap.event.newKeyEvent(hs.keycodes.map.space, true):post()
+  end
+end)
 
 
 ------------- quake mode ----------------------
