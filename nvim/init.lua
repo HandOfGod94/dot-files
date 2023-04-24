@@ -413,8 +413,8 @@ require('other-nvim').setup({
       context = "test"
     },
     {
-      pattern = "(.*).rb",
-      target = "%1.rbs",
+      pattern = "app/(.*).rb",
+      target = "sig/rbs_rails/app/%1.rbs",
       context = "rbs_type"
     },
     {
@@ -423,8 +423,8 @@ require('other-nvim').setup({
       context = "source"
     },
     {
-      pattern = "(.*).rbs",
-      target = "%1.rb",
+      pattern = "sig/rbs_rails/app/(.*).rbs",
+      target = "app/%1.rb",
       context = "source"
     },
 
