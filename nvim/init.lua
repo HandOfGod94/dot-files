@@ -81,6 +81,7 @@ require('packer').startup(function()
   use { 'nvim-neorg/neorg', requires = "nvim-lua/plenary.nvim" }
   use 'dhruvasagar/vim-table-mode'
   use 'imsnif/kdl.vim'
+  use 'jlcrochet/vim-rbs'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -364,6 +365,7 @@ require('neorg').setup {
 
 -- other files, add more mappings
 require('other-nvim').setup({
+  rememberBuffers = false,
   mappings = {
     {
       pattern = "src/main/java/(.*).java",
@@ -411,10 +413,21 @@ require('other-nvim').setup({
       context = "test"
     },
     {
+      pattern = "(.*).rb",
+      target = "%1.rbs",
+      context = "rbs_type"
+    },
+    {
       pattern = "spec/(.*)_spec.rb",
       target = "app/%1.rb",
       context = "source"
     },
+    {
+      pattern = "(.*).rbs",
+      target = "%1.rb",
+      context = "source"
+    },
+
     {
       pattern = "lib/(.*).rb",
       target = "test/%1_test.rb",
