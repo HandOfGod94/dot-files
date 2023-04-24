@@ -58,7 +58,12 @@ gcloudMenubar:setTooltip(currentGcloudProject)
 
 local function onGcloudItemClicked(_, menuItem)
   local changeProjectTask = hs.task.new("/opt/homebrew/share/google-cloud-sdk/bin/gcloud",
-    function(_, _, _)
+    function(exitCode, _, stderr)
+      if (exitCode ~= 0) then
+        log.e("failed to change gcloud project ", stderr)
+        return
+      end
+
       local notification = hs.notify.new(nil, {
         title = "Gcloud project changed",
         subTitle = "Successfully changed gcloud project to \"" .. gcloudEnv[menuItem.title] .. "\""
