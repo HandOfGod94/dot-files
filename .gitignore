@@ -9,3 +9,6 @@
 /nvim/lua/.luarc.json
 /tmux/plugins
 .luarc.json
+.zsh_history
+.zcompdump*
+oh-my-zsh/
