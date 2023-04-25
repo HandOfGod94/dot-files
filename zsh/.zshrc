@@ -102,3 +102,5 @@ source $ZSH/oh-my-zsh.sh
 
 alias gpp='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa" git push'
 alias gpw='GIT_SSH_COMMAND="ssh -i ~/.ssh/jiva_rsa" git push'
+eval "$($(brew --prefix rbenv)/bin/rbenv init - zsh)"
+eval "$(pyenv init -)"
