@@ -124,7 +124,6 @@ local function setKubeMenu()
 end
 
 setKubeMenu()
-hs.timer.doEvery(10, setKubeMenu)
 
 local function changeNamespace(namespace)
   log.d("setting namespace", namespace)
@@ -181,6 +180,7 @@ local function chooseNamespace()
   end, { "-c", "kubectl get namespaces" })
       :start()
 end
+kubeMenubar:setClickCallback(chooseNamespace)
 
 local function chooseContext()
   local chooser = hs.chooser.new(function(chosen)
