@@ -82,6 +82,7 @@ require('packer').startup(function()
   use 'dhruvasagar/vim-table-mode'
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -342,6 +343,12 @@ require('nvim-ts-autotag').setup({
     enable = true,
   }
 })
+require('ufo').setup({
+  provider_selector = function(_, _, _)
+    return { 'treesitter', 'indent' }
+  end
+})
+
 
 require('neorg').setup {
   load = {
@@ -427,7 +434,11 @@ require('other-nvim').setup({
       target = "app/%1.rb",
       context = "source"
     },
-
+    {
+      pattern = "sig/rbs_rails/app/(.*).rbs",
+      target = "spec/%1_spec.rb",
+      context = "test"
+    },
     {
       pattern = "lib/(.*).rb",
       target = "test/%1_test.rb",
