@@ -93,6 +93,7 @@ require('packer').startup(function()
   use 'folke/tokyonight.nvim'
   use 'navarasu/onedark.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
+  use 'luisiacc/gruvbox-baby'
 end)
 
 -- editor config
@@ -152,6 +153,7 @@ vim.g.material_style = "deep ocean"
 -- vim.g.material_style = "lighter"
 -- vim.cmd('colorscheme material')
 vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "gruvbox-baby"
 -- vim.cmd('colorscheme tokyonight-night')
 
 vim.opt.foldmethod = 'expr'
@@ -225,6 +227,7 @@ wk.register({
     l = { "<cmd>Telescope buffers<cr>", "List all buffers" },
     d = { "<cmd>Bonly<CR>", "Close other buffers" },
   },
+  ["<SPACE>F"]  = { k = {"<cmd>FloatermKill<cr>", "kill floating terminal"}},
   ["<SPACE>f"]  = {
     name  = "+File ops",
     t     = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },
@@ -287,7 +290,7 @@ require('lualine').setup({
     lualine_x = { 'encoding', 'filetype' },
     lualine_y = {},
   },
-  theme = 'tokyonight',
+  theme = 'catppuccin',
 })
 require("nvim-tree").setup({
   disable_netrw = false, -- required for GBrowse
@@ -322,7 +325,7 @@ require('telescope').setup({
     path_display = { "smart" },
     dynamic_preview_title = true,
     layout_strategy = 'horizontal',
-    layout_config = { width = 0.95 }
+    layout_config = { width = 0.95 },
   },
   extensions = {
     ["ui-select"] = { require("telescope.themes").get_dropdown({}) }
