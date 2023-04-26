@@ -106,25 +106,6 @@ gcloudMenubar:setMenu({
 })
 
 ----------------------------- kubernetes ---------------------
-local kubeMenubar = hs.menubar.new()
-
-local function setKubeMenu()
-  local currentContext = hs.execute("kubectl config current-context", true)
-  currentContext = currentContext:match("(%S+)%s*")
-  local contextLabel = ""
-  if (currentContext == "nonprod")
-  then
-    contextLabel = "N"
-  else
-    contextLabel = "P"
-  end
-
-  local currentNamespace = hs.execute("kubectl config view --minify -o jsonpath='{..namespace}'", true)
-  kubeMenubar:setTitle("⎈ " .. currentNamespace .. "[" .. contextLabel .. "]")
-end
-
-setKubeMenu()
-
 local function changeNamespace(namespace)
   log.d("setting namespace", namespace)
   local changer = hs.task.new("/opt/homebrew/bin/kubectl", function(exitCode, _, _)
@@ -135,7 +116,6 @@ local function changeNamespace(namespace)
         subTitle = "Successfully changed kubernetes namespace to \"" .. namespace .. "\""
       })
       notification:send()
-      setKubeMenu()
     end
   end, { "config", "set-context", "--current", "--namespace=" .. namespace })
   changer:start()
@@ -149,7 +129,6 @@ local function changeContext(context)
       subTitle = "Successfully changed kubernetes context to \"" .. context .. "\""
     })
     notification:send()
-    setKubeMenu()
   end, { "-c", "kubectl config use-context " .. context })
   changer:start()
 end
@@ -180,7 +159,6 @@ local function chooseNamespace()
   end, { "-c", "kubectl get namespaces" })
       :start()
 end
-kubeMenubar:setClickCallback(chooseNamespace)
 
 local function chooseContext()
   local chooser = hs.chooser.new(function(chosen)

@@ -92,6 +92,7 @@ require('packer').startup(function()
   use 'marko-cerovac/material.nvim'
   use 'folke/tokyonight.nvim'
   use 'navarasu/onedark.nvim'
+  use { "catppuccin/nvim", as = "catppuccin" }
 end)
 
 -- editor config
@@ -149,7 +150,8 @@ vim.api.nvim_create_autocmd('BufEnter', {
 
 vim.g.material_style = "deep ocean"
 -- vim.g.material_style = "lighter"
-vim.cmd('colorscheme material')
+-- vim.cmd('colorscheme material')
+vim.cmd.colorscheme "catppuccin"
 -- vim.cmd('colorscheme tokyonight-night')
 
 vim.opt.foldmethod = 'expr'
