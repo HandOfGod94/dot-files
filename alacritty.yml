@@ -41,3 +41,5 @@ shell:
     - -l
     - -c
     - tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf" attach || tmux -f "$XDG_CONFIG_HOME/tmux/tmux.conf"
+    # - zellij options --theme "gruvbox-dark"
+

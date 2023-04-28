@@ -38,15 +38,16 @@ shiftit:bindHotkeys({
 ------------ firefox shortcuts ----------------
 
 -- search tab shortcut
-hs.hotkey.bind({"ctrl"}, "t", function ()
-  local app = hs.application.get("firefox")
-  if (app:isFrontmost()) then
-    hs.eventtap.event.newKeyEvent({"cmd"}, "l", true):post()
-    hs.eventtap.event.newKeyEvent(hs.keycodes.map.delete, true):post()
-    hs.eventtap.event.newKeyEvent({"shift"}, "5", true):post()
-    hs.eventtap.event.newKeyEvent(hs.keycodes.map.space, true):post()
-  end
-end)
+-- TODO: it's should only activate if firefox is active
+-- hs.hotkey.bind({"ctrl"}, "t", function ()
+--   local app = hs.application.get("firefox")
+--   if (app:isFrontmost()) then
+--     hs.eventtap.event.newKeyEvent({"cmd"}, "l", true):post()
+--     hs.eventtap.event.newKeyEvent(hs.keycodes.map.delete, true):post()
+--     hs.eventtap.event.newKeyEvent({"shift"}, "5", true):post()
+--     hs.eventtap.event.newKeyEvent(hs.keycodes.map.space, true):post()
+--   end
+-- end)
 
 
 ------------- quake mode ----------------------

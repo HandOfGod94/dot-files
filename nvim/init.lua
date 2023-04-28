@@ -43,9 +43,12 @@ require('packer').startup(function()
     end
   }
   use 'preservim/vim-markdown'
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
   use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
   use 'j-hui/fidget.nvim'
-  use 'terryma/vim-expand-region'
   use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
   use 'rgroli/other.nvim'
   use 'ggandor/lightspeed.nvim'
@@ -82,7 +85,12 @@ require('packer').startup(function()
   use 'dhruvasagar/vim-table-mode'
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
-  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+  use { 'anuvyklack/pretty-fold.nvim',
+    config = function()
+      require('pretty-fold').setup()
+    end
+  }
+  use 'github/copilot.vim'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -119,7 +127,7 @@ vim.g.do_filetype_lua = 1
 vim.g.sexp_filetypes = "clojure,fennel,janet"
 vim.g.github_enterprise_urls = { 'https://github.com/gaia-venture' }
 vim.g.gutentags_enabled = 0
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 
 -- vim test config
@@ -127,6 +135,11 @@ vim.g['test#strategy'] = 'floaterm'
 vim.g.floaterm_width = 0.8
 vim.g.floaterm_height = 0.8
 vim.cmd([[
+
+  imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+  let g:copilot_no_tab_map = v:true
+
+  set spell
   set breakindent
   let &showbreak='    '
   let test#python#runner = 'pyunit'
@@ -152,8 +165,9 @@ vim.api.nvim_create_autocmd('BufEnter', {
 vim.g.material_style = "deep ocean"
 -- vim.g.material_style = "lighter"
 -- vim.cmd('colorscheme material')
-vim.cmd.colorscheme "catppuccin"
--- vim.cmd.colorscheme "gruvbox-baby"
+-- vim.cmd.colorscheme "catppuccin"
+vim.cmd.colorscheme "gruvbox-baby"
+vim.g.gruvbox_baby_telescope_theme = 1
 -- vim.cmd('colorscheme tokyonight-night')
 
 vim.opt.foldmethod = 'expr'
@@ -227,7 +241,7 @@ wk.register({
     l = { "<cmd>Telescope buffers<cr>", "List all buffers" },
     d = { "<cmd>Bonly<CR>", "Close other buffers" },
   },
-  ["<SPACE>F"]  = { k = {"<cmd>FloatermKill<cr>", "kill floating terminal"}},
+  ["<SPACE>F"]  = { k = { "<cmd>FloatermKill<cr>", "kill floating terminal" } },
   ["<SPACE>f"]  = {
     name  = "+File ops",
     t     = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },
@@ -281,8 +295,9 @@ require("bufferline").setup({
     numbers = 'ordinal',
     show_buffer_close_icons = false,
     separator_style = 'thick',
-    offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } }
-  }
+    offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } },
+    highlights = require("catppuccin.groups.integrations.bufferline").get()
+  },
 })
 
 require('lualine').setup({
@@ -290,14 +305,16 @@ require('lualine').setup({
     lualine_x = { 'encoding', 'filetype' },
     lualine_y = {},
   },
-  theme = 'catppuccin',
+  options = {
+    theme = 'gruvbox-baby',
+  }
 })
 require("nvim-tree").setup({
   disable_netrw = false, -- required for GBrowse
   -- open_on_setup = true, -- no longer supported
   prefer_startup_root = true,
   sync_root_with_cwd = true, -- caveat with root and cwd
-  respect_buf_cwd = true,
+  respect_buf_cwd = false,
   view = {
     adaptive_size = true,
     side = "left",
@@ -348,12 +365,6 @@ require('nvim-ts-autotag').setup({
     enable = true,
   }
 })
-require('ufo').setup({
-  provider_selector = function(_, _, _)
-    return { 'treesitter', 'indent' }
-  end
-})
-
 
 require('neorg').setup {
   load = {
@@ -372,6 +383,7 @@ require('neorg').setup {
         },
       },
     },
+    ["core.export"] = {}
   },
 }
 
