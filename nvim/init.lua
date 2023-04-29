@@ -233,7 +233,8 @@ wk.register({
     name = "+Git",
     s    = { "<cmd>Git<cr>", "git status" },
     D    = { "<cmd>Git difftool<cr>", "git diff" },
-    b    = { "<cmd>Git blame<cr>", "git blame" }
+    b    = { "<cmd>Git blame<cr>", "git blame" },
+    p    = { "<cmd>Git push<cr>", "git push" }
   },
   q             = { "<cmd>bd | bp<cr>", "Close current buffer" },
   ["<SPACE>b"]  = {
