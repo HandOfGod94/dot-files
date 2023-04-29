@@ -7,6 +7,7 @@ spoon.SpoonInstall.repos.ShiftIt = {
 }
 
 spoonInstall:andUse("Seal")
+spoonInstall:andUse("EmmyLua")
 spoonInstall:andUse("TextClipboardHistory")
 spoonInstall:andUse("ShiftIt", { repo = "ShiftIt" })
 
@@ -19,7 +20,7 @@ local clipboardHistory = spoon.TextClipboardHistory
 clipboardHistory.show_in_menubar = false
 clipboardHistory.paste_on_select = true
 clipboardHistory:bindHotkeys({
-  toggle_clipboard = {{ "cmd", "shift" }, "v"}
+  toggle_clipboard = { { "cmd", "shift" }, "v" }
 })
 clipboardHistory:start()
 
@@ -37,18 +38,17 @@ shiftit:bindHotkeys({
 
 ------------ firefox shortcuts ----------------
 
--- search tab shortcut
--- TODO: it's should only activate if firefox is active
--- hs.hotkey.bind({"ctrl"}, "t", function ()
---   local app = hs.application.get("firefox")
---   if (app:isFrontmost()) then
---     hs.eventtap.event.newKeyEvent({"cmd"}, "l", true):post()
---     hs.eventtap.event.newKeyEvent(hs.keycodes.map.delete, true):post()
---     hs.eventtap.event.newKeyEvent({"shift"}, "5", true):post()
---     hs.eventtap.event.newKeyEvent(hs.keycodes.map.space, true):post()
---   end
--- end)
+-- search tabs shortcut like arc
+local tabsListKey = hs.hotkey.new({ "ctrl" }, "t", function()
+  hs.eventtap.event.newKeyEvent({ "cmd" }, "l", true):post()
+  hs.eventtap.event.newKeyEvent(hs.keycodes.map.delete, true):post()
+  hs.eventtap.event.newKeyEvent({ "shift" }, "5", true):post()
+  hs.eventtap.event.newKeyEvent(hs.keycodes.map.space, true):post()
+end)
 
+hs.window.filter.new("Firefox")
+    :subscribe(hs.window.filter.windowFocused, function() tabsListKey:enable() end)
+    :subscribe(hs.window.filter.windowUnfocused, function() tabsListKey:disable() end)
 
 ------------- quake mode ----------------------
 hs.hotkey.bind({ "ctrl" }, "`", function()
@@ -237,7 +237,7 @@ local function chooseConfigmapFromApp()
     log.d("apps ", hs.inspect(appChoices))
     chooser:choices(appChoices)
     chooser:show()
-  end, { "-c", "kubectl get configmaps -o jsonpath='{.items..name}'"}):start()
+  end, { "-c", "kubectl get configmaps -o jsonpath='{.items..name}'" }):start()
 end
 
 

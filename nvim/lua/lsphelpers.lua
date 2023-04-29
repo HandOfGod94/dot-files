@@ -1,4 +1,5 @@
 local M = {}
+local home = os.getenv('HOME')
 
 local on_attach = function(client, bufnr)
   local wk = require('which-key')
@@ -30,6 +31,9 @@ function M.setup()
   })
 
   -- lua server
+  local libraries = vim.api.nvim_get_runtime_file("", true)
+  vim.list_extend(libraries, vim.split(vim.fn.glob("/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/*.lua"), "\n"))
+  vim.list_extend(libraries, {home .. "/.config/hammerspoon/Spoons/EmmyLua.spoon/annotations"})
   require('lspconfig')['lua_ls'].setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -37,7 +41,7 @@ function M.setup()
       Lua = {
         runtime = { version = 'LuaJIT', },
         diagnostics = { globals = { 'vim', 'use', 'hs', 'spoon' } },
-        workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+        workspace = { library =  libraries },
         telemetry = { enable = false },
       },
     },
@@ -120,7 +124,7 @@ function M.setup()
   -- elixir lsp
   -- curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.13.0/elixir-ls-1.14-25.1.zip
   require('lspconfig').elixirls.setup({
-    cmd = { os.getenv('HOME') .. "/.config/nvim/elixir/lang-server/language_server.sh" },
+    cmd = { home .. "/.config/nvim/elixir/lang-server/language_server.sh" },
     on_attach = on_attach
   })
 
