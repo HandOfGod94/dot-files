@@ -7,7 +7,7 @@ vim.cmd([[
   set iskeyword+=!
 ]])
 
-local lspkeys = require('lsphelpers').keys
+local lspkeys = require("mykeybindings").lspkeys
 lspkeys = vim.tbl_deep_extend("keep", lspkeys, {
   g = {
     name = "+Search",

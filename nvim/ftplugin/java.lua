@@ -6,7 +6,7 @@ local workspace_dir = home .. '/.config/nvim/java/workspace/' .. project_name
 local on_attach = function(client, _)
   require('jdtls').setup_dap({ hotcodereplace = 'auto' })
   require('jdtls.setup').add_commands()
-  local lspkeys = require('lsphelpers').keys
+  local lspkeys = require("mykeybindings").lspkeys
   lspkeys = vim.tbl_deep_extend("keep", lspkeys, {
     ["<SPACE>l"] = {
       d = {
@@ -146,7 +146,7 @@ local config = {
     java_paths.java17_path .. '/bin/java',
     -- '-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=127.0.0.1:8000',
     -- curl -O https://repo1.maven.org/maven2/org/projectlombok/lombok/1.18.24/lombok-1.18.24.jar
-    '-javaagent:'.. vim.fn.globpath(home .. '/.config/nvim/java/support-libs', 'lombok-*.jar'),
+    '-javaagent:' .. vim.fn.globpath(home .. '/.config/nvim/java/support-libs', 'lombok-*.jar'),
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.checkConfiguration=true',
     '-Dosgi.bundles.defaultStartLevel=4',
@@ -178,9 +178,7 @@ local config = {
     '-configuration', home .. '/.config/nvim/java/lang-server/config_mac',
     '-data', workspace_dir
   },
-
   root_dir = require('jdtls.setup').find_root({ 'mvnw', 'gradlew', 'build.gradle', 'pom.xml' }),
-
   -- Language server `initializationOptions`
   -- You need to extend the `bundles` with paths to jar files
   -- if you want to use additional eclipse.jdt.ls plugins.
@@ -192,7 +190,6 @@ local config = {
     bundles = bundles,
     settings = settings
   },
-
   settings = settings
 }
 

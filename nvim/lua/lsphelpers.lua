@@ -1,59 +1,8 @@
 local M = {}
 
-M.keys = {
-  ["<C-s>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "display signature help", mode = { "i", "n" } },
-  g = {
-    name = "+Goto",
-    D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
-    d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", "Goto definition" },
-    i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", "Goto implementation" },
-    r = { "<Cmd>lua require('telescope.builtin').lsp_references()<CR>", "Find all references" }
-  },
-  ["<M-o>"] = { "<cmd>lua require('dap').step_over()<cr>", "debug: step over" },
-  ["<M-i>"] = { "<cmd>lua require('dap').step_into()<cr>", "debug: step into" },
-  ["<SPACE>l"] = {
-    name = "+Language",
-    l = { "<cmd>filetype detect<cr>", "reload language-lsp config" },
-    i = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover info" },
-    I = { "<cmd>Dash<CR>", "View dash docs"},
-    e = { "<Cmd>ToggleDiag<CR>", "Toggle diagnostics" },
-    E = { "<Cmd>lua require('telescope.builtin').diagnostics()<CR>", "Toggle diagnostics list" },
-    s = { "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "Lists all the symbols in current buffer" },
-    S = { "<Cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>",
-      "Lists all the symbols in workspace" },
-    d = {
-      name = "+Debug",
-      b = { "<cmd>lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" },
-      r = { "<cmd>lua require('dap').repl.open()<cr>", "launch debug REPL" },
-      c = { "<cmd>lua require('dap').continue()<cr>", "continue" },
-      U = { "<cmd>lua require('dapui').toggle()<cr>", "Toggle debug UI" },
-      O = { "<cmd>lua require('dapui').open()<cr>", "Open debug UI" },
-      C = { "<cmd>lua require('dapui').close()<cr>", "Close debug UI" },
-      -- move this to language specific file
-      -- t = { "<cmd>lua require('dap-go').debug_test()<cr>", "debug test" }
-      -- t = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "debug junit test" }
-    },
-    r = {
-      name = "+Refactor",
-      r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "rename" },
-      f = { "<cmd>lua require('refactoring').refactor('Extract Function')<CR>", "extract function", mode = "v" },
-      v = { "<cmd>lua require('refactoring').refactor('Extract Variable')<CR>", "extract variable", mode = "v" },
-      i = { "<cmd>lua require('refactoring').refactor('Inline Variable')<CR>", "inline variable", mode = "v" },
-      b = { "<cmd>lua require('refactoring').refactor('Extract Block')<cr>", "extract block", mode = "n" }
-    },
-    q = { "<Cmd>lua vim.lsp.buf.code_action()<CR>", "Quick code actions" }
-  },
-  -- todo: move this to lang specific files
-  ["<SPACE>j"] = {
-    name = "+Format",
-    ["="] = { "<cmd>lua vim.lsp.buf.format({async = true})<CR>", "Format code" }
-  },
-}
-
-
 local on_attach = function(client, bufnr)
   local wk = require('which-key')
-  wk.register(M.keys)
+  wk.register(require('mykeybindings').lspkeys)
 end
 
 function OrgImports(wait_ms)
