@@ -50,6 +50,12 @@ hs.window.filter.new("Firefox")
     :subscribe(hs.window.filter.windowFocused, function() tabsListKey:enable() end)
     :subscribe(hs.window.filter.windowUnfocused, function() tabsListKey:disable() end)
 
+------------- quake mode ----------------------
+hs.hotkey.bind({ "ctrl" }, "`", function()
+  local app = hs.application.get("alacritty")
+  if (app:isFrontmost()) then app:hide() else hs.application.launchOrFocus(app:name()) end
+end)
+
 ----------------------------- kubernetes ---------------------
 local function changeNamespace(namespace)
   log.d("setting namespace", namespace)
@@ -202,51 +208,3 @@ seal.plugins.useractions.actions = {
     end
   }
 }
-
------------- widgets ---------------
-local kubeCanvas = hs.canvas.new({ x = 1200, y = 100, h = 60, w = 250 })
-kubeCanvas[1] = {
-  id = "background",
-  type = "rectangle",
-  action = "fill",
-  fillColor = { red = 0, green = 0, blue = 0, alpha = 0.8 },
-  roundedRectRadii = {xRadius = 10, yRadius = 10},
-}
-
-kubeCanvas[2] = {
-  id = "kubernetes_icon",
-  type = "text",
-  text = hs.styledtext.new("⎈ ", { font = { size = 32 }, color = hs.drawing.color.x11.royalblue }),
-  padding = 10,
-  frame = { x = "0%", y = "0%", h = "100%", w = "100%" }
-}
-
-kubeCanvas[3] = {
-  id = "kubernetes",
-  type = "text",
-  text = "namespace: dev-somethinenv",
-  textLineBreak = "truncateMiddle",
-  textSize = 12,
-  padding = 10,
-  frame = { x = "20%", y = "0%", h = "100%", w = "80%" }
-}
-
-kubeCanvas[4] = {
-  id = "kubernetes",
-  type = "text",
-  text = "context: non-prod",
-  textSize = 12,
-  padding = 10,
-  frame = { x = "20%", y = "50%", h = "100%", w = "80%" }
-}
-
-
-hs.hotkey.bind({ "ctrl" }, "`", function()
-  if (kubeCanvas:isVisible()) then
-    kubeCanvas:hide()
-  else
-    kubeCanvas:show()
-  end
-end)
-
-
