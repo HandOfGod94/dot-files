@@ -37,7 +37,7 @@ M.setup = function()
     ["<SPACE>b"]  = {
       name = "+Buffers",
       l = { "<cmd>Telescope buffers<cr>", "List all buffers" },
-      d = { "<cmd>Bonly<CR>", "Close other buffers" },
+      d = { "<cmd>%bd|e#|bd#<CR>", "Close other buffers" },
     },
     ["<SPACE>F"]  = { k = { "<cmd>FloatermKill<cr>", "kill floating terminal" } },
     ["<SPACE>f"]  = {

@@ -52,7 +52,6 @@ require('packer').startup(function()
 
   use 'ludovicchabant/vim-gutentags'
   use 'windwp/nvim-autopairs'
-  use 'schickling/vim-bufonly'
   use {
     'goolord/alpha-nvim',
     config = function()
