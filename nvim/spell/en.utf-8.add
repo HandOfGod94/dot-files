@@ -6,3 +6,6 @@ IDR
 graphql
 params
 magento
+ctrl
+fzf
+kubectl
