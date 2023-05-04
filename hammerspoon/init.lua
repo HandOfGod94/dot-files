@@ -64,13 +64,14 @@ local function namespace_changer(namespace)
   end
   return hs.task.new("/bin/zsh", _9_, {"-c", ("kubectl config set-context --current --namespace=" .. namespace)}):start()
 end
-local function namespace_chooser(exit_code, namespaces_stdout, chooser)
-  if (exit_code == 0) then
-    local namespaces
-    do
+local function namespace_chooser(exit_code, stdout, stderr, chooser)
+  if (exit_code ~= 0) then
+    return log.e("failed get namespace", stderr)
+  else
+    local function _10_()
       local tbl_17_auto = {}
       local i_18_auto = #tbl_17_auto
-      for line in namespaces_stdout:gmatch("([^\13\n]+)") do
+      for line in stdout:gmatch("([^\13\n]+)") do
         local val_19_auto
         do
           local namespace = line:match("(%S+).*")
@@ -86,25 +87,23 @@ local function namespace_chooser(exit_code, namespaces_stdout, chooser)
         else
         end
       end
-      namespaces = tbl_17_auto
+      return tbl_17_auto
     end
-    chooser:choices(namespaces)
+    chooser:choices(_10_)
     chooser:show()
     return chooser
-  else
-    return nil
   end
 end
 local function choose_namespace()
   local chooser
-  local function _13_(_241)
+  local function _14_(_241)
     return namespace_changer(_241.text)
   end
-  chooser = hs.chooser.new(_13_)
-  local function _14_(_241, _242)
-    return namespace_chooser(_241, _242, chooser)
+  chooser = hs.chooser.new(_14_)
+  local function _15_(_241, _242, _243)
+    return namespace_chooser(_241, _242, _243, chooser)
   end
-  return hs.task.new("/bin/zsh", _14_, {"-c", "kubectl get namespaces"}):start()
+  return hs.task.new("/bin/zsh", _15_, {"-c", "kubectl get namespaces"}):start()
 end
 local function set_namespace(namespace)
   log.d("Setting namespace", namespace)
@@ -114,8 +113,8 @@ local function set_namespace(namespace)
     return choose_namespace()
   end
 end
-local function _16_(_241)
+local function _17_(_241)
   return set_namespace(_241)
 end
-spoon.Seal.plugins.useractions.actions = {["Kubernetes set namespace"] = {keyword = "kns", fn = _16_}}
+spoon.Seal.plugins.useractions.actions = {["Kubernetes set namespace"] = {keyword = "kns", fn = _17_}}
 return nil

@@ -70,19 +70,20 @@
                    (.. "kubectl config set-context --current --namespace="
                        namespace)]) :start))
 
-(fn namespace-chooser [exit-code namespaces-stdout chooser]
-  (when (= exit-code 0)
-    (let [namespaces (icollect [line (namespaces-stdout:gmatch "([^\r\n]+)")]
-                       (let [namespace (line:match "(%S+).*")]
-                         (when (not= :NAME namespace)
-                           {:text namespace :uuid namespace})))]
+(fn namespace-chooser [exit-code stdout stderr chooser]
+  (if (not= exit-code 0)
+      (log.e "failed get namespace" stderr)
       (doto chooser
-        (: :choices namespaces)
-        (: :show)))))
+        (: :choices
+           #(icollect [line (stdout:gmatch "([^\r\n]+)")]
+              (let [namespace (line:match "(%S+).*")]
+                (when (not= :NAME namespace)
+                  {:text namespace :uuid namespace}))))
+        (: :show))))
 
 (fn choose-namespace []
   (let [chooser (hs.chooser.new #(namespace-changer $1.text))]
-    (: (hs.task.new :/bin/zsh #(namespace-chooser $1 $2 chooser)
+    (: (hs.task.new :/bin/zsh #(namespace-chooser $1 $2 $3 chooser)
                     [:-c "kubectl get namespaces"]) :start)))
 
 (fn set-namespace [namespace]
