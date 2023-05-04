@@ -88,8 +88,6 @@ require('packer').startup(function()
   use 'rizzatti/dash.vim'
   use 'folke/zen-mode.nvim'
   use 'janet-lang/janet.vim'
-  use { 'nvim-neorg/neorg', requires = "nvim-lua/plenary.nvim" }
-  use 'dhruvasagar/vim-table-mode'
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
   use { 'anuvyklack/pretty-fold.nvim',

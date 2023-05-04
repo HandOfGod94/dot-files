@@ -48,7 +48,7 @@ M.setup = function()
       g     = { "<cmd>Telescope live_grep<cr>", "Search in file" },
       h     = { "<cmd>Telescope help_tags<cr>", "Telescope help" }
     },
-    ["<SPACE>s"]  = {
+    ["<SPACE>S"]  = {
       name = "+Stack",
       r = {
         "<cmd>Dispatch docker-compose stop && docker-compose rm -f -v && docker volume prune -f && docker-compose up -d<CR>",
@@ -57,10 +57,11 @@ M.setup = function()
       S = { "<cmd>Dispatch docker-compose stop && docker-compose rm -f -v && docker volume prune -f<CR>",
         "stopc docker stack" }
     },
+    ["<SPACE>s"] = { "<cmd>set spell! spell?<CR>" , "Toggle spell checks"},
     ["<SPACE>\\"] = { "<cmd>BufferLinePick<cr>", "switch buffer" },
     ["<SPACE>T"]  = {
       name = "+Theme",
-      l    = { "<cmd>lua require('material.functions').change_style('light')<cr>", "Switch to ligher theme" },
+      l    = { "<cmd>lua require('material.functions').change_style('light')<cr>", "Switch to lighter theme" },
       d    = { "<cmd>lua require('material.functions').change_style('dark')<cr>", "Switch to darker theme" }
     },
     ["<SPACE>a"]  = {
@@ -81,8 +82,7 @@ M.setup = function()
         l = { "<cmd>TestLast<cr>", "rerun latest test" },
         v = { "<cmd>TestVisit<cr>", "visit last run test" },
       }
-    },
-    ["<SPACE>N"]  = { "<cmd>Neorg<cr>", "Open neorg notes" }
+    }
   })
 end
 
