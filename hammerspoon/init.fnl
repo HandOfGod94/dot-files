@@ -55,3 +55,41 @@
         (hs.application.launchOrFocus (app:name)))))
 
 (hs.hotkey.bind [:ctrl] "`" quake-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;; kubernetes ;;;;;;;;;;;;;;;;;;;;;;;;
+
+(fn notify-namespace-changed [exit-code namespace]
+  (when (= exit-code 0)
+    (: (hs.notify.new {:title "Kubernetes namespace changed"
+                       :subTitle (.. "Successfully changed namespace "
+                                     namespace)}) :send)))
+
+(fn namespace-changer [namespace]
+  (: (hs.task.new :/bin/zsh #(notify-namespace-changed $1 namespace)
+                  [:-c
+                   (.. "kubectl config set-context --current --namespace="
+                       namespace)]) :start))
+
+(fn namespace-chooser [exit-code namespaces-stdout chooser]
+  (when (= exit-code 0)
+    (let [namespaces (icollect [line (namespaces-stdout:gmatch "([^\r\n]+)")]
+                       (let [namespace (line:match "(%S+).*")]
+                         (when (not= :NAME namespace)
+                           {:text namespace :uuid namespace})))]
+      (doto chooser
+        (: :choices namespaces)
+        (: :show)))))
+
+(fn choose-namespace []
+  (let [chooser (hs.chooser.new #(namespace-changer $1.text))]
+    (: (hs.task.new :/bin/zsh #(namespace-chooser $1 $2 chooser)
+                    [:-c "kubectl get namespaces"]) :start)))
+
+(fn set-namespace [namespace]
+  (log.d "Setting namespace" namespace)
+  (if (and (not= nil namespace) (not= "" namespace))
+      (namespace-changer namespace)
+      (choose-namespace)))
+
+(set spoon.Seal.plugins.useractions.actions
+     {"Kubernetes set namespace" {:keyword :kns :fn #(set-namespace $1)}})
