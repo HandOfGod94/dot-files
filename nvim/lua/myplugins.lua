@@ -77,27 +77,6 @@ M.setup = function()
     }
   })
 
-  require('neorg').setup {
-    load = {
-      ["core.defaults"] = {},
-      ["core.norg.concealer"] = {},
-      ["core.presenter"] = {
-        config = {
-          zen_mode = "zen-mode"
-        }
-      },
-      ["core.integrations.treesitter"] = {},
-      ["core.norg.dirman"] = {
-        config = {
-          workspaces = {
-            notes = "~/workspace/notes",
-          },
-        },
-      },
-      ["core.export"] = {}
-    },
-  }
-
   -- other files, add more mappings
   require('other-nvim').setup({
     rememberBuffers = false,

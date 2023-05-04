@@ -33,6 +33,15 @@ function M.setup()
     key = "go"
   })
 
+  -- git commit snippet
+  ls.add_snippets("gitcommit", {
+    ls.s("atm", fmt([[
+      [ATM-{}][+{}] {}
+
+      Co-authored-by: {} <{}>
+    ]], { ls.i(1), ls.i(2), ls.i(3), ls.i(4), ls.i(5) }))
+  }, { key = "gitcommit" })
+
   -- python snippets
   ls.add_snippets("python", {
     ls.s("main", fmt([[ 
