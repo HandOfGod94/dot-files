@@ -13,7 +13,7 @@
   (: :andUse :ShiftIt {:repo :ShiftIt}))
 
 (doto spoon.Seal
-  (: :loadPlugins [:apps :useractions :calc])
+  (: :loadPlugins [:apps :useractions :calc :filesearch])
   (: :bindHotkeys {:toggle [[:cmd] :space]})
   (: :start))
 

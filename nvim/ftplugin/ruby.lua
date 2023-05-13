@@ -5,6 +5,7 @@ vim.g.gutentags_ctags_extra_args = { '--ignore-unsupported-options', '--recursiv
 vim.cmd([[
   set iskeyword+=?
   set iskeyword+=!
+  set iskeyword+=:
 ]])
 
 local lspkeys = require("mykeybindings").lspkeys

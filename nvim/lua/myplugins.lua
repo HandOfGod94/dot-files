@@ -16,7 +16,7 @@ M.setup = function()
       lualine_y = {},
     },
     options = {
-      theme = 'gruvbox-baby',
+      theme = 'catppuccin',
     }
   })
   require("nvim-tree").setup({
@@ -76,6 +76,7 @@ M.setup = function()
       enable = true,
     }
   })
+  require('ufo').setup()
 
   -- other files, add more mappings
   require('other-nvim').setup({

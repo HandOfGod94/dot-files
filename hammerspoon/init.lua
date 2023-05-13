@@ -9,7 +9,7 @@ do
 end
 do
   local _1_ = spoon.Seal
-  _1_:loadPlugins({"apps", "useractions", "calc"})
+  _1_:loadPlugins({"apps", "useractions", "calc", "filesearch"})
   _1_:bindHotkeys({toggle = {{"cmd"}, "space"}})
   _1_:start()
 end

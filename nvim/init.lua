@@ -30,6 +30,7 @@ require('packer').startup(function()
   use 'nvim-telescope/telescope.nvim'
   use 'mhinz/vim-startify'
   use 'godlygeek/tabular'
+  use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
   -- LSPs and DAPs
   use 'neovim/nvim-lspconfig'
@@ -81,8 +82,8 @@ require('packer').startup(function()
   use 'Invertisment/conjure-clj-additions-cider-nrepl-mw'
   use 'windwp/nvim-ts-autotag'
   use 'vim-test/vim-test'
-  use 'matze/vim-move'
   use 'DanilaMihailov/beacon.nvim'
+  use 'matze/vim-move'
   use 'nacro90/numb.nvim'
   use 'chrisbra/csv.vim'
   use 'rizzatti/dash.vim'
@@ -90,12 +91,6 @@ require('packer').startup(function()
   use 'janet-lang/janet.vim'
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
-  use { 'anuvyklack/pretty-fold.nvim',
-    config = function()
-      require('pretty-fold').setup({})
-    end
-  }
-  use 'github/copilot.vim'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -136,7 +131,7 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = true
 vim.opt.breakindent = true
-vim.cmd.colorscheme "gruvbox-baby"
+vim.cmd.colorscheme "catppuccin"
 vim.g.gruvbox_baby_telescope_theme = 1
 
 vim.opt.foldmethod = 'expr'
@@ -158,6 +153,9 @@ vim.g.table_mode_header_fillchar = "="
 vim.cmd([[
   imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
   let g:copilot_no_tab_map = v:true
+
+  command! W write
+  command! Q quit
 
   let &showbreak='    '
   let test#python#runner = 'pyunit'

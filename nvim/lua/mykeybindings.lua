@@ -3,8 +3,13 @@ local M = {}
 M.setup = function()
   local wk = require("which-key")
   wk.register({
+    z = {
+      R = {"<cmd>lua require('ufo').openAllFolds()<cr>", "Open all folds using ufo"},
+      M = {"<cmd>lua require('ufo').closeAllFolds()<cr>", "Open all folds using ufo"},
+    },
     ["<C-h>"]     = { "zh", "Scroll left" },
     ["<C-l>"]     = { "zl", "Scroll right" },
+    ["<C-t>"]     = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Last telescope view"},
     H             = { "<cmd>noh<cr>", "Remove highlights" },
     ["<C-p>"]     = { "<cmd>Telescope find_files hidden=true shorten_path=true<CR>", "Find files" },
     ["<SPACE>t"]  = { "<cmd>b#<CR>", "Toggle previous/current buffer" },
