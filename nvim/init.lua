@@ -91,6 +91,7 @@ require('packer').startup(function()
   use 'janet-lang/janet.vim'
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
+  use 'github/copilot.vim'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
