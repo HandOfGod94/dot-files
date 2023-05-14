@@ -133,7 +133,7 @@ vim.opt.concealcursor = 'nc'
 vim.opt.spell = true
 vim.opt.breakindent = true
 vim.cmd.colorscheme "catppuccin"
-vim.g.gruvbox_baby_telescope_theme = 1
+-- vim.g.gruvbox_baby_telescope_theme = 1
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
