@@ -132,8 +132,8 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = true
 vim.opt.breakindent = true
-vim.cmd.colorscheme "catppuccin"
--- vim.g.gruvbox_baby_telescope_theme = 1
+vim.cmd.colorscheme "gruvbox-baby"
+vim.g.gruvbox_baby_telescope_theme = 1
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -150,6 +150,8 @@ vim.g.floaterm_width = 0.8
 vim.g.floaterm_height = 0.8
 vim.g.table_mode_corner_corner = "+"
 vim.g.table_mode_header_fillchar = "="
+vim.g.move_key_modifier = 'C'
+vim.g.move_key_modifier_visualmode = 'C'
 
 vim.cmd([[
   imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")

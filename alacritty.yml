@@ -24,7 +24,7 @@ scrolling:
   multiplier: 3
 
 import:
-  - ~/.config/alacritty/catppuccin/catppuccin-mocha.yml
+  - ~/.config/alacritty/themes/themes/gruvbox_dark.yaml
 
 key_bindings:
   - { key: PageUp,   mods: Shift,   action: ScrollPageUp   }

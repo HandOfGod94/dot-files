@@ -118,8 +118,12 @@ function M.setup()
   -- ruby
   require 'lspconfig'.solargraph.setup {
     on_attach = on_attach,
-    capabilities = capabilities
+    capabilities = capabilities,
   }
+  -- require'lspconfig'.standardrb.setup{
+  --   on_attach = on_attach,
+  --   capabilities = capabilities
+  -- }
 
   -- elixir lsp
   -- curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.13.0/elixir-ls-1.14-25.1.zip

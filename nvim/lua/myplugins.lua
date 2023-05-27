@@ -16,7 +16,7 @@ M.setup = function()
       lualine_y = {},
     },
     options = {
-      theme = 'catppuccin',
+      theme = 'gruvbox-baby',
     }
   })
   require("nvim-tree").setup({
