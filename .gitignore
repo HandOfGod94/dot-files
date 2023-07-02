@@ -13,3 +13,4 @@
 .zcompdump*
 oh-my-zsh/
 github-copilot/
+/irb/irb_history

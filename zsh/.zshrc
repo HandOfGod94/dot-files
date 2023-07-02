@@ -107,3 +107,5 @@ alias gfp='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa" git pull -r'
 alias gfw='GIT_SSH_COMMAND="ssh -i ~/.ssh/jiva_rsa" git pull -r'
 eval "$($(brew --prefix rbenv)/bin/rbenv init - zsh)"
 eval "$(pyenv init -)"
+
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"

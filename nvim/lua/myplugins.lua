@@ -29,16 +29,20 @@ M.setup = function()
       adaptive_size = true,
       side = "left",
       width = "20%",
+      float = {
+        enable = true
+      }
     },
     actions = {
       open_file = {
         resize_window = true
       }
-    }
+    },
   })
   require('nvim-treesitter.configs').setup({
     ensure_installed = { "go", "java", "lua", "rust", "ruby", "elixir", "python", "clojure", "fennel", "json", "yaml",
-      "svelte", "javascript", "css", "vue", "html", "heex", "vim", "vimdoc", "norg", "norg_meta", "markdown", "kdl", "graphql" },
+      "svelte", "javascript", "css", "vue", "html", "heex", "vim", "vimdoc", "norg", "norg_meta", "markdown", "kdl",
+      "graphql", "hcl" },
     highlight = {
       enable = true,
     },

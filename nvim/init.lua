@@ -130,7 +130,7 @@ vim.g.github_enterprise_urls = { 'https://github.com/gaia-venture' }
 vim.g.gutentags_enabled = 0
 vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.breakindent = true
 vim.cmd.colorscheme "gruvbox-baby"
 vim.g.gruvbox_baby_telescope_theme = 1

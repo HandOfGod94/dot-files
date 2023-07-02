@@ -36,7 +36,8 @@ M.setup = function()
       s    = { "<cmd>Git<cr>", "git status" },
       D    = { "<cmd>Git difftool<cr>", "git diff" },
       b    = { "<cmd>Git blame<cr>", "git blame" },
-      p    = { "<cmd>Git push<cr>", "git push" }
+      p    = { "<cmd>Git push<cr>", "git push" },
+      h    = { "<cmd>Git log --oneline -- %<cr>", "git history current file"},
     },
     q             = { "<cmd>bd<cr>", "Close current buffer" },
     ["<SPACE>b"]  = {

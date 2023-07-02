@@ -136,6 +136,11 @@ function M.setup()
     on_attach = on_attach,
     filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex' },
   }
+
+  require 'lspconfig'.terraformls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 end
 
 return M
