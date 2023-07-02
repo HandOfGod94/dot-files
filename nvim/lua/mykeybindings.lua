@@ -39,7 +39,7 @@ M.setup = function()
       p    = { "<cmd>Git push<cr>", "git push" },
       h    = { "<cmd>Git log --oneline -- %<cr>", "git history current file"},
     },
-    q             = { "<cmd>bd<cr>", "Close current buffer" },
+    q             = { "<cmd>Bdelete<cr>", "Close current buffer" },
     ["<SPACE>b"]  = {
       name = "+Buffers",
       l = { "<cmd>Telescope buffers<cr>", "List all buffers" },

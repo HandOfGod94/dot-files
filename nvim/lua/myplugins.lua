@@ -21,7 +21,6 @@ M.setup = function()
   })
   require("nvim-tree").setup({
     disable_netrw = false, -- required for GBrowse
-    -- open_on_setup = true, -- no longer supported
     prefer_startup_root = true,
     sync_root_with_cwd = true, -- caveat with root and cwd
     respect_buf_cwd = false,
@@ -29,9 +28,6 @@ M.setup = function()
       adaptive_size = true,
       side = "left",
       width = "20%",
-      float = {
-        enable = true
-      }
     },
     actions = {
       open_file = {
