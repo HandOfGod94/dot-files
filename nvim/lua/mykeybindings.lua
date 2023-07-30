@@ -3,13 +3,13 @@ local M = {}
 M.setup = function()
   local wk = require("which-key")
   wk.register({
-    z = {
-      R = {"<cmd>lua require('ufo').openAllFolds()<cr>", "Open all folds using ufo"},
-      M = {"<cmd>lua require('ufo').closeAllFolds()<cr>", "Open all folds using ufo"},
+    z             = {
+      R = { "<cmd>lua require('ufo').openAllFolds()<cr>", "Open all folds using ufo" },
+      M = { "<cmd>lua require('ufo').closeAllFolds()<cr>", "Open all folds using ufo" },
     },
     ["<C-h>"]     = { "zh", "Scroll left" },
     ["<C-l>"]     = { "zl", "Scroll right" },
-    ["<C-t>"]     = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Last telescope view"},
+    ["<C-t>"]     = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Last telescope view" },
     H             = { "<cmd>noh<cr>", "Remove highlights" },
     ["<C-p>"]     = { "<cmd>Telescope find_files hidden=true shorten_path=true<CR>", "Find files" },
     ["<SPACE>t"]  = { "<cmd>b#<CR>", "Toggle previous/current buffer" },
@@ -21,15 +21,15 @@ M.setup = function()
       s    = { "<cmd>PackerStatus<cr>", "Status" },
       c    = { "<cmd>PackerClean<cr>", "Clean plugins" }
     },
-    ["<SPACE>?"]  = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "search current word in all files", mode = {
-      "n", "v" } },
+    ["<SPACE>?"]  = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>", "search current word in all files", mode = { "n"} },
+
     ["<SPACE>/"]  = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "search in current buffer" },
     ["<SPACE>q"]  = {
       name = "+Quickfix",
       o = { "<cmd>copen<cr>", "Open quickfix list" },
       c = { "<cmd>ccl<cr>", "close quickfix list" },
       n = { "<cmd>cnext<cr>", "jump to next item in quickfix list" },
-      p = { "<cmd>cp<cr>", "jump to prev item in quickfix list" }
+      p = { "<cmd>cp<cr>", "jump to prev item in quickfix list" },
     },
     ["<SPACE>g"]  = {
       name = "+Git",
@@ -37,9 +37,9 @@ M.setup = function()
       D    = { "<cmd>Git difftool<cr>", "git diff" },
       b    = { "<cmd>Git blame<cr>", "git blame" },
       p    = { "<cmd>Git push<cr>", "git push" },
-      h    = { "<cmd>Git log --oneline -- %<cr>", "git history current file"},
+      h    = { "<cmd>DiffviewFileHistory %<cr>", "git history current file" },
     },
-    q             = { "<cmd>Bdelete<cr>", "Close current buffer" },
+    q             = { "<cmd>bwipeout<cr>", "Close current buffer" },
     ["<SPACE>b"]  = {
       name = "+Buffers",
       l = { "<cmd>Telescope buffers<cr>", "List all buffers" },
@@ -51,7 +51,7 @@ M.setup = function()
       t     = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },
       ["/"] = { "<cmd>NvimTreeFindFile<cr>", "Open current file in explorer" },
       f     = { "<cmd>Telescope find_files hidden=true shorten_path=true<cr>", "Open file" },
-      g     = { "<cmd>Telescope live_grep<cr>", "Search in file" },
+      g     = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", "Search in file" },
       h     = { "<cmd>Telescope help_tags<cr>", "Telescope help" }
     },
     ["<SPACE>S"]  = {
@@ -63,12 +63,22 @@ M.setup = function()
       S = { "<cmd>Dispatch docker-compose stop && docker-compose rm -f -v && docker volume prune -f<CR>",
         "stopc docker stack" }
     },
-    ["<SPACE>s"] = { "<cmd>set spell! spell?<CR>" , "Toggle spell checks"},
+    ["<SPACE>s"]  = { "<cmd>set spell! spell?<CR>", "Toggle spell checks" },
     ["<SPACE>\\"] = { "<cmd>BufferLinePick<cr>", "switch buffer" },
     ["<SPACE>T"]  = {
       name = "+Theme",
       l    = { "<cmd>lua require('material.functions').change_style('light')<cr>", "Switch to lighter theme" },
       d    = { "<cmd>lua require('material.functions').change_style('dark')<cr>", "Switch to darker theme" }
+    },
+    ["<SPACE>G"] = {
+      name = "+Github",
+      p = {
+        name = "+PR",
+        l = { "<cmd>Octo pr list<CR>", "List PRs" },
+        b = { "<cmd>Octo pr browser<CR>", "Open PR in browser" },
+        c = { "<cmd>Octo pr checkout<CR>", "Checkout PR" },
+        r = { "<cmd>Octo pr ready<CR>", "Mark a draft PR as ready for review" },
+      }
     },
     ["<SPACE>a"]  = {
       name = "+Alternate files",
@@ -90,16 +100,26 @@ M.setup = function()
       }
     }
   })
+
+  -- visual mode mapping
+  wk.register({
+    ["<SPACE>?"]  = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>", "search selection in all files", mode = { "v"} },
+  })
 end
 
 M.lspkeys = {
   ["<C-s>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "display signature help", mode = { "i", "n" } },
+  p = {
+    d = { "<cmd>Glance definitions<CR>", "peek definition" },
+    i = { "<cmd>Glance implementations<CR>", "peek implementation" },
+    r = { "<Cmd>Glance references<CR>", "peek all references" },
+  },
   g = {
     name = "+Goto",
     D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Goto declaration" },
     d = { "<cmd>lua require('telescope.builtin').lsp_definitions()<CR>", "Goto definition" },
     i = { "<cmd>lua require('telescope.builtin').lsp_implementations()<CR>", "Goto implementation" },
-    r = { "<Cmd>lua require('telescope.builtin').lsp_references()<CR>", "Find all references" }
+    r = { "<Cmd>lua require('telescope.builtin').lsp_references()<CR>", "Find all references" },
   },
   ["<M-o>"] = { "<cmd>lua require('dap').step_over()<cr>", "debug: step over" },
   ["<M-i>"] = { "<cmd>lua require('dap').step_into()<cr>", "debug: step into" },

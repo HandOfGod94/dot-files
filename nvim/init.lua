@@ -42,7 +42,6 @@ require('packer').startup(function()
   use 'mfussenegger/nvim-dap-python'
 
   -- CMP
-
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
   use 'saadparwaiz1/cmp_luasnip'
@@ -92,7 +91,11 @@ require('packer').startup(function()
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
   use 'github/copilot.vim'
-  use 'moll/vim-bbye'
+  use 'andythigpen/nvim-coverage'
+  use 'sindrets/diffview.nvim'
+  use 'pwntester/octo.nvim'
+  use 'nvim-telescope/telescope-live-grep-args.nvim'
+  use 'DNLHC/glance.nvim'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -133,7 +136,7 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
-vim.cmd.colorscheme "gruvbox-baby"
+vim.cmd.colorscheme "catppuccin"
 vim.g.gruvbox_baby_telescope_theme = 1
 
 vim.opt.foldmethod = 'expr'

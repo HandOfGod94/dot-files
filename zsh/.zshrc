@@ -109,3 +109,5 @@ eval "$($(brew --prefix rbenv)/bin/rbenv init - zsh)"
 eval "$(pyenv init -)"
 
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh

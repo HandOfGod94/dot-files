@@ -1,6 +1,10 @@
 local M = {}
 
 M.setup = function()
+  require("glance").setup({})
+  require("coverage").setup()
+  require("octo").setup()
+
   require("bufferline").setup({
     options = {
       numbers = 'ordinal',
@@ -20,7 +24,7 @@ M.setup = function()
     }
   })
   require("nvim-tree").setup({
-    disable_netrw = false, -- required for GBrowse
+    disable_netrw = false,     -- required for GBrowse
     prefer_startup_root = true,
     sync_root_with_cwd = true, -- caveat with root and cwd
     respect_buf_cwd = false,
@@ -28,6 +32,9 @@ M.setup = function()
       adaptive_size = true,
       side = "left",
       width = "20%",
+      float = {
+        enable = true
+      }
     },
     actions = {
       open_file = {
@@ -55,9 +62,10 @@ M.setup = function()
       layout_config = { width = 0.95 },
     },
     extensions = {
-      ["ui-select"] = { require("telescope.themes").get_dropdown({}) }
+      ["ui-select"] = { require("telescope.themes").get_dropdown({}) },
     }
   })
+  require("telescope").load_extension("live_grep_args")
   require('toggle_lsp_diagnostics').init()
   require("telescope").load_extension("ui-select")
   require("lightspeed").setup({})
