@@ -96,6 +96,8 @@ require('packer').startup(function()
   use 'pwntester/octo.nvim'
   use 'nvim-telescope/telescope-live-grep-args.nvim'
   use 'DNLHC/glance.nvim'
+  use 'udalov/kotlin-vim'
+  use 'HandOfGod94/nvim-telescope-ctags-plus'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -134,7 +136,7 @@ vim.g.github_enterprise_urls = { 'https://github.com/gaia-venture' }
 vim.g.gutentags_enabled = 0
 vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
-vim.opt.spell = false
+vim.opt.spell = true
 vim.opt.breakindent = true
 vim.cmd.colorscheme "catppuccin"
 vim.g.gruvbox_baby_telescope_theme = 1

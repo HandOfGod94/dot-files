@@ -109,7 +109,8 @@ end
 
 M.lspkeys = {
   ["<C-s>"] = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "display signature help", mode = { "i", "n" } },
-  p = {
+  ["<SPACE>p"] = {
+    name = "+peek",
     d = { "<cmd>Glance definitions<CR>", "peek definition" },
     i = { "<cmd>Glance implementations<CR>", "peek implementation" },
     r = { "<Cmd>Glance references<CR>", "peek all references" },
