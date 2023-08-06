@@ -8,6 +8,9 @@ vim.g.gutentags_ctags_extra_args = {
   '--exclude=tmp',
   '--exclude=coverage',
   '--exclude=*_spec.rb',
+  '--exclude=fixtures',
+  '--exclude=*.json',
+  '--exclude=*.html',
 }
 
 vim.cmd([[
