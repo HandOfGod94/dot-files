@@ -16,7 +16,11 @@ require('packer').startup(function()
   use 'tpope/vim-rails'
   use 'tpope/vim-sexp-mappings-for-regular-people'
   use 'tpope/vim-dispatch'
+  use 'radenling/vim-dispatch-neovim'
   use 'tpope/vim-rhubarb'
+  use 'tpope/vim-dadbod'
+  use 'tpope/vim-dotenv'
+  use 'kristijanhusak/vim-dadbod-ui'
 
   use 'voldikss/vim-floaterm'
   use 'nvim-treesitter/nvim-treesitter'
@@ -65,20 +69,21 @@ require('packer').startup(function()
   })
   use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
   use 'j-hui/fidget.nvim'
-  use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
+  use { 'akinsho/bufferline.nvim', tag = "v4.3.0", requires = 'kyazdani42/nvim-web-devicons' }
   use 'rgroli/other.nvim'
   use 'ggandor/lightspeed.nvim'
   use 'guns/vim-sexp'
   use 'ThePrimeagen/refactoring.nvim'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'Olical/conjure'
+  use { 'https://gitlab.com/invertisment/conjure-clj-additions-cider-nrepl-mw', as = 'Invertisment/conjure-clj-additions-cider-nrepl-mw' }
   use 'gpanders/nvim-parinfer'
   use 'vim-scripts/applescript.vim'
   use { 'kosayoda/nvim-lightbulb', requires = 'antoinemadec/FixCursorHold.nvim' }
   use 'shumphrey/fugitive-gitlab.vim'
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-telescope/telescope-ui-select.nvim'
-  use 'Invertisment/conjure-clj-additions-cider-nrepl-mw'
+  use 'clojure-vim/vim-jack-in'
   use 'windwp/nvim-ts-autotag'
   use 'vim-test/vim-test'
   use 'DanilaMihailov/beacon.nvim'
@@ -98,6 +103,7 @@ require('packer').startup(function()
   use 'DNLHC/glance.nvim'
   use 'udalov/kotlin-vim'
   use 'HandOfGod94/nvim-telescope-ctags-plus'
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'

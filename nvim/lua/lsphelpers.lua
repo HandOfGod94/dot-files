@@ -22,7 +22,6 @@ function OrgImports(wait_ms)
 end
 
 function M.setup()
-
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
@@ -32,8 +31,9 @@ function M.setup()
 
   -- lua server
   local libraries = vim.api.nvim_get_runtime_file("", true)
-  vim.list_extend(libraries, vim.split(vim.fn.glob("/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/*.lua"), "\n"))
-  vim.list_extend(libraries, {home .. "/.config/hammerspoon/Spoons/EmmyLua.spoon/annotations"})
+  vim.list_extend(libraries,
+  vim.split(vim.fn.glob("/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/*.lua"), "\n"))
+  vim.list_extend(libraries, { home .. "/.config/hammerspoon/Spoons/EmmyLua.spoon/annotations" })
   require('lspconfig')['lua_ls'].setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -41,7 +41,7 @@ function M.setup()
       Lua = {
         runtime = { version = 'LuaJIT', },
         diagnostics = { globals = { 'vim', 'use', 'hs', 'spoon' } },
-        workspace = { library =  libraries },
+        workspace = { library = libraries },
         telemetry = { enable = false },
       },
     },

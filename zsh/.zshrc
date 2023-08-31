@@ -111,4 +111,5 @@ eval "$(pyenv init -)"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/Cellar/universal-ctags/p6.0.20230730.0/bin:$PATH"
 
+source "$HOME/.sdkman/bin/sdkman-init.sh"
 . /opt/homebrew/opt/asdf/libexec/asdf.sh

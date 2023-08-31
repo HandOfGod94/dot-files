@@ -4,6 +4,12 @@ M.setup = function()
   require("glance").setup({})
   require("coverage").setup()
   require("octo").setup()
+  require("treesitter-context").setup({})
+  require("catppuccin").setup({
+    integrations = {
+      treesitter_context = true
+    }
+  })
 
   require("bufferline").setup({
     options = {
@@ -32,9 +38,6 @@ M.setup = function()
       adaptive_size = true,
       side = "left",
       width = "20%",
-      float = {
-        enable = true
-      }
     },
     actions = {
       open_file = {
@@ -45,7 +48,7 @@ M.setup = function()
   require('nvim-treesitter.configs').setup({
     ensure_installed = { "go", "java", "lua", "rust", "ruby", "elixir", "python", "clojure", "fennel", "json", "yaml",
       "svelte", "javascript", "css", "vue", "html", "heex", "vim", "vimdoc", "norg", "norg_meta", "markdown", "kdl",
-      "graphql", "hcl" },
+      "graphql", "hcl", "terraform" },
     highlight = {
       enable = true,
     },
