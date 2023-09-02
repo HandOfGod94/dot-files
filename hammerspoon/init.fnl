@@ -33,19 +33,6 @@
                    :resizeOut [[:ctrl :alt :cmd] "="]
                    :resizeIn [[:ctrl :alt :cmd] "-"]}))
 
-;;;;;;;;;;;;; firefox shortcut ;;;;;;;;;;;;;;;;;;;
-
-(fn tab-list-key-events []
-  (: (hs.eventtap.event.newKeyEvent [:cmd] :l true) :post)
-  (: (hs.eventtap.event.newKeyEvent hs.keycodes.map.delete true) :post)
-  (: (hs.eventtap.event.newKeyEvent [:shift] :5 true) :post)
-  (: (hs.eventtap.event.newKeyEvent hs.keycodes.map.space true) :post))
-
-(let [tab-key (hs.hotkey.new [:ctrl] :t tab-list-key-events)]
-  (doto (hs.window.filter.new :Firefox)
-    (: :subscribe hs.window.filter.windowFocused #(tab-key:enable))
-    (: :subscribe hs.window.filter.windowUnfocused #(tab-key:disable))))
-
 ;;;;;;;;;;;;;;;;;;; quake mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (fn quake-mode []
@@ -55,42 +42,3 @@
         (hs.application.launchOrFocus (app:name)))))
 
 (hs.hotkey.bind [:ctrl] "`" quake-mode)
-
-;;;;;;;;;;;;;;;;;;;;;;; kubernetes ;;;;;;;;;;;;;;;;;;;;;;;;
-
-(fn notify-namespace-changed [exit-code namespace]
-  (when (= exit-code 0)
-    (: (hs.notify.new {:title "Kubernetes namespace changed"
-                       :subTitle (.. "Successfully changed namespace "
-                                     namespace)}) :send)))
-
-(fn namespace-changer [namespace]
-  (: (hs.task.new :/bin/zsh #(notify-namespace-changed $1 namespace)
-                  [:-c
-                   (.. "kubectl config set-context --current --namespace="
-                       namespace)]) :start))
-
-(fn namespace-chooser [exit-code stdout stderr chooser]
-  (if (not= exit-code 0)
-      (log.e "failed get namespace" stderr)
-      (doto chooser
-        (: :choices
-           #(icollect [line (stdout:gmatch "([^\r\n]+)")]
-              (let [namespace (line:match "(%S+).*")]
-                (when (not= :NAME namespace)
-                  {:text namespace :uuid namespace}))))
-        (: :show))))
-
-(fn choose-namespace []
-  (let [chooser (hs.chooser.new #(namespace-changer $1.text))]
-    (: (hs.task.new :/bin/zsh #(namespace-chooser $1 $2 $3 chooser)
-                    [:-c "kubectl get namespaces"]) :start)))
-
-(fn set-namespace [namespace]
-  (log.d "Setting namespace" namespace)
-  (if (and (not= nil namespace) (not= "" namespace))
-      (namespace-changer namespace)
-      (choose-namespace)))
-
-(set spoon.Seal.plugins.useractions.actions
-     {"Kubernetes set namespace" {:keyword :kns :fn #(set-namespace $1)}})

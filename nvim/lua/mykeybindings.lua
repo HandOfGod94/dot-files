@@ -21,8 +21,8 @@ M.setup = function()
       s    = { "<cmd>PackerStatus<cr>", "Status" },
       c    = { "<cmd>PackerClean<cr>", "Clean plugins" }
     },
-    ["<SPACE>?"]  = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>", "search current word in all files", mode = { "n"} },
-
+    ["<SPACE>?"]  = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
+      "search current word in all files", mode = { "n" } },
     ["<SPACE>/"]  = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "search in current buffer" },
     ["<SPACE>q"]  = {
       name = "+Quickfix",
@@ -70,7 +70,7 @@ M.setup = function()
       l    = { "<cmd>lua require('material.functions').change_style('light')<cr>", "Switch to lighter theme" },
       d    = { "<cmd>lua require('material.functions').change_style('dark')<cr>", "Switch to darker theme" }
     },
-    ["<SPACE>G"] = {
+    ["<SPACE>G"]  = {
       name = "+Github",
       p = {
         name = "+PR",
@@ -103,7 +103,8 @@ M.setup = function()
 
   -- visual mode mapping
   wk.register({
-    ["<SPACE>?"]  = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>", "search selection in all files", mode = { "v"} },
+    ["<SPACE>?"] = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
+      "search selection in all files", mode = { "v" } },
   })
 end
 
@@ -159,7 +160,7 @@ M.lspkeys = {
   -- todo: move this to lang specific files
   ["<SPACE>j"] = {
     name = "+Format",
-    ["="] = { "<cmd>lua vim.lsp.buf.format({async = true})<CR>", "Format code" }
+    ["="] = { "<cmd>lua vim.lsp.buf.format({async = true})<CR>", "Format code", mode = { "v", "n" } }
   },
 }
 
