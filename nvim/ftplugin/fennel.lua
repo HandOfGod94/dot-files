@@ -12,5 +12,5 @@ wk.register({
     b = { "<cmd>Dispatch make<cr>", "build current project"},
     p = { "<cmd>Dispatch make install<cr>", "install current project"},
   },
-  ["<SPACE>j="] = { "<cmd>Dispatch fnlfmt --fix %<CR>", "Format document" }
+  ["<SPACE>j="] = { "<cmd>Dispatch! fnlfmt --fix %<CR>", "Format document" }
 })
