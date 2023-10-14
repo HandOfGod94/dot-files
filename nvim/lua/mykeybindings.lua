@@ -21,6 +21,11 @@ M.setup = function()
       s    = { "<cmd>PackerStatus<cr>", "Status" },
       c    = { "<cmd>PackerClean<cr>", "Clean plugins" }
     },
+    ["<SPACE>c"] = {
+      name = "+Copilot",
+      e = { "<cmd> Copilot enable<cr>", "Enable Copilot" },
+      d = { "<cmd> Copilot disable<cr>", "Disable Copilot" },
+    },
     ["<SPACE>?"]  = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
       "search current word in all files", mode = { "n" } },
     ["<SPACE>/"]  = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "search in current buffer" },
@@ -51,6 +56,7 @@ M.setup = function()
       t     = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },
       ["/"] = { "<cmd>NvimTreeFindFile<cr>", "Open current file in explorer" },
       f     = { "<cmd>Telescope find_files hidden=true shorten_path=true<cr>", "Open file" },
+      F     = { "<cmd>Telescope find_files hidden=true shorten_path=true no_ignore=true<cr>", "Open file(s) including ignored" },
       g     = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", "Search in file" },
       h     = { "<cmd>Telescope help_tags<cr>", "Telescope help" }
     },

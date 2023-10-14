@@ -100,6 +100,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+ulimit -n 10240
+
 alias gpp='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa" git push'
 alias gpw='GIT_SSH_COMMAND="ssh -i ~/.ssh/jiva_rsa" git push'
 

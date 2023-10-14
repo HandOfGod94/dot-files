@@ -20,8 +20,8 @@ require('packer').startup(function()
   use 'tpope/vim-rhubarb'
   use 'tpope/vim-dadbod'
   use 'tpope/vim-dotenv'
-  use 'kristijanhusak/vim-dadbod-ui'
 
+  use 'kristijanhusak/vim-dadbod-ui'
   use 'voldikss/vim-floaterm'
   use 'nvim-treesitter/nvim-treesitter'
   use 'RRethy/nvim-treesitter-endwise'
@@ -144,8 +144,10 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = true
 vim.opt.breakindent = true
-vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "catppuccin"
 vim.g.gruvbox_baby_telescope_theme = 1
+vim.g.background_color = "medium"
+vim.cmd.colorscheme "gruvbox-baby"
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
@@ -166,6 +168,7 @@ vim.g.move_key_modifier = 'C'
 vim.g.move_key_modifier_visualmode = 'C'
 
 vim.cmd([[
+  hi TreesitterContextBottom gui=underline guisp=Grey guifg=Grey
   imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
   let g:copilot_no_tab_map = v:true
 

@@ -4,13 +4,9 @@ M.setup = function()
   require("glance").setup({})
   require("coverage").setup()
   require("octo").setup()
-  require("treesitter-context").setup({})
-  require("catppuccin").setup({
-    integrations = {
-      treesitter_context = true
-    }
+  require("treesitter-context").setup({
+    max_lines = 5
   })
-
   require("bufferline").setup({
     options = {
       numbers = 'ordinal',
