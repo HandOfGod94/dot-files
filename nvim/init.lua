@@ -104,6 +104,7 @@ require('packer').startup(function()
   use 'udalov/kotlin-vim'
   use 'HandOfGod94/nvim-telescope-ctags-plus'
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'vim-crystal/vim-crystal'
 
   -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -145,7 +146,6 @@ vim.opt.concealcursor = 'nc'
 vim.opt.spell = true
 vim.opt.breakindent = true
 -- vim.cmd.colorscheme "catppuccin"
-vim.g.gruvbox_baby_telescope_theme = 1
 vim.g.background_color = "medium"
 vim.cmd.colorscheme "gruvbox-baby"
 

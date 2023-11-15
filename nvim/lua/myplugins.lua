@@ -30,8 +30,12 @@ M.setup = function()
     prefer_startup_root = true,
     sync_root_with_cwd = true, -- caveat with root and cwd
     respect_buf_cwd = false,
+    update_focused_file = {
+      enable = true,
+      ignore_list = { '.git', 'vendor' }
+    },
     view = {
-      adaptive_size = true,
+      adaptive_size = false,
       side = "left",
       width = "20%",
     },

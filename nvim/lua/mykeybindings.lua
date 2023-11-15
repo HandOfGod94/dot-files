@@ -9,11 +9,14 @@ M.setup = function()
     },
     ["<C-h>"]     = { "zh", "Scroll left" },
     ["<C-l>"]     = { "zl", "Scroll right" },
-    ["<C-t>"]     = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Last telescope view" },
     H             = { "<cmd>noh<cr>", "Remove highlights" },
     ["<C-p>"]     = { "<cmd>Telescope find_files hidden=true shorten_path=true<CR>", "Find files" },
     ["<SPACE>t"]  = { "<cmd>b#<CR>", "Toggle previous/current buffer" },
     ["<SPACE>'"]  = { "<cmd>split | term<CR>", "Open terminal" },
+    ["<SPACE>d"]  = {
+      name = "+dispatch",
+      m = { "<cmd>Dispatch make<cr>", "make" },
+    },
     ["<SPACE>p"]  = {
       name = "+Plugins",
       i    = { "<cmd>PackerInstall<cr>", "Install plugins" },
@@ -21,7 +24,7 @@ M.setup = function()
       s    = { "<cmd>PackerStatus<cr>", "Status" },
       c    = { "<cmd>PackerClean<cr>", "Clean plugins" }
     },
-    ["<SPACE>c"] = {
+    ["<SPACE>c"]  = {
       name = "+Copilot",
       e = { "<cmd> Copilot enable<cr>", "Enable Copilot" },
       d = { "<cmd> Copilot disable<cr>", "Disable Copilot" },
@@ -45,10 +48,12 @@ M.setup = function()
       h    = { "<cmd>DiffviewFileHistory %<cr>", "git history current file" },
     },
     q             = { "<cmd>bwipeout<cr>", "Close current buffer" },
+    ["<C-t>"]   = { "<cmd>Telescope buffers theme=dropdown<cr>", "List all buffers" },
     ["<SPACE>b"]  = {
       name = "+Buffers",
-      l = { "<cmd>Telescope buffers<cr>", "List all buffers" },
+      l = { "<cmd>Telescope buffers theme=dropdown<cr>", "List all buffers" },
       d = { "<cmd>%bd|e#|bd#<CR>", "Close other buffers" },
+      r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Reopen last telescope view" },
     },
     ["<SPACE>F"]  = { k = { "<cmd>FloatermKill<cr>", "kill floating terminal" } },
     ["<SPACE>f"]  = {
@@ -56,7 +61,8 @@ M.setup = function()
       t     = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },
       ["/"] = { "<cmd>NvimTreeFindFile<cr>", "Open current file in explorer" },
       f     = { "<cmd>Telescope find_files hidden=true shorten_path=true<cr>", "Open file" },
-      F     = { "<cmd>Telescope find_files hidden=true shorten_path=true no_ignore=true<cr>", "Open file(s) including ignored" },
+      F     = { "<cmd>Telescope find_files hidden=true shorten_path=true no_ignore=true<cr>",
+        "Open file(s) including ignored" },
       g     = { "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", "Search in file" },
       h     = { "<cmd>Telescope help_tags<cr>", "Telescope help" }
     },
@@ -71,11 +77,6 @@ M.setup = function()
     },
     ["<SPACE>s"]  = { "<cmd>set spell! spell?<CR>", "Toggle spell checks" },
     ["<SPACE>\\"] = { "<cmd>BufferLinePick<cr>", "switch buffer" },
-    ["<SPACE>T"]  = {
-      name = "+Theme",
-      l    = { "<cmd>lua require('material.functions').change_style('light')<cr>", "Switch to lighter theme" },
-      d    = { "<cmd>lua require('material.functions').change_style('dark')<cr>", "Switch to darker theme" }
-    },
     ["<SPACE>G"]  = {
       name = "+Github",
       p = {
