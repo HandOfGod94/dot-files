@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( git z fast-syntax-highlighting zsh-autosuggestions fzf )
+plugins=(git z fast-syntax-highlighting zsh-autosuggestions fzf rbenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -114,4 +114,6 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/Cellar/universal-ctags/p6.0.20230730.0/bin:$PATH"
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+# . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+eval "$(rbenv init - zsh)"
