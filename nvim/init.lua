@@ -106,7 +106,7 @@ require('packer').startup(function()
   use 'nvim-treesitter/nvim-treesitter-context'
   use 'vim-crystal/vim-crystal'
 
-  -- custom blocks, for heling in navigating languages with do,end (ruby, elixir)
+  -- custom blocks, for helping in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
   use 'nelstrom/vim-textobj-rubyblock'
 

@@ -140,6 +140,11 @@ M.setup = function()
         context = "test"
       },
       {
+        pattern = "src/(.*).cr",
+        target = "spec/%1_spec.cr",
+        context = "test"
+      },
+      {
         pattern = "app/(.*).rb",
         target = "sig/rbs_rails/app/%1.rbs",
         context = "rbs_type"
@@ -147,6 +152,11 @@ M.setup = function()
       {
         pattern = "spec/(.*)_spec.rb",
         target = "app/%1.rb",
+        context = "source"
+      },
+      {
+        pattern = "spec/(.*)_spec.cr",
+        target = "src/%1.cr",
         context = "source"
       },
       {
