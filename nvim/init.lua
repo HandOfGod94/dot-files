@@ -5,6 +5,7 @@ vim.cmd([[packadd packer.nvim]])
 require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'gpanders/editorconfig.nvim'
+  use 'moll/vim-bbye'
 
   -- tpope goodies
   use 'tpope/vim-repeat'
@@ -104,7 +105,7 @@ require('packer').startup(function()
   use 'udalov/kotlin-vim'
   use 'HandOfGod94/nvim-telescope-ctags-plus'
   use 'nvim-treesitter/nvim-treesitter-context'
-  use 'vim-crystal/vim-crystal'
+  use 'jlcrochet/vim-crystal'
 
   -- custom blocks, for helping in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -143,7 +144,7 @@ vim.g.github_enterprise_urls = { 'https://github.com/gaia-venture' }
 vim.g.gutentags_enabled = 0
 vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.breakindent = true
 -- vim.cmd.colorscheme "catppuccin"
 vim.g.background_color = "medium"
@@ -203,24 +204,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
       pcall(vim.api.nvim_win_set_cursor, 0, mark)
     end
   end,
-})
-
--- autocmd: close nvim tree if all the other buffers are closed and we want to quit vim
-vim.api.nvim_create_autocmd("QuitPre", {
-  callback = function()
-    local invalid_win = {}
-    local wins = vim.api.nvim_list_wins()
-    for _, w in ipairs(wins) do
-      local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(w))
-      if bufname:match("NvimTree_") ~= nil then
-        table.insert(invalid_win, w)
-      end
-    end
-    if #invalid_win == #wins - 1 then
-      -- Should quit, so we close all invalid windows.
-      for _, w in ipairs(invalid_win) do vim.api.nvim_win_close(w, true) end
-    end
-  end
 })
 
 local ok, myplugins = pcall(require, "myplugins")

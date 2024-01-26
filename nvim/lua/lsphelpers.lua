@@ -32,7 +32,7 @@ function M.setup()
   -- lua server
   local libraries = vim.api.nvim_get_runtime_file("", true)
   vim.list_extend(libraries,
-  vim.split(vim.fn.glob("/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/*.lua"), "\n"))
+    vim.split(vim.fn.glob("/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/*.lua"), "\n"))
   vim.list_extend(libraries, { home .. "/.config/hammerspoon/Spoons/EmmyLua.spoon/annotations" })
   require('lspconfig')['lua_ls'].setup {
     on_attach = on_attach,
@@ -105,7 +105,7 @@ function M.setup()
     filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
     init_options = {
       typescript = {
-        tsdk = "/usr/local/lib/node_modules/typescript/lib"
+        tsdk = "/Users/gahan/.config/nvm/versions/node/v18.10.0/lib/node_modules/typescript/lib"
       }
     }
   }
@@ -139,7 +139,7 @@ function M.setup()
     capabilities = capabilities
   }
 
-  require'lspconfig'.crystalline.setup{
+  require 'lspconfig'.crystalline.setup {
     on_attach = on_attach,
     capabilities = capabilities
   }

@@ -32,7 +32,7 @@ M.setup = function()
     respect_buf_cwd = false,
     update_focused_file = {
       enable = true,
-      ignore_list = { '.git', 'vendor' }
+      ignore_list = { 'gitcommit', 'vendor', '.git' }
     },
     view = {
       adaptive_size = false,
@@ -130,8 +130,18 @@ M.setup = function()
         context = "test"
       },
       {
+        pattern = "./(.*)/(.*).py$",
+        target = "tests/%1/test_%2.py",
+        context = "test"
+      },
+      {
         pattern = "tests/(.*)/test_(.*).py",
         target = "src/%1/%2.py",
+        context = "source"
+      },
+      {
+        pattern = "tests/(.*)/test_(.*).py",
+        target = "%1/%2.py",
         context = "source"
       },
       {
