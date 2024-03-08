@@ -18,3 +18,8 @@ github-copilot/
 /karabiner/
 /gh-jira-changelog/
 /node_modules/
+configstore
+pgcli/log
+pgcli/history
+raycast/
+tags
