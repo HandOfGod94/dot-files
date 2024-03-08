@@ -114,9 +114,20 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/Cellar/universal-ctags/p6.0.20230730.0/bin:$PATH"
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-# . /opt/homebrew/opt/asdf/libexec/asdf.sh
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 eval "$(rbenv init - zsh)"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+export PATH="$HOME/bin:$PATH"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+
+# Created by `pipx` on 2023-12-19 17:04:35
+export PATH="$PATH:/Users/gahan/.local/bin"
+[[ ! -r /Users/gahan/.opam/opam-init/init.zsh ]] || source /Users/gahan/.opam/opam-init/init.zsh  > /dev/null 2> /dev/null
+
+export HOMEBREW_NO_AUTO_UPDATE=1
+alias k=kubectl

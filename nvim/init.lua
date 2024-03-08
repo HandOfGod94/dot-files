@@ -19,10 +19,8 @@ require('packer').startup(function()
   use 'tpope/vim-dispatch'
   use 'radenling/vim-dispatch-neovim'
   use 'tpope/vim-rhubarb'
-  use 'tpope/vim-dadbod'
   use 'tpope/vim-dotenv'
 
-  use 'kristijanhusak/vim-dadbod-ui'
   use 'voldikss/vim-floaterm'
   use 'nvim-treesitter/nvim-treesitter'
   use 'RRethy/nvim-treesitter-endwise'
@@ -77,7 +75,8 @@ require('packer').startup(function()
   use 'ThePrimeagen/refactoring.nvim'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'Olical/conjure'
-  use { 'https://gitlab.com/invertisment/conjure-clj-additions-cider-nrepl-mw', as = 'Invertisment/conjure-clj-additions-cider-nrepl-mw' }
+  use { 'https://gitlab.com/invertisment/conjure-clj-additions-cider-nrepl-mw', as =
+  'Invertisment/conjure-clj-additions-cider-nrepl-mw' }
   use 'gpanders/nvim-parinfer'
   use 'vim-scripts/applescript.vim'
   use { 'kosayoda/nvim-lightbulb', requires = 'antoinemadec/FixCursorHold.nvim' }
@@ -106,6 +105,8 @@ require('packer').startup(function()
   use 'HandOfGod94/nvim-telescope-ctags-plus'
   use 'nvim-treesitter/nvim-treesitter-context'
   use 'jlcrochet/vim-crystal'
+  use { 'earthly/earthly.vim', branch = 'main' }
+
 
   -- custom blocks, for helping in navigating languages with do,end (ruby, elixir)
   use 'kana/vim-textobj-user'
@@ -147,7 +148,7 @@ vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
 -- vim.cmd.colorscheme "catppuccin"
-vim.g.background_color = "medium"
+-- vim.g.background_color = "medium"
 vim.cmd.colorscheme "gruvbox-baby"
 
 vim.opt.foldmethod = 'expr'

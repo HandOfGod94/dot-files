@@ -52,7 +52,7 @@ M.setup = function()
     ["<SPACE>b"]  = {
       name = "+Buffers",
       l = { "<cmd>Telescope buffers theme=dropdown<cr>", "List all buffers" },
-      d = { "<cmd>%bd|e#|bd#<CR>", "Close other buffers" },
+      d = { "<cmd>%bd|e#|bd#|NvimTreeOpen<CR>", "Close other buffers" },
       r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Reopen last telescope view" },
     },
     ["<SPACE>F"]  = { k = { "<cmd>FloatermKill<cr>", "kill floating terminal" } },

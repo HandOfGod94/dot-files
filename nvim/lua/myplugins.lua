@@ -23,6 +23,7 @@ M.setup = function()
     },
     options = {
       theme = 'gruvbox-baby',
+      -- theme = 'catppuccin',
     }
   })
   require("nvim-tree").setup({
@@ -153,6 +154,16 @@ M.setup = function()
         pattern = "src/(.*).cr",
         target = "spec/%1_spec.cr",
         context = "test"
+      },
+      {
+        pattern = "lib/(.*).ex",
+        target = "test/%1_test.exs",
+        context = "test"
+      },
+      {
+        pattern = "test/(.*)_test.exs",
+        target = "lib/%1.ex",
+        context = "source"
       },
       {
         pattern = "app/(.*).rb",

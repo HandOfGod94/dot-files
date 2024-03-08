@@ -8,7 +8,6 @@
 
 (doto spoon-install
   (: :andUse :Seal)
-  (: :andUse :EmmyLua)
   (: :andUse :TextClipboardHistory)
   (: :andUse :ShiftIt {:repo :ShiftIt}))
 
@@ -22,6 +21,13 @@
 (doto spoon.TextClipboardHistory
   (: :bindHotkeys {:toggle_clipboard [[:cmd :shift] :v]})
   (: :start))
+
+(hs.loadSpoon :Pritunl)
+
+(set spoon.Seal.plugins.useractions.actions
+     {:vpn {:description "Connect to Pritunl VPN"
+            :icon (hs.image.imageFromPath "/Applications/Pritunl.app/Contents/Resources/electron.icns")
+            :fn #(spoon.Pritunl:showProfiles)}})
 
 (doto spoon.ShiftIt
   (: :bindHotkeys {:left [[:ctrl :alt :cmd] :left]
