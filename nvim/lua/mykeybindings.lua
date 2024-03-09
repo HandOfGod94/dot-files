@@ -51,7 +51,7 @@ M.setup = function()
     ["<C-t>"]   = { "<cmd>Telescope buffers theme=dropdown<cr>", "List all buffers" },
     ["<SPACE>b"]  = {
       name = "+Buffers",
-      l = { "<cmd>Telescope buffers theme=dropdown<cr>", "List all buffers" },
+      l = { "<cmd>Telescope buffers<cr>", "List all buffers" },
       d = { "<cmd>%bd|e#|bd#|NvimTreeOpen<CR>", "Close other buffers" },
       r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Reopen last telescope view" },
     },
