@@ -168,6 +168,7 @@ vim.g.table_mode_corner_corner = "+"
 vim.g.table_mode_header_fillchar = "="
 vim.g.move_key_modifier = 'C'
 vim.g.move_key_modifier_visualmode = 'C'
+vim.o.exrc = true
 
 vim.cmd([[
   hi TreesitterContextBottom gui=underline guisp=Grey guifg=Grey

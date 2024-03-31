@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+LOCAL="$1"
+REMOTE="$2"
+
+TEMP_LOCAL=$(mktemp)
+TEMP_REMOTE=$(mktemp)
+
+trap "rm -f '$TEMP_LOCAL' '$TEMP_REMOTE'" EXIT
+
+jq --sort-keys "[.[]] | sort_by(${JQ_SORT_FIELDS})" $LOCAL > "$TEMP_LOCAL" &
+jq --sort-keys "[.[]] | sort_by(${JQ_SORT_FIELDS})" $REMOTE > "$TEMP_REMOTE" &
+
+nvim -d $TEMP_LOCAL $TEMP_REMOTE
+wait

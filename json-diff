@@ -1,0 +1,16 @@
+#!/bin/zsh
+
+DIFF=/usr/bin/diff
+COLORDIFF=/opt/homebrew/bin/colordiff
+
+if [ -t 1 ]
+then
+	DIFFER=${COLORDIFF}
+else
+	DIFFER=${DIFF}
+fi
+
+LOCAL="$1"
+REMOTE="$2"
+
+${DIFFER} -u --label "a/$REMOTE" --label "b/$REMOTE" <(jq --sort-keys "[.[]] | sort_by(${JQ_SORT_FIELDS})" $LOCAL) <(jq --sort-keys "[.[]] | sort_by(${JQ_SORT_FIELDS})" $REMOTE) | less
