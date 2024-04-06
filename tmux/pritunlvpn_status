@@ -2,6 +2,7 @@
 
 from subprocess import check_output
 import json
+import re
 
 
 class Connection:
@@ -11,8 +12,14 @@ class Connection:
         self.status = status if status == "Disconnected" or status == "Connecting" else "Connected"
         self.is_connected = is_connected
 
+    def trimmed_name(self):
+        match = re.search(".*(\((.*)\))", self.name)
+        if match:
+            return match.group(2)
+        return self.name
+
     def tmux_status(self):
-        return f"{self.name} {self.connection_indicator()}"
+        return f"{self.trimmed_name()} {self.connection_indicator()}"
 
     def connection_indicator(self):
         match self.status:
