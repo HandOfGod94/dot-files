@@ -55,7 +55,17 @@ M.setup = function()
       d = { "<cmd>%bd|e#|bd#|NvimTreeOpen<CR>", "Close other buffers" },
       r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Reopen last telescope view" },
     },
-    ["<SPACE>F"]  = { k = { "<cmd>FloatermKill<cr>", "kill floating terminal" } },
+    ["<SPACE>F"]  = {
+      name ="+Floating terminal",
+      k = { "<cmd>FloatermKill<cr>", "kill floating terminal" },
+      h = { "<cmd>FloatermHide<cr>", "hide floating terminal" },
+      s = { "<cmd>FloatermShow<cr>", "show floating terminal" },
+      n = { "<cmd>FloatermNext<cr>", "view next floating terminal" },
+      p = { "<cmd>FloatermNext<cr>", "view previous floating terminal" },
+      f = { "<cmd>FloatermFirst<cr>", "view first floating terminal" },
+      l = { "<cmd>FloatermLast<cr>", "view last floating terminal" },
+      t = { "<cmd>FloatermToggle<cr>", "toggle view floating terminal" },
+    },
     ["<SPACE>f"]  = {
       name  = "+File ops",
       t     = { "<cmd>NvimTreeToggle<cr>", "Toggle file tree" },

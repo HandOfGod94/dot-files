@@ -141,3 +141,5 @@ rg --color=always --line-number --no-heading --smart-case "${*:-}" |
       --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
       --bind 'enter:become(nvim {1} +{2})'
 }
+
+export PYTHONBREAKPOINT="ipdb.set_trace"
