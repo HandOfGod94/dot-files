@@ -43,6 +43,7 @@ require('packer').startup(function()
   use 'rcarriga/nvim-dap-ui'
   use 'leoluz/nvim-dap-go'
   use 'mfussenegger/nvim-dap-python'
+  use 'HiPhish/debugpy.nvim'
 
   -- CMP
   use 'hrsh7th/nvim-cmp'
