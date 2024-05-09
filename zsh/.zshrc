@@ -143,3 +143,7 @@ rg --color=always --line-number --no-heading --smart-case "${*:-}" |
 }
 
 export PYTHONBREAKPOINT="ipdb.set_trace"
+export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
+export GDAL_LIBRARY_PATH=/opt/homebrew/opt/gdal/lib/libgdal.dylib
+export GEOS_LIBRARY_PATH=/opt/homebrew/opt/geos/lib/libgeos_c.dylib
+export PATH="$HOME/.rd/bin:$PATH"

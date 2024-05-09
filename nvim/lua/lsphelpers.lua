@@ -129,6 +129,13 @@ function M.setup()
     on_attach = on_attach
   })
 
+  -- html lsp
+  require 'lspconfig'.html.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { 'html' },
+  }
+
   require 'lspconfig'.emmet_ls.setup {
     on_attach = on_attach,
     filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex' },

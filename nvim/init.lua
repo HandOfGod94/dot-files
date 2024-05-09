@@ -31,7 +31,6 @@ require('packer').startup(function()
   use 'kyazdani42/nvim-web-devicons'
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim'
-  use 'mhinz/vim-startify'
   use 'godlygeek/tabular'
   use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
 
@@ -56,12 +55,7 @@ require('packer').startup(function()
 
   use 'ludovicchabant/vim-gutentags'
   use 'windwp/nvim-autopairs'
-  use {
-    'goolord/alpha-nvim',
-    config = function()
-      require('alpha').setup(require('alpha.themes.startify').config)
-    end
-  }
+  use 'mhinz/vim-startify'
   use 'preservim/vim-markdown'
   use({
     "iamcco/markdown-preview.nvim",
@@ -175,6 +169,7 @@ vim.cmd([[
   hi TreesitterContextBottom gui=underline guisp=Grey guifg=Grey
   imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
   let g:copilot_no_tab_map = v:true
+  let g:startify_change_to_dir = 0
 
   command! W write
   command! Q quit
@@ -183,6 +178,10 @@ vim.cmd([[
   let test#python#runner = 'pyunit'
   let test#ruby#bundle_exec = 0
   let test#ruby#use_spring_binstub = 1
+  let test#ruby#rspec#options = {
+    \ 'nearest': '--format documentation',
+    \ 'file': '--format documentation',
+  \}
 
   au TextYankPost * silent! lua vim.highlight.on_yank({timeout=300})
   autocmd CursorHold * lua vim.diagnostic.open_float({scope="line", border="rounded"})
