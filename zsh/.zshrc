@@ -124,6 +124,7 @@ export NVM_DIR="$HOME/.config/nvm"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$HOME/bin:$PATH"
 export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools:$PATH"
+export PIPENV_VENV_IN_PROJECT=1
 
 # Created by `pipx` on 2023-12-19 17:04:35
 export PATH="$PATH:/Users/gahan/.local/bin"

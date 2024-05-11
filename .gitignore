@@ -23,4 +23,6 @@ pgcli/log
 pgcli/history
 raycast/
 tags
-zsh/.zsh_sessions
+*.session
+*.history
+*/.zsh_sessions/
