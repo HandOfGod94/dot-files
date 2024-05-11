@@ -150,3 +150,4 @@ export GEOS_LIBRARY_PATH=/opt/homebrew/opt/geos/lib/libgeos_c.dylib
 export PATH="$HOME/.rd/bin:$PATH"
 export DENO_INSTALL="/Users/gahan/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export GIT_EDITOR=nvim
