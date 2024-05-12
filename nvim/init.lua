@@ -138,6 +138,7 @@ vim.g.do_filetype_lua = 1
 vim.g.sexp_filetypes = "clojure,fennel,janet"
 vim.g.github_enterprise_urls = { 'https://github.com/gaia-venture' }
 vim.g.gutentags_enabled = 0
+vim.g.markdown_fenced_languages = { "ts=typescript" }
 vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = false

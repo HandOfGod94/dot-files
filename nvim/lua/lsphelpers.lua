@@ -61,6 +61,12 @@ function M.setup()
   })
   require('dap-python').setup('debugpy')
 
+  require 'lspconfig'.denols.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
+
+
   -- javascript server
   require('lspconfig').tsserver.setup({
     on_attach = on_attach,
