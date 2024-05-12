@@ -1,11 +1,6 @@
 local M = {}
 local home = os.getenv('HOME')
 
-local on_attach = function(_, _)
-  local wk = require('which-key')
-  wk.register(require('mykeybindings').lspkeys)
-end
-
 function OrgImports(wait_ms)
   local params = vim.lsp.util.make_range_params()
   params.context = { only = { "source.organizeImports" } }
@@ -21,9 +16,19 @@ function OrgImports(wait_ms)
   end
 end
 
-function M.setup()
-  local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+function M.on_attach()
+  local on_atttach_fn = function(_, _)
+    local wk = require('which-key')
+    wk.register(require('mykeybindings').lspkeys)
+  end
+  return on_atttach_fn
+end
 
+function M.capabilities()
+  return require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+end
+
+function M.setup()
   -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
@@ -35,8 +40,8 @@ function M.setup()
     vim.split(vim.fn.glob("/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/*.lua"), "\n"))
   vim.list_extend(libraries, { home .. "/.config/hammerspoon/Spoons/EmmyLua.spoon/annotations" })
   require('lspconfig')['lua_ls'].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities(),
     settings = {
       Lua = {
         runtime = { version = 'LuaJIT', },
@@ -49,8 +54,8 @@ function M.setup()
 
   -- python server
   require('lspconfig').pylsp.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities(),
     settings = {
       pylsp = {
         plugins = {
@@ -61,35 +66,35 @@ function M.setup()
   })
   require('dap-python').setup('debugpy')
 
+  -- deno server
   require 'lspconfig'.denols.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   }
-
 
   -- javascript server
   require('lspconfig').tsserver.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   })
 
   -- json server
   -- capabilities.textDocument.completion.completionItem.snippetSupport = true
   require('lspconfig').jsonls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   })
 
   -- clojure server
   require('lspconfig').clojure_lsp.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   })
 
   -- golang server
   require('lspconfig').gopls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   })
   require('dap-go').setup()
   -- allow autoimports in golang
@@ -98,8 +103,8 @@ function M.setup()
   -- rust analyzer
   require('rust-tools').setup({
     server = {
-      on_attach = on_attach,
-      capabilities = capabilities
+      on_attach = M.on_attach(),
+      capabilities = M.capabilities()
     },
     tools = {
       inlay_hints = { auto = true }
@@ -118,14 +123,14 @@ function M.setup()
 
   -- svelte
   require 'lspconfig'.svelte.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities(),
   }
 
   -- ruby
   require 'lspconfig'.solargraph.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities(),
   }
 
   -- elixir lsp
@@ -137,29 +142,29 @@ function M.setup()
 
   -- html lsp
   require 'lspconfig'.html.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities(),
     filetypes = { 'html' },
   }
 
   require 'lspconfig'.emmet_ls.setup {
-    on_attach = on_attach,
+    on_attach = M.on_attach(),
     filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex' },
   }
 
   require 'lspconfig'.terraformls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   }
 
   require 'lspconfig'.crystalline.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   }
 
   require 'lspconfig'.docker_compose_language_service.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   }
 end
 
