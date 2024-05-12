@@ -75,7 +75,9 @@ function M.setup()
   -- javascript server
   require('lspconfig').tsserver.setup({
     on_attach = M.on_attach(),
-    capabilities = M.capabilities()
+    capabilities = M.capabilities(),
+    root_dir = require('lspconfig.util').root_pattern("tsconfig.json"),
+    single_file_support = false
   })
 
   -- json server
