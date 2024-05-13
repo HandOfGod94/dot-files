@@ -46,7 +46,7 @@ function M.setup()
       Lua = {
         runtime = { version = 'LuaJIT', },
         diagnostics = { globals = { 'vim', 'use', 'hs', 'spoon' } },
-        workspace = { library = libraries },
+        workspace = { library = libraries, checkThirdParty = false },
         telemetry = { enable = false },
       },
     },
