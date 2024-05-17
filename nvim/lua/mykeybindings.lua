@@ -48,7 +48,6 @@ M.setup = function()
       h    = { "<cmd>DiffviewFileHistory %<cr>", "git history current file" },
     },
     q             = { "<cmd>Bwipeout<cr>", "Close current buffer" },
-    ["<C-t>"]   = { "<cmd>Telescope buffers theme=dropdown<cr>", "List all buffers" },
     ["<SPACE>b"]  = {
       name = "+Buffers",
       l = { "<cmd>Telescope buffers<cr>", "List all buffers" },

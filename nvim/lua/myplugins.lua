@@ -33,7 +33,8 @@ M.setup = function()
     respect_buf_cwd = true,
     update_focused_file = {
       enable = true,
-      ignore_list = { 'gitcommit', 'vendor', '.git' }
+      update_root = true,
+      ignore_list = { 'COMMIT_EDITMSG', 'gitcommit', 'vendor', '.git', 'fugitive' }
     },
     view = {
       adaptive_size = false,
