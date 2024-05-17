@@ -136,10 +136,11 @@ function M.setup()
   }
 
   -- elixir lsp
-  -- curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.13.0/elixir-ls-1.14-25.1.zip
+  -- curl -fLO https://github.com/elixir-lsp/elixir-ls/releases/download/v0.21.1/elixir-ls-v0.21.1.zip
   require('lspconfig').elixirls.setup({
     cmd = { home .. "/.config/nvim/elixir/lang-server/language_server.sh" },
-    on_attach = on_attach
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
   })
 
   -- html lsp
