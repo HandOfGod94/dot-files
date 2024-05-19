@@ -7,6 +7,10 @@ require('packer').startup(function()
   use 'gpanders/editorconfig.nvim'
   use 'moll/vim-bbye'
 
+  -- flutter deps
+  use 'dart-lang/dart-vim-plugin'
+  use 'thosakwe/vim-flutter'
+
   -- tpope goodies
   use 'tpope/vim-repeat'
   use 'tpope/vim-surround'
@@ -144,7 +148,7 @@ vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
 -- vim.cmd.colorscheme "catppuccin"
--- vim.g.background_color = "medium"
+vim.g.gruvbox_baby_background_color = "dark"
 vim.cmd.colorscheme "gruvbox-baby"
 
 vim.opt.foldmethod = 'expr'
