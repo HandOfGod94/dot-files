@@ -6,6 +6,7 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'gpanders/editorconfig.nvim'
   use 'moll/vim-bbye'
+  use 'dart-lang/dart-vim-plugin'
 
   -- flutter deps
   use 'dart-lang/dart-vim-plugin'
