@@ -169,6 +169,11 @@ function M.setup()
     on_attach = M.on_attach(),
     capabilities = M.capabilities()
   }
+
+  require'lspconfig'.dartls.setup{
+    on_attach = M.on_attach(),
+    capabilities = M.capabilities()
+  }
 end
 
 return M
