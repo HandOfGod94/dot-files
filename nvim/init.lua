@@ -25,6 +25,7 @@ require('packer').startup(function()
   use 'tpope/vim-rhubarb'
   use 'tpope/vim-dotenv'
 
+  use 'nvim-neotest/nvim-nio'
   use 'voldikss/vim-floaterm'
   use 'nvim-treesitter/nvim-treesitter'
   use 'RRethy/nvim-treesitter-endwise'
@@ -67,7 +68,7 @@ require('packer').startup(function()
   })
   use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
   use 'j-hui/fidget.nvim'
-  use { 'akinsho/bufferline.nvim', tag = "v4.3.0", requires = 'kyazdani42/nvim-web-devicons' }
+  use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons' }
   use 'rgroli/other.nvim'
   use 'ggandor/lightspeed.nvim'
   use 'guns/vim-sexp'
