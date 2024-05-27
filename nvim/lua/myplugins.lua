@@ -9,6 +9,7 @@ M.setup = function()
   })
   require("bufferline").setup({
     options = {
+      diagnostics = "nvim_lsp",
       numbers = 'ordinal',
       show_buffer_close_icons = false,
       separator_style = 'thick',

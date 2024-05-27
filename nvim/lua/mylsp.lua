@@ -57,7 +57,8 @@ local default_config = {
     settings = {
       pylsp = {
         plugins = {
-          black = { enabled = true, line_length = 120 }
+          black = { enabled = true, line_length = 120 },
+          pyflakes = { enabled = true }
         }
       }
     }

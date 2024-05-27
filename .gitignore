@@ -26,3 +26,4 @@ tags
 *.session
 *.history
 */.zsh_sessions/
+.android/cache/
