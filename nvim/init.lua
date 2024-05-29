@@ -174,6 +174,7 @@ vim.o.exrc = true
 
 vim.cmd([[
   hi TreesitterContextBottom gui=underline guisp=Grey guifg=Grey
+  hi WinSeparator guifg=#313338 guibg=NONE
   imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
   let g:copilot_no_tab_map = v:true
   let g:startify_change_to_dir = 0
@@ -182,7 +183,7 @@ vim.cmd([[
   command! Q quit
 
   let &showbreak='    '
-  let test#python#runner = 'pyunit'
+  let test#python#runner = 'pytest'
   let test#ruby#bundle_exec = 0
   let test#ruby#use_spring_binstub = 1
   let test#ruby#rspec#options = {
