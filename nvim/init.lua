@@ -39,6 +39,7 @@ require('packer').startup(function()
   use 'nvim-telescope/telescope.nvim'
   use 'godlygeek/tabular'
   use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
+  use 'reasonml-editor/vim-reason-plus'
 
   -- LSPs and DAPs
   use 'neovim/nvim-lspconfig'

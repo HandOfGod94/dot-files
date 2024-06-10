@@ -131,7 +131,11 @@ local default_config = {
   dartls = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
-  }
+  },
+  ocamllsp = {
+    on_attach = default_on_attach,
+    capabilities = default_capabilities
+  },
 }
 
 function M.setup(options)

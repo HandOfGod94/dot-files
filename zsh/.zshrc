@@ -117,6 +117,7 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 eval "$(rbenv init - zsh)"
+eval $(opam env)
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
