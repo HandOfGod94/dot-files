@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git z F-Sy-H zsh-autosuggestions fzf rbenv dotenv pipenv)
-
+source <(fzf --zsh)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -97,8 +97,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias zshconfig="nvim $ZDOTDIR/.zshrc"
+alias ohmyzsh="nvim $ZDOTDIR/.oh-my-zsh"
 
 ulimit -n 10240
 
@@ -117,7 +117,9 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 eval "$(rbenv init - zsh)"
-eval $(opam env)
+[[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+export PATH="$HOME/bin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
