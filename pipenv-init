@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+pipenv --python 3.10
+pipenv install --dev black isort pyflakes python-lsp-server python-lsp-black python-lsp-isort
