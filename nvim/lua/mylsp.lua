@@ -21,6 +21,17 @@ end
 require('dap-python').setup('debugpy')
 require('dap-go').setup()
 vim.cmd([[autocmd BufWritePre *.go lua OrgImports(1000)]])
+
+----------------------------------------------------------
+-- Autoset docker-compose.yml file type
+local group = vim.api.nvim_create_augroup("filetypedetect", { clear = true })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = { "docker-compose.yaml", "docker-compose.yml" },
+  callback = function()
+    vim.bo.filetype = "yaml.docker-compose"
+  end,
+  group = group,
+})
 -----------------------------------------------------------
 
 
@@ -136,6 +147,10 @@ local default_config = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
   },
+  docker_compose_language_service = {
+    on_attach = default_on_attach,
+    capabilities = default_capabilities
+  }
 }
 
 function M.setup(options)
