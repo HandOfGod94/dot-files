@@ -125,6 +125,7 @@ export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 export PATH="$HOME/bin:$PATH"
+export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 export PIPENV_VENV_IN_PROJECT=1
 
 # Created by `pipx` on 2023-12-19 17:04:35
