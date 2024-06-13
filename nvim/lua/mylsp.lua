@@ -78,7 +78,8 @@ local default_config = {
   },
   denols = {
     on_attach = default_on_attach,
-    capabilities = default_capabilities
+    capabilities = default_capabilities,
+    root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
   },
   tsserver = {
     on_attach = default_on_attach,
