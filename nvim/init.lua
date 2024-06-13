@@ -120,6 +120,7 @@ require('packer').startup(function()
   use 'navarasu/onedark.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
   use 'luisiacc/gruvbox-baby'
+  use "rebelot/kanagawa.nvim"
 end)
 
 -- editor config
@@ -151,8 +152,10 @@ vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
 -- vim.cmd.colorscheme "catppuccin"
-vim.g.gruvbox_baby_background_color = "dark"
-vim.cmd.colorscheme "gruvbox-baby"
+-- vim.g.gruvbox_baby_background_color = "dark"
+-- vim.cmd.colorscheme "gruvbox-baby"
+require('kanagawa').setup({})
+vim.cmd.colorscheme "kanagawa-wave"
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
