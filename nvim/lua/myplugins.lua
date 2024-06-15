@@ -48,10 +48,22 @@ M.setup = function()
       }
     },
   })
+
+  -- Install grammar with nvim-treesitter
+  local list = require("nvim-treesitter.parsers").get_parser_configs()
+  list.reason = {
+    install_info = {
+      url = "https://github.com/reasonml-editor/tree-sitter-reason",
+      files = { "src/parser.c", "src/scanner.c" },
+      branch = "master",
+    },
+  }
+
+  -- treesitter configs
   require('nvim-treesitter.configs').setup({
     ensure_installed = { "go", "java", "lua", "rust", "ruby", "elixir", "python", "clojure", "fennel", "json", "yaml",
       "svelte", "javascript", "css", "vue", "html", "heex", "vim", "vimdoc", "norg", "markdown", "kdl",
-      "graphql", "hcl", "terraform", "dart" },
+      "graphql", "hcl", "terraform", "dart", "reason" },
     highlight = {
       enable = true,
     },
