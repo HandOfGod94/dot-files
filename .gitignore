@@ -27,3 +27,4 @@ tags
 *.history
 */.zsh_sessions/
 .android/cache/
+tool_state
