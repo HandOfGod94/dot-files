@@ -104,7 +104,7 @@ local default_config = {
   --   }
   -- },
   volar = {
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    filetypes = { 'vue' },
   },
   svelte = {
     on_attach = default_on_attach,
