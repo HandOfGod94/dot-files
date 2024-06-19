@@ -12,6 +12,7 @@ M.setup = function()
     H             = { "<cmd>noh<cr>", "Remove highlights" },
     ["<C-p>"]     = { "<cmd>Telescope find_files hidden=true shorten_path=true<CR>", "Find files" },
     ["<SPACE>t"]  = { "<cmd>b#<CR>", "Toggle previous/current buffer" },
+    ["<SPACE>T"]  = { "<cmd>lua require('telescope.builtin').buffers({ sort_mru = true })<cr>", "Recent buffers" },
     ["<SPACE>'"]  = { "<cmd>split | term<CR>", "Open terminal" },
     ["<SPACE>d"]  = {
       name = "+dispatch",
@@ -50,7 +51,7 @@ M.setup = function()
     q             = { "<cmd>Bwipeout<cr>", "Close current buffer" },
     ["<SPACE>b"]  = {
       name = "+Buffers",
-      l = { "<cmd>Telescope buffers<cr>", "List all buffers" },
+      l = { "<cmd>lua require('telescope.builtin').buffers({ sort_mru = true })<cr>", "List all buffers" },
       d = { "<cmd>%bd|e#|bd#|NvimTreeOpen<CR>", "Close other buffers" },
       r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Reopen last telescope view" },
     },

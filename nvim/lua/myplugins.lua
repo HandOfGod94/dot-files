@@ -76,8 +76,8 @@ M.setup = function()
       file_ignore_patterns = { "node_modules", "target", ".git/", ".elixir_ls/", "deps", "_build/", "tags" },
       path_display = { "smart" },
       dynamic_preview_title = true,
-      layout_strategy = 'horizontal',
-      layout_config = { width = 0.95 },
+      layout_strategy = 'bottom_pane',
+      layout_config = { prompt_position = "bottom" }
     },
     extensions = {
       ["ui-select"] = { require("telescope.themes").get_dropdown({}) },
