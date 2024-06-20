@@ -146,10 +146,6 @@ local default_config = {
   ocamllsp = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
-  },
-  docker_compose_language_service = {
-    on_attach = default_on_attach,
-    capabilities = default_capabilities
   }
 }
 
