@@ -1,4 +1,4 @@
-# If you come from bash you might have to change your $PATH.
+e# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -113,10 +113,12 @@ export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/Cellar/universal-ctags/p6.0.20230730.0/bin:$PATH"
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 eval "$(rbenv init - zsh)"
+
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
+eval $(opam env)
+
 export PATH="$HOME/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
