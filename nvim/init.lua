@@ -59,6 +59,7 @@ require('packer').startup(function()
   use 'quangnguyen30192/cmp-nvim-tags'
   use 'L3MON4D3/LuaSnip'
   use 'rafamadriz/friendly-snippets'
+  use 'PaterJason/cmp-conjure'
 
   use 'ludovicchabant/vim-gutentags'
   use 'windwp/nvim-autopairs'
@@ -77,6 +78,7 @@ require('packer').startup(function()
   use 'ThePrimeagen/refactoring.nvim'
   use 'hrsh7th/cmp-nvim-lsp-signature-help'
   use 'Olical/conjure'
+  use 'Olical/aniseed'
   use { 'https://gitlab.com/invertisment/conjure-clj-additions-cider-nrepl-mw', as =
   'Invertisment/conjure-clj-additions-cider-nrepl-mw' }
   use 'gpanders/nvim-parinfer'
@@ -182,6 +184,7 @@ vim.cmd([[
   imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
   let g:copilot_no_tab_map = v:true
   let g:startify_change_to_dir = 0
+  let g:conjure#filetype#fennel = "conjure.client.fennel.stdio"
 
   command! W write
   command! Q quit

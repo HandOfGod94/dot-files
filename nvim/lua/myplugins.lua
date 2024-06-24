@@ -276,6 +276,7 @@ M.setup = function()
       { name = 'nvim_lsp_signature_help' },
       { name = 'luasnip' },
     }, {
+      { name = 'conjure' },
       { name = 'buffer' },
     })
   })

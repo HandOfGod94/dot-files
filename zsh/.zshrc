@@ -117,7 +117,7 @@ source "$HOME/.sdkman/bin/sdkman-init.sh"
 eval "$(rbenv init - zsh)"
 
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
-eval $(opam env)
+eval "$(opam env)"
 
 export PATH="$HOME/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
