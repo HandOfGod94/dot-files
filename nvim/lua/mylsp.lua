@@ -35,9 +35,11 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -----------------------------------------------------------
 
 
-local default_on_attach = function(_, _)
+local default_on_attach = function(_, bufnr)
   local wk = require('which-key')
   wk.register(require('mykeybindings').lspkeys)
+
+  vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 end
 
 local default_capabilities =
@@ -97,12 +99,10 @@ local default_config = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
   },
-  -- ["rust-tools"] = {
-  --   server = {
-  --     on_attach = default_on_attach,
-  --     capabilities = default_capabilities
-  --   }
-  -- },
+  rust_analyzer = {
+    on_attach = default_on_attach,
+    capabilities = default_capabilities
+  },
   volar = {
     filetypes = { 'vue' },
   },
