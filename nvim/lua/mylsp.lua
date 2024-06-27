@@ -100,6 +100,10 @@ local default_config = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
   },
+  cucumber_language_server = {
+    on_attach = default_on_attach,
+    capabilities = default_capabilities
+  },
   rust_analyzer = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
