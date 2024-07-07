@@ -156,3 +156,4 @@ export DENO_INSTALL="/Users/gahan/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export GIT_EDITOR=nvim
 export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
+export PATH="/opt/homebrew/opt/mariadb@10.11/bin:$PATH"
