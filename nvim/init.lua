@@ -11,6 +11,7 @@ require('packer').startup(function()
   -- flutter deps
   use 'dart-lang/dart-vim-plugin'
   use 'thosakwe/vim-flutter'
+  use 'akinsho/flutter-tools.nvim'
 
   -- tpope goodies
   use 'tpope/vim-repeat'
@@ -154,10 +155,11 @@ vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
 -- vim.cmd.colorscheme "catppuccin"
--- vim.g.gruvbox_baby_background_color = "dark"
--- vim.cmd.colorscheme "gruvbox-baby"
-require('kanagawa').setup({})
-vim.cmd.colorscheme "kanagawa-wave"
+vim.g.gruvbox_baby_telescope_theme = 1
+vim.g.gruvbox_baby_background_color = "dark"
+vim.cmd.colorscheme "gruvbox-baby"
+-- require('kanagawa').setup({})
+-- vim.cmd.colorscheme "kanagawa-wave"
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'

@@ -32,10 +32,19 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   end,
   group = group,
 })
+
+-- vim.api.nvim_create_autocmd({ "BufEnter","CursorHold","InsertLeave"}, {
+--   callback = function()
+--     vim.lsp.codelens.refresh({ bufnr = 0 })
+
+--     local lenses = vim.lsp.codelens.get(0)
+--     vim.lsp.codelens.display(lenses, 0, nil)
+--   end
+-- })
 -----------------------------------------------------------
 
 
-local default_on_attach = function(_, bufnr)
+local default_on_attach = function(client, bufnr)
   local wk = require('which-key')
   wk.register(require('mykeybindings').lspkeys)
 
@@ -144,10 +153,6 @@ local default_config = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
   },
-  dartls = {
-    on_attach = default_on_attach,
-    capabilities = default_capabilities
-  },
   ocamllsp = {
     on_attach = default_on_attach,
     capabilities = default_capabilities
@@ -165,6 +170,16 @@ function M.setup(options)
   for language, setup_values in pairs(lsp_options) do
     require("lspconfig")[language].setup(setup_values)
   end
+
+  require("flutter-tools").setup({
+    lsp = {
+      color = {
+        enabled = true
+      },
+      on_attach = default_on_attach,
+      capabilities = default_capabilities,
+    }
+  })
 end
 
 return M

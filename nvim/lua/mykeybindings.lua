@@ -52,7 +52,7 @@ M.setup = function()
     ["<SPACE>b"]  = {
       name = "+Buffers",
       l = { "<cmd>lua require('telescope.builtin').buffers({ sort_mru = true })<cr>", "List all buffers" },
-      d = { "<cmd>%bd|e#|bd#|NvimTreeOpen<CR>", "Close other buffers" },
+      d = { "<cmd>%bd|e#|bd#<CR>", "Close other buffers" },
       r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Reopen last telescope view" },
     },
     ["<SPACE>F"]  = {
