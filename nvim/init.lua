@@ -101,6 +101,7 @@ require('packer').startup(function()
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
   use 'github/copilot.vim'
+  use 'CopilotC-Nvim/CopilotChat.nvim'
   use 'andythigpen/nvim-coverage'
   use 'sindrets/diffview.nvim'
   use 'pwntester/octo.nvim'
@@ -192,7 +193,6 @@ vim.cmd([[
   command! Q quit
 
   let &showbreak='    '
-  let test#python#runner = 'pytest'
   let test#ruby#bundle_exec = 0
   let test#ruby#use_spring_binstub = 1
   let test#ruby#rspec#options = {

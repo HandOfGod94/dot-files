@@ -18,8 +18,10 @@ function OrgImports(wait_ms)
   end
 end
 
-require('dap-python').setup('debugpy')
+require('dap-python').setup('python')
 require('dap-go').setup()
+vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpointCondition', {text='🟡', texthl='', linehl='', numhl=''})
 vim.cmd([[autocmd BufWritePre *.go lua OrgImports(1000)]])
 
 ----------------------------------------------------------

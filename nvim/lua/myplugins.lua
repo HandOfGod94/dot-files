@@ -1,6 +1,7 @@
 local M = {}
 
 M.setup = function()
+  require("CopilotChat").setup()
   require("glance").setup({})
   require("coverage").setup()
   require("octo").setup()
