@@ -193,6 +193,7 @@ vim.cmd([[
   command! Q quit
 
   let &showbreak='    '
+  let test#python#runner = 'pytest'
   let test#ruby#bundle_exec = 0
   let test#ruby#use_spring_binstub = 1
   let test#ruby#rspec#options = {

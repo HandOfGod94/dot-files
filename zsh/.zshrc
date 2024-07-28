@@ -152,6 +152,7 @@ export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
 export GDAL_LIBRARY_PATH=/opt/homebrew/opt/gdal/lib/libgdal.dylib
 export GEOS_LIBRARY_PATH=/opt/homebrew/opt/geos/lib/libgeos_c.dylib
 export PATH="$HOME/.rd/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin/flutter/bin:$PATH"
 export DENO_INSTALL="/Users/gahan/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
