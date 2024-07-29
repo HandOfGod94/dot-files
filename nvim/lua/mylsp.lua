@@ -121,7 +121,7 @@ local default_config = {
     capabilities = default_capabilities
   },
   rust_analyzer = {
-    on_attach = on_attach(),
+    on_attach = on_attach({inlay_hint = true}),
     capabilities = default_capabilities
   },
   volar = {
