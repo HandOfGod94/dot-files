@@ -20,8 +20,8 @@ end
 
 require('dap-python').setup('python')
 require('dap-go').setup()
-vim.fn.sign_define('DapBreakpoint', {text='🔴', texthl='', linehl='', numhl=''})
-vim.fn.sign_define('DapBreakpointCondition', {text='🟡', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', { text = '🔴', texthl = '', linehl = '', numhl = '' })
+vim.fn.sign_define('DapBreakpointCondition', { text = '🟡', texthl = '', linehl = '', numhl = '' })
 vim.cmd([[autocmd BufWritePre *.go lua OrgImports(1000)]])
 
 ----------------------------------------------------------
@@ -45,12 +45,17 @@ vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 -- })
 -----------------------------------------------------------
 
+local on_attach = function(opts)
+  opts = opts or {}
 
-local default_on_attach = function(client, bufnr)
-  local wk = require('which-key')
-  wk.register(require('mykeybindings').lspkeys)
+  return function(client, bufnr)
+    local wk = require('which-key')
+    wk.register(require('mykeybindings').lspkeys)
 
-  vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    if opts.inlay_hint and opts.inlay_hint == true then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+  end
 end
 
 local default_capabilities =
@@ -64,7 +69,7 @@ vim.list_extend(libraries, { home .. "/.config/hammerspoon/Spoons/EmmyLua.spoon/
 
 local default_config = {
   lua_ls = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities,
     settings = {
       Lua = {
@@ -76,7 +81,7 @@ local default_config = {
     }
   },
   pylsp = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities,
     settings = {
       pylsp = {
@@ -88,75 +93,75 @@ local default_config = {
     }
   },
   denols = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities,
     root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
   },
   tsserver = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities,
     root_dir = require('lspconfig.util').root_pattern("tsconfig.json", "package.json"),
     single_file_support = false
 
   },
   jsonls = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   clojure_lsp = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   gopls = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   cucumber_language_server = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   rust_analyzer = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   volar = {
     filetypes = { 'vue' },
   },
   svelte = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   solargraph = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   elixirls = {
     cmd = { home .. "/.config/nvim/elixir/lang-server/language_server.sh" },
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   html = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   emmet_ls = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex' },
   },
   terraformls = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   crystalline = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   docker_compose_language_service = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   },
   ocamllsp = {
-    on_attach = default_on_attach,
+    on_attach = on_attach(),
     capabilities = default_capabilities
   }
 }
@@ -178,7 +183,7 @@ function M.setup(options)
       color = {
         enabled = true
       },
-      on_attach = default_on_attach,
+      on_attach = on_attach({inlay_hint = false}),
       capabilities = default_capabilities,
     }
   })

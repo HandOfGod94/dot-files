@@ -8,12 +8,14 @@ M.setup = function()
   require("treesitter-context").setup({
     max_lines = 5
   })
-  require("bufferline").setup({
+  local bufferline = require("bufferline")
+  bufferline.setup({
     options = {
       diagnostics = "nvim_lsp",
       numbers = 'ordinal',
       show_buffer_close_icons = false,
-      separator_style = 'thick',
+      indicator = { style = "icon", icon = "▎" },
+      separator_style = "slant",
       offsets = { { filetype = "NvimTree", text = "File Explorer", text_align = "center" } },
     },
   })
