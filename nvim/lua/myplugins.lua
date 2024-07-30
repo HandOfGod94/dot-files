@@ -1,7 +1,13 @@
 local M = {}
 
 M.setup = function()
-  require("CopilotChat").setup()
+  require("CopilotChat").setup({
+    window = {
+      layout = "float",
+      height = 0.7,
+      width = 0.8,
+    }
+  })
   require("glance").setup({})
   require("coverage").setup()
   require("octo").setup()
