@@ -66,6 +66,8 @@ require('packer').startup(function()
   use 'windwp/nvim-autopairs'
   use 'mhinz/vim-startify'
   use 'preservim/vim-markdown'
+  use 'mzlogin/vim-markdown-toc'
+
   use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
