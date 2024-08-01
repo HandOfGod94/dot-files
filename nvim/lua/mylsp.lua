@@ -98,11 +98,34 @@ local default_config = {
     root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
   },
   tsserver = {
-    on_attach = on_attach(),
+    on_attach = on_attach({ inlay_hint = true }),
     capabilities = default_capabilities,
     root_dir = require('lspconfig.util').root_pattern("tsconfig.json", "package.json"),
-    single_file_support = false
-
+    single_file_support = false,
+    commands = {
+      OrganizeImports = {
+        function()
+          vim.lsp.buf.execute_command({
+            command = "_typescript.organizeImports",
+            arguments = { vim.api.nvim_buf_get_name(0) },
+            title = ""
+          })
+        end,
+        description = "orgranize imports"
+      }
+    },
+    init_options = {
+      preferences = {
+        includeInlayParameterNameHints = 'all',
+        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+        includeInlayFunctionParameterTypeHints = true,
+        includeInlayVariableTypeHints = true,
+        includeInlayPropertyDeclarationTypeHints = true,
+        includeInlayFunctionLikeReturnTypeHints = true,
+        includeInlayEnumMemberValueHints = true,
+        importModuleSpecifierPreference = 'non-relative',
+      },
+    },
   },
   jsonls = {
     on_attach = on_attach(),
@@ -121,7 +144,7 @@ local default_config = {
     capabilities = default_capabilities
   },
   rust_analyzer = {
-    on_attach = on_attach({inlay_hint = true}),
+    on_attach = on_attach({ inlay_hint = true }),
     capabilities = default_capabilities
   },
   volar = {
@@ -183,7 +206,7 @@ function M.setup(options)
       color = {
         enabled = true
       },
-      on_attach = on_attach({inlay_hint = false}),
+      on_attach = on_attach({ inlay_hint = false }),
       capabilities = default_capabilities,
     }
   })

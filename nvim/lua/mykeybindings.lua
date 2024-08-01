@@ -29,9 +29,13 @@ M.setup = function()
       name = "+Copilot",
       e = { "<cmd> Copilot enable<cr>", "Enable Copilot" },
       d = { "<cmd> Copilot disable<cr>", "Disable Copilot" },
+      c = { "<cmd> CopilotChatToggle<cr>", "Toggle copilot chat" }
     },
-    ["<SPACE>?"]  = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
-      "search current word in all files", mode = { "n" } },
+    ["<SPACE>?"]  = {
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
+      "search current word in all files",
+      mode = { "n" }
+    },
     ["<SPACE>/"]  = { "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>", "search in current buffer" },
     ["<SPACE>q"]  = {
       name = "+Quickfix",
@@ -56,7 +60,7 @@ M.setup = function()
       r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Reopen last telescope view" },
     },
     ["<SPACE>F"]  = {
-      name ="+Floating terminal",
+      name = "+Floating terminal",
       k = { "<cmd>FloatermKill<cr>", "kill floating terminal" },
       h = { "<cmd>FloatermHide<cr>", "hide floating terminal" },
       s = { "<cmd>FloatermShow<cr>", "show floating terminal" },
@@ -120,8 +124,11 @@ M.setup = function()
 
   -- visual mode mapping
   wk.register({
-    ["<SPACE>?"] = { "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
-      "search selection in all files", mode = { "v" } },
+    ["<SPACE>?"] = {
+      "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_visual_selection()<cr>",
+      "search selection in all files",
+      mode = { "v" }
+    },
   })
 end
 
@@ -145,6 +152,8 @@ M.lspkeys = {
   ["<SPACE>l"] = {
     name = "+Language",
     l = { "<cmd>filetype detect<cr>", "reload language-lsp config" },
+    h = { "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })<cr>",
+      "Toggle inlay hints" },
     i = { "<Cmd>lua vim.lsp.buf.hover()<CR>", "Hover info" },
     I = { "<cmd>Dash<CR>", "View dash docs" },
     e = { "<Cmd>ToggleDiag<CR>", "Toggle diagnostics" },
