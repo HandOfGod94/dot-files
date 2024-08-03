@@ -197,8 +197,8 @@ vim.cmd([[
 
   let &showbreak='    '
   let test#python#runner = 'pytest'
-  let test#ruby#bundle_exec = 0
-  let test#ruby#use_spring_binstub = 1
+  let test#ruby#bundle_exec = 1
+  let test#ruby#use_spring_binstub = 0
   let test#ruby#rspec#options = {
     \ 'nearest': '--format documentation',
     \ 'file': '--format documentation',
