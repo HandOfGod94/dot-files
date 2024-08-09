@@ -161,7 +161,14 @@ local default_config = {
   elixirls = {
     cmd = { home .. "/.config/nvim/elixir/lang-server/language_server.sh" },
     on_attach = on_attach(),
-    capabilities = default_capabilities
+    capabilities = default_capabilities,
+    init_options = {
+      elixirLS = {
+        dialyzerEnabled = true,
+        fetchDeps = true,
+        suggestSpecs = true
+      }
+    }
   },
   html = {
     on_attach = on_attach(),
