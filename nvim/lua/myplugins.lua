@@ -120,6 +120,16 @@ M.setup = function()
   require('other-nvim').setup({
     rememberBuffers = false,
     mappings = {
+     {
+        pattern = "test/(.*)_test.dart",
+        target = "lib/%1.dart",
+        context = "source"
+      },
+      {
+        pattern = "lib/(.*).dart",
+        target = "test/%1_test.dart",
+        context = "test"
+      },
       {
         pattern = "src/main/java/(.*).java",
         target = "src/test/%1Test.java",
