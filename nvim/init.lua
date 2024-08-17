@@ -157,11 +157,11 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
-vim.cmd.colorscheme "tokyonight-night"
+-- vim.cmd.colorscheme "tokyonight-night"
 -- vim.cmd.colorscheme "catppuccin"
--- vim.g.gruvbox_baby_telescope_theme = 1
--- vim.g.gruvbox_baby_background_color = "dark"
--- vim.cmd.colorscheme "gruvbox-baby"
+vim.g.gruvbox_baby_telescope_theme = 1
+vim.g.gruvbox_baby_background_color = "dark"
+vim.cmd.colorscheme "gruvbox-baby"
 -- require('kanagawa').setup({})
 -- vim.cmd.colorscheme "kanagawa-wave"
 
@@ -201,7 +201,6 @@ vim.cmd([[
   let test#ruby#use_spring_binstub = 0
   let test#ruby#rspec#options = {
     \ 'nearest': '--format documentation',
-    \ 'file': '--format documentation',
   \}
 
   au TextYankPost * silent! lua vim.highlight.on_yank({timeout=300})

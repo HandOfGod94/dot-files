@@ -32,9 +32,9 @@ M.setup = function()
       lualine_y = {},
     },
     options = {
-      -- theme = 'gruvbox-baby',
+      theme = 'gruvbox-baby',
       -- theme = 'catppuccin',
-      theme = 'tokyonight',
+      -- theme = 'tokyonight',
     }
   })
   require("nvim-tree").setup({
