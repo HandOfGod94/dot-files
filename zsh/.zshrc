@@ -162,3 +162,4 @@ export PATH="/opt/homebrew/opt/mariadb@10.11/bin:$PATH"
 
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
