@@ -72,7 +72,7 @@ M.setup = function()
   -- treesitter configs
   require('nvim-treesitter.configs').setup({
     ensure_installed = { "go", "java", "lua", "rust", "ruby", "elixir", "python", "clojure", "fennel", "json", "yaml",
-      "svelte", "javascript", "css", "vue", "html", "heex", "vim", "vimdoc", "norg", "markdown", "kdl",
+      "svelte", "javascript", "css", "vue", "html", "heex", "vim", "vimdoc", "norg", "markdown", "kdl", "typescript",
       "graphql", "hcl", "terraform", "dart", "reason" },
     highlight = {
       enable = true,

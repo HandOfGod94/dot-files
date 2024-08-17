@@ -115,6 +115,13 @@ local default_config = {
       }
     },
     init_options = {
+      plugins = {
+        {
+          name = '@vue/typescript-plugin',
+          location = home .. '/.config/nvm/versions/node/v20.14.0/lib/node_modules/@vue/language-server',
+          languages = { 'vue' },
+        },
+      },
       preferences = {
         includeInlayParameterNameHints = 'all',
         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
@@ -148,7 +155,27 @@ local default_config = {
     capabilities = default_capabilities
   },
   volar = {
-    filetypes = { 'vue' },
+    on_attach = on_attach(),
+    capabilities = default_capabilities,
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+    init_options = {
+      vue = {
+        hybridMode = false,
+      },
+      typescript = {
+        tsdk = home .. "/.config/nvm/versions/node/v20.14.0/lib/node_modules/typescript/lib", -- TODO: get current node version intstead of hardcoding
+        preferences = {
+          includeInlayParameterNameHints = 'all',
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
+          importModuleSpecifierPreference = 'relative',
+        },
+      },
+    }
   },
   svelte = {
     on_attach = on_attach(),
