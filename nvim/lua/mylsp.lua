@@ -87,7 +87,8 @@ local default_config = {
       pylsp = {
         plugins = {
           black = { enabled = true, line_length = 120 },
-          pyflakes = { enabled = true }
+          pyflakes = { enabled = true },
+          rope_autoimport = { enabled = true },
         }
       }
     }
