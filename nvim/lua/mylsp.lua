@@ -204,7 +204,7 @@ local default_config = {
   },
   emmet_ls = {
     on_attach = on_attach(),
-    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex' },
+    filetypes = { 'html', 'typescriptreact', 'javascriptreact', 'css', 'sass', 'scss', 'less', 'heex', 'htmldjango' },
   },
   terraformls = {
     on_attach = on_attach(),
