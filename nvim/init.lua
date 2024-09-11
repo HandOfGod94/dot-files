@@ -125,8 +125,8 @@ require('packer').startup(function()
   use 'folke/tokyonight.nvim'
   use 'navarasu/onedark.nvim'
   use { "catppuccin/nvim", as = "catppuccin" }
-  use 'luisiacc/gruvbox-baby'
   use "rebelot/kanagawa.nvim"
+  use 'sainnhe/gruvbox-material'
 end)
 
 -- editor config
@@ -157,13 +157,7 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
--- vim.cmd.colorscheme "tokyonight-night"
--- vim.cmd.colorscheme "catppuccin"
-vim.g.gruvbox_baby_telescope_theme = 1
-vim.g.gruvbox_baby_background_color = "dark"
-vim.cmd.colorscheme "gruvbox-baby"
--- require('kanagawa').setup({})
--- vim.cmd.colorscheme "kanagawa-wave"
+vim.cmd.colorscheme('gruvbox-material')
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'

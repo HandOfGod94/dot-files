@@ -32,8 +32,8 @@ M.setup = function()
       lualine_y = {},
     },
     options = {
-      theme = 'gruvbox-baby',
-      -- theme = 'catppuccin',
+      -- theme = 'gruvbox-baby',
+      theme = 'gruvbox-material',
       -- theme = 'tokyonight',
     }
   })
