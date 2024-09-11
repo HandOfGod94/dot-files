@@ -19,6 +19,7 @@ function OrgImports(wait_ms)
 end
 
 require('dap-python').setup('python')
+require('dap-python').test_runner = "pytest"
 require('dap-go').setup()
 vim.fn.sign_define('DapBreakpoint', { text = '🔴', texthl = '', linehl = '', numhl = '' })
 vim.fn.sign_define('DapBreakpointCondition', { text = '🟡', texthl = '', linehl = '', numhl = '' })
