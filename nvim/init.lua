@@ -157,7 +157,7 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
-vim.cmd.colorscheme('gruvbox-material')
+vim.cmd.colorscheme('catppuccin')
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'

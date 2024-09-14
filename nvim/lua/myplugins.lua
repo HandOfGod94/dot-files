@@ -33,7 +33,7 @@ M.setup = function()
     },
     options = {
       -- theme = 'gruvbox-baby',
-      theme = 'gruvbox-material',
+      theme = 'catppuccin',
       -- theme = 'tokyonight',
     }
   })
