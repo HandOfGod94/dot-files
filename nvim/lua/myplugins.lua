@@ -76,6 +76,7 @@ M.setup = function()
       "graphql", "hcl", "terraform", "dart", "reason" },
     highlight = {
       enable = true,
+      additional_vim_regex_highlighting = false
     },
     endwise = { enable = true }
   })
@@ -120,7 +121,7 @@ M.setup = function()
   require('other-nvim').setup({
     rememberBuffers = false,
     mappings = {
-     {
+      {
         pattern = "test/(.*)_test.dart",
         target = "lib/%1.dart",
         context = "source"

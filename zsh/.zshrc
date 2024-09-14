@@ -96,6 +96,8 @@ source $ZSH/oh-my-zsh.sh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
+export XDG_CONFIG_HOME=$HOME/.config
+
 alias zshconfig="nvim $ZDOTDIR/.zshrc"
 alias ohmyzsh="nvim $ZDOTDIR/.oh-my-zsh"
 

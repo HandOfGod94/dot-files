@@ -157,7 +157,10 @@ vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
 vim.opt.breakindent = true
-vim.cmd.colorscheme('catppuccin')
+
+--- check the default envs catppuccin flavor
+local flavor = os.getenv('CATPPUCCIN_FLAVOR') or "latte"
+vim.cmd.colorscheme('catppuccin-' .. flavor)
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
