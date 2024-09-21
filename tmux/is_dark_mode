@@ -1,8 +1,11 @@
 #!/usr/bin/env zsh
 
-result=$(osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
+is_dak_mode() {
+    result=$(osascript -e 'tell application "System Events" to tell appearance preferences to get dark mode')
+    [[ $result == "true" ]]
+}
 
-if [[ result == "true" ]]; then
+if is_dak_mode; then
     sed -i -e 's/catppuccin_latte.toml/catppuccin_mocha.toml/g' ~/.config/alacritty.toml
     tmux setenv CATPPUCCIN_FLAVOR 'mocha'
     tmux set-option -g @catppuccin_flavor 'mocha'
