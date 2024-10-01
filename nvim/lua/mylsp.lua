@@ -100,7 +100,7 @@ local default_config = {
     root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
   },
   tsserver = {
-    on_attach = on_attach({ inlay_hint = true }),
+    on_attach = on_attach({ inlay_hint = false }),
     capabilities = default_capabilities,
     root_dir = require('lspconfig.util').root_pattern("tsconfig.json", "package.json"),
     single_file_support = false,

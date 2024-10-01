@@ -138,6 +138,7 @@ export PATH="$PATH:/Users/gahan/.local/bin"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 alias k=kubectl
+alias gitui='gitui -t catppuccin-$CATPPUCCIN_FLAVOR.ron'
 
 srf() {
 rg --color=always --line-number --no-heading --smart-case "${*:-}" |
