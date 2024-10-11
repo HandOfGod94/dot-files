@@ -201,7 +201,8 @@ local default_config = {
   },
   html = {
     on_attach = on_attach(),
-    capabilities = default_capabilities
+    capabilities = default_capabilities,
+    filetypes = { "html", "htmldjango" }
   },
   emmet_ls = {
     on_attach = on_attach(),
