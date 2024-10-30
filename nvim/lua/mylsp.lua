@@ -103,7 +103,7 @@ local default_config = {
     on_attach = on_attach({ inlay_hint = false }),
     capabilities = default_capabilities,
     root_dir = require('lspconfig.util').root_pattern("tsconfig.json", "package.json"),
-    single_file_support = false,
+    single_file_support = true,
     commands = {
       OrganizeImports = {
         function()
