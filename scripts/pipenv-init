@@ -1,4 +1,4 @@
 #!/usr/bin/env zsh
 
 pipenv --python 3.10
-pipenv install --dev debugpy black isort pyflakes python-lsp-server python-lsp-black python-lsp-isort pytest "python-lsp-server[rope]"
+pipenv install --dev debugpy black isort pyflakes python-lsp-server python-lsp-black python-lsp-isort pytest "python-lsp-server[rope]" ipython ipdb
