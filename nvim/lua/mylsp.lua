@@ -51,7 +51,7 @@ local on_attach = function(opts)
 
   return function(client, bufnr)
     local wk = require('which-key')
-    wk.register(require('mykeybindings').lspkeys)
+    wk.add(require('mykeybindings').lspkeys)
 
     if opts.inlay_hint and opts.inlay_hint == true then
       vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
