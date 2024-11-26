@@ -99,7 +99,7 @@ local default_config = {
     capabilities = default_capabilities,
     root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
   },
-  tsserver = {
+  ts_ls = {
     on_attach = on_attach({ inlay_hint = false }),
     capabilities = default_capabilities,
     root_dir = require('lspconfig.util').root_pattern("tsconfig.json", "package.json"),
@@ -155,29 +155,6 @@ local default_config = {
   rust_analyzer = {
     on_attach = on_attach({ inlay_hint = true }),
     capabilities = default_capabilities
-  },
-  volar = {
-    on_attach = on_attach(),
-    capabilities = default_capabilities,
-    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
-    init_options = {
-      vue = {
-        hybridMode = false,
-      },
-      typescript = {
-        tsdk = home .. "/.config/nvm/versions/node/v20.14.0/lib/node_modules/typescript/lib", -- TODO: get current node version intstead of hardcoding
-        preferences = {
-          includeInlayParameterNameHints = 'all',
-          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-          includeInlayFunctionParameterTypeHints = true,
-          includeInlayVariableTypeHints = true,
-          includeInlayPropertyDeclarationTypeHints = true,
-          includeInlayFunctionLikeReturnTypeHints = true,
-          includeInlayEnumMemberValueHints = true,
-          importModuleSpecifierPreference = 'relative',
-        },
-      },
-    }
   },
   svelte = {
     on_attach = on_attach(),
