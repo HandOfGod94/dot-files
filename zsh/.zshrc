@@ -70,7 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z fast-syntax-highlighting zsh-autosuggestions fzf rbenv dotenv)
+plugins=(git z fast-syntax-highlighting zsh-autosuggestions fzf)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -98,17 +98,12 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 export XDG_CONFIG_HOME=$HOME/.config
 
-alias zshconfig="nvim $ZDOTDIR/.zshrc"
-alias ohmyzsh="nvim $ZDOTDIR/.oh-my-zsh"
+alias zshconfig="code $ZDOTDIR/.zshrc"
+alias ohmyzsh="code $ZDOTDIR/.oh-my-zsh"
 
 ulimit -n 10240
 
-alias gpp='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa" git push'
-alias gpw='GIT_SSH_COMMAND="ssh -i ~/.ssh/jiva_rsa" git push'
-
-alias gfp='GIT_SSH_COMMAND="ssh -i ~/.ssh/id_rsa" git pull -r'
-alias gfw='GIT_SSH_COMMAND="ssh -i ~/.ssh/jiva_rsa" git pull -r'
-eval "$($(brew --prefix rbenv)/bin/rbenv init - zsh)"
+eval "$(rbenv init - zsh)"
 eval "$(pyenv init -)"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 
@@ -117,7 +112,6 @@ export PATH="/opt/homebrew/Cellar/universal-ctags/p6.0.20230730.0/bin:$PATH"
 
 source "$HOME/.sdkman/bin/sdkman-init.sh"
 
-eval "$(rbenv init - zsh)"
 
 [[ ! -r "$HOME/.opam/opam-init/init.zsh" ]] || source "$HOME/.opam/opam-init/init.zsh" > /dev/null 2> /dev/null
 eval "$(opam env)"
@@ -138,7 +132,6 @@ export PATH="$PATH:/Users/gahan/.local/bin"
 
 export HOMEBREW_NO_AUTO_UPDATE=1
 alias k=kubectl
-alias gitui='gitui -t catppuccin-$CATPPUCCIN_FLAVOR.ron'
 
 srf() {
 rg --color=always --line-number --no-heading --smart-case "${*:-}" |
@@ -147,7 +140,7 @@ rg --color=always --line-number --no-heading --smart-case "${*:-}" |
       --delimiter : \
       --preview 'bat --color=always {1} --highlight-line {2}' \
       --preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-      --bind 'enter:become(nvim {1} +{2})'
+      --bind 'enter:become(code {1} +{2})'
 }
 
 export PYTHONBREAKPOINT="ipdb.set_trace"
@@ -159,8 +152,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin/flutter/bin:$PATH"
 export DENO_INSTALL="/Users/gahan/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-export GIT_EDITOR=nvim
-export EDITOR=nvim
+export GIT_EDITOR=code
+export EDITOR=code
 export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 export PATH="/opt/homebrew/opt/mariadb@10.11/bin:$PATH"
 

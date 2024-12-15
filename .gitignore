@@ -30,3 +30,5 @@ tags
 tool_state
 op
 *.toml-e
+*.yaml-e
+*.yml-e

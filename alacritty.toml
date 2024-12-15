@@ -46,7 +46,7 @@ history = 10000
 multiplier = 3
 
 [terminal.shell]
-args = ["-l", "-c", "~/bin/zellij"]
+args = ["-l", "-c", "tmux -u -f \"$XDG_CONFIG_HOME/tmux/tmux.conf\" attach || tmux -u -f \"$XDG_CONFIG_HOME/tmux/tmux.conf\""]
 program = "/bin/zsh"
 
 [window]
