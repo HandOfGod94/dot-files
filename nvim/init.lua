@@ -102,8 +102,6 @@ require('packer').startup(function()
   use 'janet-lang/janet.vim'
   use 'imsnif/kdl.vim'
   use 'jlcrochet/vim-rbs'
-  use 'github/copilot.vim'
-  use 'CopilotC-Nvim/CopilotChat.nvim'
   use 'andythigpen/nvim-coverage'
   use 'sindrets/diffview.nvim'
   use 'pwntester/octo.nvim'

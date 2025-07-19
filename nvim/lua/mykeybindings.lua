@@ -25,12 +25,6 @@ M.setup = function()
       s    = { "<cmd>PackerStatus<cr>", "Status" },
       c    = { "<cmd>PackerClean<cr>", "Clean plugins" }
     },
-    ["<SPACE>c"]  = {
-      name = "+Copilot",
-      e = { "<cmd> Copilot enable<cr>", "Enable Copilot" },
-      d = { "<cmd> Copilot disable<cr>", "Disable Copilot" },
-      c = { "<cmd> CopilotChatToggle<cr>", "Toggle copilot chat" }
-    },
     ["<SPACE>?"]  = {
       "<cmd>lua require('telescope-live-grep-args.shortcuts').grep_word_under_cursor()<cr>",
       "search current word in all files",
