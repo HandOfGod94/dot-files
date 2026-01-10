@@ -1,6 +1,10 @@
 local M = {}
 
 M.setup = function()
+  require("avante").setup({
+    instructions_file = "claude.md",
+    provider = "claude-code",
+  })
   require("glance").setup({})
   require("coverage").setup()
   require("octo").setup()

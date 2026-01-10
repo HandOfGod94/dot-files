@@ -125,6 +125,13 @@ require('packer').startup(function()
   use { "catppuccin/nvim", as = "catppuccin" }
   use "rebelot/kanagawa.nvim"
   use 'sainnhe/gruvbox-material'
+
+  -- AI
+  use 'MeanderingProgrammer/render-markdown.nvim'
+  use 'HakonHarnes/img-clip.nvim'
+  use 'MunifTanjim/nui.nvim'
+  use 'folke/snacks.nvim'
+  use 'yetone/avante.nvim'
 end)
 
 -- editor config

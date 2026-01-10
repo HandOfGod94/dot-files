@@ -94,10 +94,10 @@ M.setup = function()
     { "<SPACE>Gpr", "<cmd>Octo pr ready<CR>", desc = "Mark a draft PR as ready for review" },
 
     -- Alternate files
-    { "<SPACE>a", group = "Alternate files" },
-    { "<SPACE>at", "<cmd>Other<cr>", desc = "Toggle between related files" },
-    { "<SPACE>av", "<cmd>OtherVSplit<cr>", desc = "Vertical split related file" },
-    { "<SPACE>ah", "<cmd>OtherSplit<cr>", desc = "Horizontal split related file" },
+    { "<SPACE>A", group = "Alternate files" },
+    { "<SPACE>At", "<cmd>Other<cr>", desc = "Toggle between related files" },
+    { "<SPACE>Av", "<cmd>OtherVSplit<cr>", desc = "Vertical split related file" },
+    { "<SPACE>Ah", "<cmd>OtherSplit<cr>", desc = "Horizontal split related file" },
 
     -- Language (placeholder group)
     { "<SPACE>l", group = "Language" },
