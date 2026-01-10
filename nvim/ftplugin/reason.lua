@@ -1,7 +1,4 @@
 local wk = require("which-key")
-wk.register({
-  ["<SPACE>l"] = {
-    name = "+Language",
-    b = { "<cmd>Dispatch! dune build<cr>", "build current project"},
-  },
+wk.add({
+  { "<SPACE>lb", "<cmd>Dispatch! dune build<cr>", desc = "build current project" },
 })

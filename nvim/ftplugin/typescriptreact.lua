@@ -1,10 +1,5 @@
-local lspkeys = require("mykeybindings").lspkeys
-lspkeys = vim.tbl_deep_extend("keep", lspkeys, {
-  ["<SPACE>j"] = {
-    name = "+Format",
-    o = {"<cmd>OrganizeImports<cr>", "Organize imports"}
-  },
+local wk = require("which-key")
+wk.add(require("mykeybindings").lspkeys)
+wk.add({
+  { "<SPACE>jo", "<cmd>OrganizeImports<cr>", desc = "Organize imports" },
 })
-
-
-require("which-key").register(lspkeys)

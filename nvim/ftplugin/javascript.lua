@@ -1,8 +1,5 @@
 local wk = require("which-key")
-wk.register({
-  ["<SPACE>j"] = {
-    name = "+Format",
-    ["="] = {"<cmd>Dispatch! npx prettier --write %<cr>", "Format current file (prettier)"}
-  },
+wk.add({
+  { "<SPACE>j=", "<cmd>Dispatch! npx prettier --write %<cr>", desc = "Format current file (prettier)" },
 })
 

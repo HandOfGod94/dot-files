@@ -4,6 +4,6 @@ local function target_filename()
 end
 
 local wk = require("which-key")
-wk.register({
-  ["<SPACE>j="] = { "<cmd>Dispatch! janet ./jpm_tree/bin/janet-format -f %<CR>", "Format document" }
+wk.add({
+  { "<SPACE>j=", "<cmd>Dispatch! janet ./jpm_tree/bin/janet-format -f %<CR>", desc = "Format document" }
 })

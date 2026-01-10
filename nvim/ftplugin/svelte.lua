@@ -1,8 +1,5 @@
 local wk = require("which-key")
-wk.register({
-  ["<SPACE>j"] = {
-    name = "+Format",
-    ["="] = {"<cmd>Dispatch! npm run --prefix frontend format<cr>", "Format current file (prettier)"}
-  },
+wk.add({
+  { "<SPACE>j=", "<cmd>Dispatch! npm run --prefix frontend format<cr>", desc = "Format current file (prettier)" },
 })
 

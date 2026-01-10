@@ -1,5 +1,3 @@
-local lspkeys = require("mykeybindings").lspkeys
-
 -- add django config
 local dap = require('dap')
 table.insert(dap.configurations.python, {
@@ -12,18 +10,10 @@ table.insert(dap.configurations.python, {
   justMyCode = true
 })
 
-lspkeys = vim.tbl_deep_extend("keep", lspkeys, {
-  ["<SPACE>l"] = {
-    d = {
-      T = { "<cmd>lua require('dap-python').test_class()<cr>", "debug current test class" },
-      t = { "<cmd>lua require('dap-python').test_method()<cr>", "debug current test method" },
-      d = {
-      "<cmd>lua require'dap'.configurations.python[1].request = 'launch'; require'dap'.continue()<cr>",
-      "Launch Django debug"
-    },
-    }
-  }
-})
-
 local wk = require('which-key')
-wk.register(lspkeys)
+wk.add(require("mykeybindings").lspkeys)
+wk.add({
+  { "<SPACE>ldT", "<cmd>lua require('dap-python').test_class()<cr>", desc = "debug current test class" },
+  { "<SPACE>ldt", "<cmd>lua require('dap-python').test_method()<cr>", desc = "debug current test method" },
+  { "<SPACE>ldd", "<cmd>lua require'dap'.configurations.python[1].request = 'launch'; require'dap'.continue()<cr>", desc = "Launch Django debug" },
+})

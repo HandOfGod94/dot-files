@@ -4,13 +4,9 @@ local function target_filename()
 end
 
 local wk = require("which-key")
-wk.register({
-  ["<SPACE>l"] = {
-    name = "+Language",
-    c = { "<cmd>Dispatch fennel --compile " .. vim.api.nvim_buf_get_name(0) .. " > " .. target_filename() .. "<cr>",
-      "compile current file" },
-    b = { "<cmd>Dispatch make<cr>", "build current project"},
-    p = { "<cmd>Dispatch make install<cr>", "install current project"},
-  },
-  ["<SPACE>j="] = { "<cmd>Dispatch! fnlfmt --fix %<CR>", "Format document" }
+wk.add({
+  { "<SPACE>lc", "<cmd>Dispatch fennel --compile " .. vim.api.nvim_buf_get_name(0) .. " > " .. target_filename() .. "<cr>", desc = "compile current file" },
+  { "<SPACE>lb", "<cmd>Dispatch make<cr>", desc = "build current project" },
+  { "<SPACE>lp", "<cmd>Dispatch make install<cr>", desc = "install current project" },
+  { "<SPACE>j=", "<cmd>Dispatch! fnlfmt --fix %<CR>", desc = "Format document" }
 })

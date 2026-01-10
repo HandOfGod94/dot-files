@@ -6,18 +6,12 @@ local workspace_dir = home .. '/.config/nvim/java/workspace/' .. project_name
 local on_attach = function(client, _)
   require('jdtls').setup_dap({ hotcodereplace = 'auto' })
   require('jdtls.setup').add_commands()
-  local lspkeys = require("mykeybindings").lspkeys
-  lspkeys = vim.tbl_deep_extend("keep", lspkeys, {
-    ["<SPACE>l"] = {
-      d = {
-        T = { "<cmd>lua require('jdtls').test_class()<cr>", "debug junit class" },
-        t = { "<cmd>lua require('jdtls').test_nearest_method()<cr>", "debug junit test" }
-      }
-    }
-  })
-
   local wk = require('which-key')
-  wk.register(lspkeys)
+  wk.add(require("mykeybindings").lspkeys)
+  wk.add({
+    { "<SPACE>ldT", "<cmd>lua require('jdtls').test_class()<cr>", desc = "debug junit class" },
+    { "<SPACE>ldt", "<cmd>lua require('jdtls').test_nearest_method()<cr>", desc = "debug junit test" },
+  })
 end
 
 

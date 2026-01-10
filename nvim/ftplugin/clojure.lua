@@ -1,12 +1,6 @@
 local wk = require("which-key")
-wk.register({
-  ["<SPACE>r"] = {
-    name = "+Run",
-    l = {"<cmd>VimuxPromptCommand('lein run ')<CR>", "lein run anything.."}
-  },
-  ["<SPACE>l"] = {
-    name = "+Language",
-    t = { "<cmd>CcaNreplRunCurrentTest<cr>", "Run current test" },
-    T = { "<cmd>CcaNreplRunTestsInTestNs<cr>", "Run test in namespace" },
-  },
+wk.add({
+  { "<SPACE>rl", "<cmd>VimuxPromptCommand('lein run ')<CR>", desc = "lein run anything.." },
+  { "<SPACE>lt", "<cmd>CcaNreplRunCurrentTest<cr>", desc = "Run current test" },
+  { "<SPACE>lT", "<cmd>CcaNreplRunTestsInTestNs<cr>", desc = "Run test in namespace" },
 })
