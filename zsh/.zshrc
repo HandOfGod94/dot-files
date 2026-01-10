@@ -100,6 +100,7 @@ export XDG_CONFIG_HOME=$HOME/.config
 
 alias zshconfig="code $ZDOTDIR/.zshrc"
 alias ohmyzsh="code $ZDOTDIR/.oh-my-zsh"
+alias gitui="gitui -t catppuccin-$CATPPUCCIN_FLAVOR.ron"
 
 ulimit -n 10240
 
@@ -152,8 +153,8 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin/flutter/bin:$PATH"
 export DENO_INSTALL="/Users/gahan/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-export GIT_EDITOR=code
-export EDITOR=code
+export GIT_EDITOR=nvim
+export EDITOR=nvim
 export KUBECTL_EXTERNAL_DIFF="colordiff -N -u"
 export PATH="/opt/homebrew/opt/mariadb@10.11/bin:$PATH"
 
@@ -161,3 +162,16 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+export GDAL_LIBRARY_PATH="/opt/homebrew/opt/gdal/lib/libgdal.dylib"
+. ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
+export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+export DYLD_LIBRARY_PATH=/opt/homebrew/opt/geos/lib/
+
+# pnpm
+export PNPM_HOME="/Users/gahanrakholia/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

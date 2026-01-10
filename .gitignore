@@ -32,3 +32,5 @@ op
 *.toml-e
 *.yaml-e
 *.yml-e
+/cursor/chats/
+.nuxtrc

@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Shell(ls)",
+      "Write(/Users/gahanrakholia/workspace/supabasespace/jobtrackr-web/.github/workflows/playwright.yml)",
+      "Shell(cd)",
+      "Shell(npx tsc)",
+      "Shell(npm run)"
+    ],
+    "deny": []
+  },
+  "version": 1,
+  "editor": {
+    "vimMode": false
+  },
+  "model": {
+    "modelId": "claude-4.5-sonnet-thinking",
+    "displayModelId": "sonnet-4.5-thinking",
+    "displayName": "Claude 4.5 Sonnet (Thinking)",
+    "displayNameShort": "Sonnet 4.5 (Thinking)",
+    "aliases": [
+      "sonnet-4.5-thinking"
+    ]
+  },
+  "hasChangedDefaultModel": true,
+  "privacyCache": {
+    "ghostMode": true,
+    "privacyMode": 2,
+    "updatedAt": 1762223716054
+  },
+  "network": {
+    "useHttp1ForAgent": false
+  }
+}
