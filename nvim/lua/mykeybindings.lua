@@ -93,6 +93,14 @@ M.setup = function()
     { "<SPACE>Gpc", "<cmd>Octo pr checkout<CR>", desc = "Checkout PR" },
     { "<SPACE>Gpr", "<cmd>Octo pr ready<CR>", desc = "Mark a draft PR as ready for review" },
 
+    -- AI
+    {"<SPACE>a", group = "AI Avante"},
+    {"<SPACE>at", "<cmd>AvanteAsk<CR>", desc = "Avante ask"},
+    {"<SPACE>at", "<cmd>AvanteToggle<CR>", desc = "Toggle AI chat"},
+    {"<SPACE>at", "<cmd>AvanteToggle<CR>", desc = "Toggle AI chat"},
+    {"<SPACE>ac", "<cmd>AvanteClear<CR>", desc = "Clear current chat"},
+    {"<SPACE>an", "<cmd>AvanteChatNew<CR>", desc = "Start new chat"},
+
     -- Alternate files
     { "<SPACE>A", group = "Alternate files" },
     { "<SPACE>At", "<cmd>Other<cr>", desc = "Toggle between related files" },
