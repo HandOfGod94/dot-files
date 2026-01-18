@@ -118,6 +118,13 @@ M.setup = function()
     { "<SPACE>rtt", "<cmd>TestNearest<cr>", desc = "run current test" },
     { "<SPACE>rtl", "<cmd>TestLast<cr>", desc = "rerun latest test" },
     { "<SPACE>rtv", "<cmd>TestVisit<cr>", desc = "visit last run test" },
+
+    -- Yank/Copy for Claude
+    { "<SPACE>y", group = "Yank" },
+    { "<SPACE>yf", "<cmd>lua require('myclipboard').copy_filepath()<cr>", desc = "Copy filepath" },
+    { "<SPACE>yl", "<cmd>lua require('myclipboard').copy_filepath_with_line()<cr>", desc = "Copy filepath:line" },
+    { "<SPACE>yr", "<cmd>lua require('myclipboard').copy_filepath_with_lines()<cr>", desc = "Copy filepath:lines", mode = "v" },
+    { "<SPACE>yd", "<cmd>lua require('myclipboard').copy_file_diff()<cr>", desc = "Copy git diff" },
   })
 end
 

@@ -4,6 +4,11 @@ M.setup = function()
   require("avante").setup({
     instructions_file = "claude.md",
     provider = "claude-code",
+    acp_providers = {
+      ["claude-code"] = {
+        args = {"--model", "opus"}
+      }
+    }
   })
   require("glance").setup({})
   require("coverage").setup()
