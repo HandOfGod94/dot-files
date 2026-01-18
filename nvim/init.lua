@@ -131,7 +131,6 @@ require('packer').startup(function()
   use 'HakonHarnes/img-clip.nvim'
   use 'MunifTanjim/nui.nvim'
   use 'folke/snacks.nvim'
-  use 'yetone/avante.nvim'
 end)
 
 -- editor config
