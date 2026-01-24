@@ -39,8 +39,11 @@ end
 
 M.copy_filepath_with_lines = function()
   local filepath = get_relative_path()
-  local start_line = vim.fn.line("'<")
-  local end_line = vim.fn.line("'>")
+  local start_line = vim.fn.line("v")
+  local end_line = vim.fn.line(".")
+  if start_line > end_line then
+    start_line, end_line = end_line, start_line
+  end
   local ref = start_line == end_line
     and (filepath .. ":" .. start_line)
     or (filepath .. ":" .. start_line .. "-" .. end_line)
