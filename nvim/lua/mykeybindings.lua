@@ -153,7 +153,7 @@ M.lspkeys = {
   { "<SPACE>l", group = "Language" },
   { "<SPACE>ll", "<cmd>filetype detect<cr>", desc = "reload language-lsp config" },
   { "<SPACE>lh", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })<cr>", desc = "Toggle inlay hints" },
-  { "<SPACE>li", "<Cmd>lua vim.lsp.buf.hover()<CR>", desc = "Hover info" },
+  { "<SPACE>li", "<Cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<CR>", desc = "Hover info" },
   { "<SPACE>lI", "<cmd>Dash<CR>", desc = "View dash docs" },
   { "<SPACE>le", "<Cmd>ToggleDiag<CR>", desc = "Toggle diagnostics" },
   { "<SPACE>lE", "<Cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "Toggle diagnostics list" },

@@ -204,11 +204,6 @@ local default_config = {
 }
 
 function M.setup(options)
-  -- Change border of documentation hover window, See https://github.com/neovim/neovim/pull/13998.
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
-
   options = options or {}
   local lsp_options = vim.tbl_deep_extend("force", default_config, options)
   for language, setup_values in pairs(lsp_options) do
