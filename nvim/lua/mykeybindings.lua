@@ -155,7 +155,7 @@ M.lspkeys = {
   { "<SPACE>lh", "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = 0 }), { bufnr = 0 })<cr>", desc = "Toggle inlay hints" },
   { "<SPACE>li", "<Cmd>lua vim.lsp.buf.hover({ border = 'rounded' })<CR>", desc = "Hover info" },
   { "<SPACE>lI", "<cmd>Dash<CR>", desc = "View dash docs" },
-  { "<SPACE>le", "<Cmd>ToggleDiag<CR>", desc = "Toggle diagnostics" },
+  { "<SPACE>le", "<Cmd>lua vim.diagnostic.enable(not vim.diagnostic.is_enabled())<CR>", desc = "Toggle diagnostics" },
   { "<SPACE>lE", "<Cmd>lua require('telescope.builtin').diagnostics()<CR>", desc = "Toggle diagnostics list" },
   { "<SPACE>ls", "<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", desc = "Lists all the symbols in current buffer" },
   { "<SPACE>lS", "<Cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols()<CR>", desc = "Lists all the symbols in workspace" },

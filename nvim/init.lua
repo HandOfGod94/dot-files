@@ -74,7 +74,6 @@ require('packer').startup(function()
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
   })
-  use 'WhoIsSethDaniel/toggle-lsp-diagnostics.nvim'
   use 'j-hui/fidget.nvim'
   use { 'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons' }
   use 'rgroli/other.nvim'

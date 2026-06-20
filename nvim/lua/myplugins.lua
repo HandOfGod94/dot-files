@@ -89,11 +89,6 @@ M.setup = function()
     }
   })
   require("telescope").load_extension("live_grep_args")
-  require('toggle_lsp_diagnostics').init({
-    underline = true,
-    virtual_lines = false,
-    virtual_text = false
-  })
   require("telescope").load_extension("ui-select")
   require('telescope').load_extension('ctags_plus')
   require("lightspeed").setup({})
