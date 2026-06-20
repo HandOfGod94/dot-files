@@ -1,0 +1,9 @@
+font-family = "IosevkaTermSlab Nerd Font"
+font-size = 16
+adjust-cell-height = 6
+command = /bin/zsh -l -c "tmux -u -f \"$HOME/.config/tmux/tmux.conf\" attach || tmux -u -f \"$HOME/.config/tmux/tmux.conf\""
+macos-option-as-alt = true
+keybind = opt+left=text:\x1b[1;3D
+keybind = opt+right=text:\x1b[1;3C
+keybind = ctrl+space=unbind
+theme = dark:Catppuccin Frappe,light:Catppuccin Latte

@@ -1,3 +1,6 @@
+# Add near the top of .zshrc
+  [[ $- != *i* ]] && return  # exit early if non-interactive
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -165,13 +168,15 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export GDAL_LIBRARY_PATH="/opt/homebrew/opt/gdal/lib/libgdal.dylib"
 . ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export DYLD_LIBRARY_PATH=/opt/homebrew/opt/geos/lib/
+
 
 # pnpm
 export PNPM_HOME="/Users/gahanrakholia/Library/pnpm"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
 esac
 # pnpm end

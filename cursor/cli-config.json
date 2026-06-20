@@ -5,7 +5,126 @@
       "Write(/Users/gahanrakholia/workspace/supabasespace/jobtrackr-web/.github/workflows/playwright.yml)",
       "Shell(cd)",
       "Shell(npx tsc)",
-      "Shell(npm run)"
+      "Shell(npm run)",
+      "Shell(git diff)",
+      "Shell(head)",
+      "Shell(npm test)",
+      "WebFetch(platform.claude.com)",
+      "WebFetch(upstash.com)",
+      "WebFetch(www.postgresql.org)",
+      "WebFetch(docs.mistral.ai)",
+      "Shell(npx drizzle-kit)",
+      "Shell(npx vitest)",
+      "Shell(cat)",
+      "Shell(grep)",
+      "Shell(pnpm dlx)",
+      "Shell(npx shadcn@latest)",
+      "Mcp(shadcn:view_items_in_registries)",
+      "WebFetch(ui.shadcn.com)",
+      "Shell(npx biome)",
+      "Shell(test)",
+      "Shell(echo)",
+      "Shell(mkdir)",
+      "Mcp(shadcn:get_add_command_for_items)",
+      "WebFetch(www.better-auth.com)",
+      "Shell(tail)",
+      "WebFetch(stackoverflow.com)",
+      "WebFetch(cloud.google.com)",
+      "WebFetch(hono.dev)",
+      "Shell(cp)",
+      "Shell(mv)",
+      "WebFetch(api.docs.bullmq.io)",
+      "Shell(wc)",
+      "Shell(curl)",
+      "Shell(rg)",
+      "Shell(sort)",
+      "Shell(npm install)",
+      "Shell(node)",
+      "Shell(find)",
+      "Shell(npx prettier)",
+      "Shell(sed)",
+      "WebFetch(betterstack.com)",
+      "Shell(npm uninstall)",
+      "Shell(git status)",
+      "Shell(git branch)",
+      "Shell(git log)",
+      "Shell(git show)",
+      "WebFetch(better-auth.com)",
+      "WebFetch(github.com)",
+      "WebFetch(fastapi.tiangolo.com)",
+      "WebFetch(retroui.dev)",
+      "WebFetch(nextjs.org)",
+      "WebFetch(raw.githubusercontent.com)",
+      "Mcp(shadcn:get_item_examples_from_registries)",
+      "Shell(xargs)",
+      "Shell(npm show)",
+      "WebFetch(pglite.dev)",
+      "WebFetch(better-fetch.vercel.app)",
+      "WebFetch(developers.google.com)",
+      "WebFetch(zod.dev)",
+      "WebFetch(vitest.dev)",
+      "Mcp(shadcn:get_project_registries)",
+      "Mcp(shadcn:list_items_in_registries)",
+      "Shell(true)",
+      "WebFetch(developer.mozilla.org)",
+      "WebFetch(react.dev)",
+      "Mcp(next-devtools:upgrade_nextjs_16)",
+      "WebFetch(code.claude.com)",
+      "Shell(npx tsx)",
+      "WebFetch(swr.vercel.app)",
+      "WebFetch(zk-org.github.io)",
+      "Write(/Users/gahanrakholia/workspace/knowledge-base/projects/pick-a-book/features/wheel-tbr-import/tasks.md)",
+      "Shell(npm ls)",
+      "Shell(file)",
+      "Shell(zk)",
+      "Shell(graphify)",
+      "WebFetch(developers.cloudflare.com)",
+      "Shell(git rev-parse)",
+      "Shell(date)",
+      "Shell(tr)",
+      "Shell(printf)",
+      "Shell(set)",
+      "Shell(git remote)",
+      "Mcp(github:issue_read)",
+      "Mcp(github:search_pull_requests)",
+      "Shell(pnpm install)",
+      "Shell(corepack)",
+      "Shell(pnpm run)",
+      "Shell(pnpm --version)",
+      "WebFetch(orm.drizzle.team)",
+      "Shell(pnpm exec)",
+      "Shell(pnpm test)",
+      "Shell(pnpm --filter)",
+      "WebFetch(www.nativewind.dev)",
+      "WebFetch(docs.uniwind.dev)",
+      "Mcp(dart:analyze_files)",
+      "Mcp(dart:roots)",
+      "Mcp(dart:pub)",
+      "WebFetch(docs.expo.dev)",
+      "Shell(pnpm add)",
+      "Mcp(github:pull_request_read)",
+      "Mcp(dart:read_package_uris)",
+      "Shell(flutter)",
+      "Mcp(dart:pub_dev_search)",
+      "WebFetch(pub.dev)",
+      "Mcp(dart:rip_grep_packages)",
+      "Shell(dart)",
+      "Mcp(github:search_issues)",
+      "Shell(gh)",
+      "WebFetch(www.shadcn.io)",
+      "Mcp(github:search_code)",
+      "Mcp(github:get_file_contents)",
+      "Mcp(github:search_repositories)",
+      "Shell(pnpm list)",
+      "WebFetch(forui.dev)",
+      "Mcp(heroui-native:get_component_docs)",
+      "Mcp(heroui-native:get_theme_variables)",
+      "Shell(pnpm typecheck)",
+      "Shell(pnpm lint)",
+      "WebFetch(heroui.com)",
+      "Shell(pnpm expo)",
+      "Shell(./node_modules/.bin/drizzle-kit)",
+      "Shell(pnpm create)"
     ],
     "deny": []
   },
@@ -13,22 +132,172 @@
   "editor": {
     "vimMode": false
   },
+  "display": {
+    "showLineNumbers": false,
+    "showThinkingBlocks": false,
+    "showStatusIndicators": false,
+    "showStatusLineRunningTime": false
+  },
+  "notifications": true,
+  "hints": true,
+  "rewind": false,
+  "suggestNextPrompt": false,
   "model": {
-    "modelId": "claude-4.5-sonnet-thinking",
-    "displayModelId": "sonnet-4.5-thinking",
-    "displayName": "Claude 4.5 Sonnet (Thinking)",
-    "displayNameShort": "Sonnet 4.5 (Thinking)",
-    "aliases": [
-      "sonnet-4.5-thinking"
-    ]
+    "modelId": "composer-2.5",
+    "displayModelId": "composer-2.5",
+    "displayName": "Composer 2.5",
+    "displayNameShort": "Composer 2.5",
+    "aliases": [],
+    "maxMode": false
   },
   "hasChangedDefaultModel": true,
+  "maxMode": false,
+  "modelParameters": {
+    "composer-1.5": [],
+    "claude-4.6-sonnet-medium-thinking": [],
+    "claude-4.6-sonnet-medium": [],
+    "composer-2": [
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ],
+    "claude-4.5-sonnet-thinking": [],
+    "gemini-3.1-pro": [],
+    "composer-2-fast": [],
+    "default": [],
+    "claude-4.6-opus-high": [],
+    "claude-4.6-opus-high-thinking": [],
+    "claude-opus-4-7-thinking-high": [],
+    "claude-4.5-opus-high-thinking": [],
+    "claude-opus-4-7-high": [],
+    "claude-sonnet-4-6": [
+      {
+        "id": "thinking",
+        "value": "true"
+      },
+      {
+        "id": "context",
+        "value": "200k"
+      },
+      {
+        "id": "effort",
+        "value": "medium"
+      }
+    ],
+    "claude-opus-4-6": [
+      {
+        "id": "thinking",
+        "value": "true"
+      },
+      {
+        "id": "context",
+        "value": "200k"
+      },
+      {
+        "id": "effort",
+        "value": "high"
+      },
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ],
+    "claude-opus-4-5": [
+      {
+        "id": "thinking",
+        "value": "true"
+      }
+    ],
+    "claude-4.5-sonnet": [],
+    "claude-sonnet-4-5": [
+      {
+        "id": "thinking",
+        "value": "true"
+      },
+      {
+        "id": "context",
+        "value": "200k"
+      }
+    ],
+    "gpt-5.3-codex": [
+      {
+        "id": "reasoning",
+        "value": "medium"
+      },
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ],
+    "composer-2.5": [
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ],
+    "claude-opus-4-8": [
+      {
+        "id": "thinking",
+        "value": "true"
+      },
+      {
+        "id": "context",
+        "value": "300k"
+      },
+      {
+        "id": "effort",
+        "value": "high"
+      },
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ]
+  },
+  "selectedModel": {
+    "modelId": "composer-2.5",
+    "parameters": [
+      {
+        "id": "fast",
+        "value": "false"
+      }
+    ]
+  },
   "privacyCache": {
     "ghostMode": true,
     "privacyMode": 2,
-    "updatedAt": 1762223716054
+    "updatedAt": 1781878603425
+  },
+  "serverConfigCache": {
+    "backendUrl": "https://api2.cursor.sh",
+    "authCacheKey": "auth:github|user_01JB1Y7XHS1EKZMAWNEFVM3RV8",
+    "agentUrlConfig": {
+      "agentUrl": "https://agentn.global.api5.cursor.sh",
+      "agentnUrl": "https://agentn.global.api5.cursor.sh"
+    },
+    "cliSandboxDefaultEnabled": false,
+    "serverHttp2Config": 0,
+    "updatedAt": 1781878601166
+  },
+  "authInfo": {
+    "email": "gahan94rakh@gmail.com",
+    "displayName": "Gahan Rakholia",
+    "userId": 111883461,
+    "authId": "github|user_01JB1Y7XHS1EKZMAWNEFVM3RV8"
   },
   "network": {
     "useHttp1ForAgent": false
-  }
+  },
+  "approvalMode": "allowlist",
+  "sandbox": {
+    "mode": "disabled",
+    "networkAccess": "user_config_with_defaults"
+  },
+  "runEverythingSettingsPromptStreak": 0,
+  "attribution": {
+    "attributeCommitsToAgent": true,
+    "attributePRsToAgent": true
+  },
+  "webFetchDomainAllowlist": []
 }

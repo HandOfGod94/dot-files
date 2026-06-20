@@ -59,6 +59,7 @@ local on_attach = function(opts)
   end
 end
 
+
 local default_capabilities =
     require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
@@ -97,33 +98,25 @@ local default_config = {
   denols = {
     on_attach = on_attach(),
     capabilities = default_capabilities,
-    root_dir = require('lspconfig.util').root_pattern("deno.json", "deno.jsonc"),
+    root_markers = { "deno.json", "deno.jsonc" },
   },
   ts_ls = {
-    on_attach = on_attach({ inlay_hint = false }),
     capabilities = default_capabilities,
-    root_dir = require('lspconfig.util').root_pattern("tsconfig.json", "package.json"),
+    root_markers = { "tsconfig.json", "package.json" },
     single_file_support = true,
-    commands = {
-      OrganizeImports = {
-        function()
-          vim.lsp.buf.execute_command({
-            command = "_typescript.organizeImports",
-            arguments = { vim.api.nvim_buf_get_name(0) },
-            title = ""
-          })
-        end,
-        description = "orgranize imports"
-      }
+    settings = {
+      diagnostics = {
+        ignoredCodes = { 6133, 71007 },
+      },
     },
     init_options = {
-      plugins = {
-        {
-          name = '@vue/typescript-plugin',
-          location = home .. '/.config/nvm/versions/node/v20.14.0/lib/node_modules/@vue/language-server',
-          languages = { 'vue' },
-        },
-      },
+      -- plugins = {
+      --   {
+      --     name = '@vue/typescript-plugin',
+      --     location = home .. '/.config/nvm/versions/node/v20.14.0/lib/node_modules/@vue/language-server',
+      --     languages = { 'vue' },
+      --   },
+      -- },
       preferences = {
         includeInlayParameterNameHints = 'all',
         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
@@ -207,7 +200,8 @@ function M.setup(options)
   options = options or {}
   local lsp_options = vim.tbl_deep_extend("force", default_config, options)
   for language, setup_values in pairs(lsp_options) do
-    require("lspconfig")[language].setup(setup_values)
+    vim.lsp.config(language, setup_values)
+    vim.lsp.enable(language)
   end
 
   require("flutter-tools").setup({

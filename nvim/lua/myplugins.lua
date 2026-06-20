@@ -1,6 +1,7 @@
 local M = {}
 
 M.setup = function()
+  require("ascii-mermaid").setup({})
   require("glance").setup({})
   require("coverage").setup()
   require("octo").setup()
@@ -31,13 +32,13 @@ M.setup = function()
     }
   })
   require("nvim-tree").setup({
-    disable_netrw = false,     -- required for GBrowse
+    disable_netrw = false, -- required for GBrowse
     prefer_startup_root = true,
-    sync_root_with_cwd = true, -- caveat with root and cwd
-    respect_buf_cwd = true,
+    -- sync_root_with_cwd = true, -- caveat with root and cwd
+    -- respect_buf_cwd = true,
     update_focused_file = {
       enable = true,
-      update_root = true,
+      update_root = false,
       ignore_list = { 'COMMIT_EDITMSG', 'gitcommit', 'vendor', '.git', 'fugitive' }
     },
     view = {
@@ -88,7 +89,11 @@ M.setup = function()
     }
   })
   require("telescope").load_extension("live_grep_args")
-  require('toggle_lsp_diagnostics').init()
+  require('toggle_lsp_diagnostics').init({
+    underline = true,
+    virtual_lines = false,
+    virtual_text = false
+  })
   require("telescope").load_extension("ui-select")
   require('telescope').load_extension('ctags_plus')
   require("lightspeed").setup({})
@@ -109,6 +114,7 @@ M.setup = function()
     }
   })
   require('ufo').setup()
+  require('lsp-file-operations').setup()
 
   -- other files, add more mappings
   require('other-nvim').setup({

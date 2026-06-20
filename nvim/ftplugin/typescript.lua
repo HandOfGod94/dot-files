@@ -1,5 +1,4 @@
--- vim.lsp.enable('biome')
-
+--vim.lsp.enable('biome')
 local wk = require("which-key")
 wk.add(require("mykeybindings").lspkeys)
 wk.add({

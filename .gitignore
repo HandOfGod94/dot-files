@@ -34,3 +34,6 @@ op
 *.yml-e
 /cursor/chats/
 .nuxtrc
+cursor/*cache*
+.nuxt/*
+neonctl/credentials.json

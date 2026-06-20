@@ -41,6 +41,7 @@ require('packer').startup(function()
   use 'godlygeek/tabular'
   use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
   use 'reasonml-editor/vim-reason-plus'
+  use "kais-radwan/ascii-mermaid"
 
   -- LSPs and DAPs
   use 'neovim/nvim-lspconfig'
@@ -51,6 +52,7 @@ require('packer').startup(function()
   use 'leoluz/nvim-dap-go'
   use 'mfussenegger/nvim-dap-python'
   use 'HiPhish/debugpy.nvim'
+  use 'antosha417/nvim-lsp-file-operations'
 
   -- CMP
   use 'hrsh7th/nvim-cmp'
@@ -163,7 +165,7 @@ vim.opt.spell = false
 vim.opt.breakindent = true
 
 --- check the default envs catppuccin flavor
-local flavor = os.getenv('CATPPUCCIN_FLAVOR') or "latte"
+local flavor = os.getenv('CATPPUCCIN_FLAVOR') or "mocha"
 vim.cmd.colorscheme('catppuccin-' .. flavor)
 
 vim.opt.foldmethod = 'expr'
