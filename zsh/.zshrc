@@ -123,9 +123,6 @@ eval "$(opam env)"
 export PATH="$HOME/bin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
 
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
 export PATH="$HOME/bin:$PATH"
 export PATH="$XDG_CONFIG_HOME/scripts:$PATH"
 export PIPENV_VENV_IN_PROJECT=1
@@ -165,9 +162,7 @@ export ANDROID_HOME="$HOME/Library/Android/sdk"
 export PATH="$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 export GDAL_LIBRARY_PATH="/opt/homebrew/opt/gdal/lib/libgdal.dylib"
-. ${ASDF_DATA_DIR:-$HOME/.asdf}/plugins/golang/set-env.zsh
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
 export DYLD_LIBRARY_PATH=/opt/homebrew/opt/geos/lib/
