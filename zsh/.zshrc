@@ -165,6 +165,7 @@ export PATH="$PATH":"$HOME/.pub-cache/bin"
 export GDAL_LIBRARY_PATH="/opt/homebrew/opt/gdal/lib/libgdal.dylib"
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@17/bin:$PATH"
+export PATH="$HOME/.railway/bin:$PATH"
 export DYLD_LIBRARY_PATH=/opt/homebrew/opt/geos/lib/
 
 

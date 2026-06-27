@@ -5,9 +5,7 @@ M.setup = function()
   require("glance").setup({})
   require("coverage").setup()
   require("octo").setup()
-  require("treesitter-context").setup({
-    max_lines = 5
-  })
+  require("treesitter-context").setup({ max_lines = 5 })
   local bufferline = require("bufferline")
   bufferline.setup({
     options = {
@@ -53,27 +51,7 @@ M.setup = function()
     },
   })
 
-  -- Install grammar with nvim-treesitter
-  local list = require("nvim-treesitter.parsers").get_parser_configs()
-  list.reason = {
-    install_info = {
-      url = "https://github.com/reasonml-editor/tree-sitter-reason",
-      files = { "src/parser.c", "src/scanner.c" },
-      branch = "master",
-    },
-  }
-
-  -- treesitter configs
-  require('nvim-treesitter.configs').setup({
-    ensure_installed = { "go", "java", "lua", "rust", "ruby", "elixir", "python", "clojure", "fennel", "json", "yaml",
-      "svelte", "javascript", "css", "vue", "html", "heex", "vim", "vimdoc", "norg", "markdown", "kdl", "typescript",
-      "graphql", "hcl", "terraform", "dart", "reason" },
-    highlight = {
-      enable = true,
-      additional_vim_regex_highlighting = false
-    },
-    endwise = { enable = true }
-  })
+  -- nvim-treesitter removed (archived Apr 2026); parsers now managed via :TSInstall (native neovim 0.12)
 
 
   require('telescope').setup({
@@ -103,11 +81,7 @@ M.setup = function()
   require('dapui').setup()
   require('zen-mode').setup({})
   require('numb').setup()
-  require('nvim-ts-autotag').setup({
-    autotag = {
-      enable = true,
-    }
-  })
+  require('nvim-ts-autotag').setup()
   require('ufo').setup()
   require('lsp-file-operations').setup()
 
@@ -245,6 +219,9 @@ M.setup = function()
     delete_check_events = 'InsertLeave'
   })
   require("luasnip.loaders.from_vscode").lazy_load()
+  require('render-markdown').setup({
+    completions = { lsp = { enabled = true } },
+  })
 
   local cmp = require('cmp')
   cmp.setup({

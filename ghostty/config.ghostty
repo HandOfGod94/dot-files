@@ -7,3 +7,4 @@ keybind = opt+left=text:\x1b[1;3D
 keybind = opt+right=text:\x1b[1;3C
 keybind = ctrl+space=unbind
 theme = dark:Catppuccin Frappe,light:Catppuccin Latte
+copy-on-select = clipboard

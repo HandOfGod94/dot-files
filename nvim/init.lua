@@ -6,7 +6,6 @@ require('packer').startup(function()
   use 'wbthomason/packer.nvim'
   use 'gpanders/editorconfig.nvim'
   use 'moll/vim-bbye'
-  use 'dart-lang/dart-vim-plugin'
 
   -- flutter deps
   use 'dart-lang/dart-vim-plugin'
@@ -29,8 +28,8 @@ require('packer').startup(function()
 
   use 'nvim-neotest/nvim-nio'
   use 'voldikss/vim-floaterm'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'RRethy/nvim-treesitter-endwise'
+  -- use 'nvim-treesitter/nvim-treesitter'
+  -- use 'RRethy/nvim-treesitter-endwise'
   use 'folke/which-key.nvim'
   use { 'mg979/vim-visual-multi', branch = 'master' }
   use 'kyazdani42/nvim-tree.lua'
@@ -92,7 +91,7 @@ require('packer').startup(function()
   use 'lewis6991/gitsigns.nvim'
   use 'nvim-telescope/telescope-ui-select.nvim'
   use 'clojure-vim/vim-jack-in'
-  use 'windwp/nvim-ts-autotag'
+  use 'windwp/nvim-ts-autotag' -- hard nvim-treesitter dep removed in v1.0
   use 'vim-test/vim-test'
   use 'DanilaMihailov/beacon.nvim'
   use 'matze/vim-move'
@@ -157,7 +156,6 @@ vim.g.do_filetype_lua = 1
 vim.g.sexp_filetypes = "clojure,fennel,janet"
 vim.g.github_enterprise_urls = { 'https://github.com/gaia-venture' }
 vim.g.gutentags_enabled = 0
-vim.g.markdown_fenced_languages = { "ts=typescript" }
 vim.opt.conceallevel = 1
 vim.opt.concealcursor = 'nc'
 vim.opt.spell = false
@@ -168,7 +166,7 @@ local flavor = os.getenv('CATPPUCCIN_FLAVOR') or "mocha"
 vim.cmd.colorscheme('catppuccin-' .. flavor)
 
 vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').]] ..
     [[' ... '.trim(getline(v:foldend)).]] ..
     [[' ('.(v:foldend-v:foldstart).' lines folded...)']]
